@@ -5,10 +5,15 @@ console.log(a);
 */
 
 
+
+
 // 2. ARRAYS
 /*
 const personArray = ['harkirat', 'raman', 'indrakant'];
 */
+
+
+
 
 // 3. WRITE A PROGRAM TO PRINT EVEN AGES
 /*
@@ -19,6 +24,9 @@ for(let i = 0; i < ages.length; i++){
     }
 }
 */
+
+
+
 
 // 4. WRITE A PROGRAM TO PRINT MALE GENDER PEOPLE's NAMES
 /*
@@ -32,7 +40,9 @@ for(let i = 0; i < personArray.length; i++){
 }
 */
 
-//same code can be converted to much cleaner code using objects.
+
+
+//above code can be converted to much cleaner code using objects.
 
 // 5. OBJECTS
 /*
@@ -61,6 +71,8 @@ for(let i = 0; i < allUsers.length; i++){
 */
 
 
+
+
 // 6. FUNCTION -
 /*
 function sum(a, b){
@@ -71,6 +83,8 @@ function sum(a, b){
 const value = sum(1, 2);
 console.log(value); //prints 3
 */
+
+
 
 
 // 7. FUNCTIONS TAKING ANOTHER FUNCTION as ARGUMENT
@@ -92,6 +106,9 @@ function displayResultPassive(data) {
 // How will you displayResult of a sum
 const ans = sum(1, 2, displayResult);
 */
+
+
+
 
 // 8. FUNCTION CALLING BACK ANOTHER FUNCTION
 /*
