@@ -42,6 +42,7 @@ for(let i = 0; i < ages.length; i++){
 
 
 //write a program to print male gender people's names.
+/*
 const personArray = ['harkirat', 'raman', 'priya'];
 const genderArray = ['male', 'male', 'female'];
 
@@ -50,6 +51,36 @@ for(let i = 0; i < personArray.length; i++){
         console.log(personArray[i]);
     }
 }
+*/
+
+//same code can be converted to much cleaner code using objects.
+
+//objects
+/*
+const allUsers = [
+    {
+        firstName: 'harkirat',
+        gender: 'male'
+    },
+    {
+        firstName: 'raman',
+        gender: 'male'
+    },
+    {
+        firstName: 'priya',
+        gender: 'female'
+    }
+]
+
+for(let i = 0; i < allUsers.length; i++){
+
+    if(allUsers[i].gender === 'male'){
+        console.log(allUsers[i].firstName);
+    }
+
+}
+*/
+
 
 
 
