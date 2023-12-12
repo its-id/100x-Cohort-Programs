@@ -15,7 +15,7 @@
 const fs = require('fs');
 
 fs.readFile('a.txt', 'utf-8', function (err, data) {
-  let str = data.replace(/\s+/g, ' ');
+  let str = data.replace(/\s+/g, ' '); //removing all extra spaces
   fs.writeFile('a.txt', str, function (err) {
     if (err) console.log('err: ', err);
     else {
