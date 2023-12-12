@@ -36,12 +36,12 @@ app.get('/', (req, res) => {
   }
 });
 
-//create a route to get all todos
+//route to get all todos
 app.get('/todos', (req, res) => {
   res.send(todos);
 });
 
-//create a route to get a single todo
+//route to get a single todo
 app.get('/todos/:id', (req, res) => {
   const todo = todos.find((todo) => todo.id === parseInt(req.params.id));
   if (!todo) {
@@ -50,7 +50,7 @@ app.get('/todos/:id', (req, res) => {
   res.send(todo);
 });
 
-//create a route to create a todo
+//route to create a todo
 app.post('/todos', (req, res) => {
   if (!req.body.title || req.body.title.length < 3) {
     res
@@ -74,7 +74,7 @@ app.post('/todos', (req, res) => {
   return res.redirect('/');
 });
 
-//create a route to delete a todo
+//route to delete a todo
 app.post('/todos/:id', (req, res) => {
   let todo = todos.find((todo) => todo.id === parseInt(req.params.id));
   if (!todo) {
