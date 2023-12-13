@@ -1,6 +1,6 @@
 ## JavaScript Assignments
 
-This folder contains assignments related to asynchronous JavaScript.
+This folder contains assignments related to asynchronous JavaScript and Node.js.
 
 ### Assignments
 
