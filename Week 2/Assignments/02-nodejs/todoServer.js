@@ -39,11 +39,115 @@
 
   Testing the server - run `npm run test-todoServer` command in terminal
  */
-  const express = require('express');
-  const bodyParser = require('body-parser');
-  
-  const app = express();
-  
-  app.use(bodyParser.json());
-  
-  module.exports = app;
+const express = require('express');
+const fs = require('fs');
+const path = require('path');
+const bodyParser = require('body-parser');
+
+const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+let todos = [];
+fs.readFile(
+  path.join(__dirname, './files/todos.json'),
+  'utf8',
+  function (err, data) {
+    if (err) {
+      console.log(err);
+    } else {
+      todos = JSON.parse(data);
+    }
+  }
+);
+
+app.get('/todos', (req, res) => {
+  res.status(200).json(todos);
+});
+
+app.get('/todos/:id', (req, res) => {
+  const todo = todos.find((todo) => todo.id === +req.params.id); //the + sign converts the string to a number
+  if (todo) {
+    res.status(200).json(todo);
+  } else {
+    res.status(404).send('Not Found');
+  }
+});
+
+app.post('/todos', function (req, res) {
+  const todo = {
+    id: todos.length + 1,
+    title: req.body.title,
+    completed: req.body.completed,
+    description: req.body.description,
+  };
+
+  todos.push(todo);
+  fs.writeFile(
+    path.join(__dirname, './files/todos.json'),
+    JSON.stringify(todos),
+    function (err) {
+      if (err) {
+        console.log(err);
+        res.status(500).send('Internal Server Error');
+      } else {
+        res.status(201).json({ id: todo.id });
+      }
+    }
+  );
+});
+
+app.put('/todos/:id', function (req, res) {
+  let todo = todos.find(function (todo) {
+    return todo.id === +req.params.id;
+  });
+
+  if (todo) {
+    todo = { ...todo, ...req.body }; //destructuring and merging the two objects
+
+    fs.writeFile(
+      path.join(__dirname, './files/todos.json'),
+      JSON.stringify(todos),
+      function (err) {
+        if (err) {
+          console.log(err);
+          res.status(404).send('Not Found');
+        } else {
+          res.status(200).json(todo);
+        }
+      }
+    );
+  }
+});
+
+app.delete('/todos/:id', function (req, res) {
+  const todo = todos.find(function (todo) {
+    return todo.id === +req.params.id;
+  });
+
+  if (todo) {
+    todos = todos.filter(function (todo) {
+      return todo.id !== +req.params.id;
+    });
+
+    fs.writeFile(
+      path.join(__dirname, './files/todos.json'),
+      JSON.stringify(todos),
+      function (err) {
+        if (err) {
+          console.log(err);
+          res.status(404).send('Not Found');
+        } else {
+          res.status(200).json(todo);
+        }
+      }
+    );
+  }
+});
+
+app.all('*', function (req, res) {
+  res.status(404).send('Not Found');
+});
+
+module.exports = app;
