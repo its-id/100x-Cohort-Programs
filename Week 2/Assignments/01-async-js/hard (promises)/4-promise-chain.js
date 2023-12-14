@@ -5,46 +5,46 @@
  * Compare it with the results from 3-promise-all.js
  */
 
-function waitOneSecond() {
+function waitOneSecond(first) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve('waited one second');
-    }, 1000);
+      resolve();
+    }, first * 1000);
   });
 }
 
-function waitTwoSecond() {
+function waitTwoSecond(second) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve('waited two seconds');
-    }, 2000);
+      resolve();
+    }, second * 1000);
   });
 }
 
-function waitThreeSecond() {
+function waitThreeSecond(third) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve('waited three seconds');
-    }, 3000);
+      resolve();
+    }, third * 1000);
   });
 }
 
-function calculateTime() {
+async function calculateTime(first, second, third) {
   const start = Date.now();
 
-  waitOneSecond()
-    .then((value) => {
-      console.log(value);
-      return waitTwoSecond();
+  const difference = await waitOneSecond(first)
+    .then(() => {
+      return waitTwoSecond(second);
     })
-    .then((value) => {
-      console.log(value);
-      return waitThreeSecond();
+    .then(() => {
+      return waitThreeSecond(third);
     })
-    .then((value) => {
-      console.log(value);
-      console.log(`It took ${(Date.now() - start) / 1000} seconds`);
+    .then(() => {
+      const end = Date.now();
+      return end - start;
     });
+
+  return difference;
 }
 
-calculateTime();
+module.exports = calculateTime;
