@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        //METHOD 1 - Using Promises
+            function getAnimalData() {
+                //By default, fetch() makes a GET request to the specified URL.
+                fetch('https://fakerapi.it/api/v1/persons').then(function (response) {
+                response.json().then(function (finalData) {
+                    console.log(finalData);
+                });
+                });
+            }
+        */
+
+      //METHOD 2 - Using Async/Await
+      async function getAnimalData() {
+        const response = await fetch('https://fakerapi.it/api/v1/persons');
+        const finalData = await response.json();
+        console.log(finalData);
+      }
+    </script>
+
+    <button onclick="getAnimalData()">Get Animal Data</button>
+  </body>
+</html>
