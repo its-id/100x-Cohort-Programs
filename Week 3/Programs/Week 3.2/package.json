@@ -1,11 +1,17 @@
 {
-  "name": "Auth-Tut",
+  "name": "week-3.2",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "2. Auth_Tut.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.3"
+  }
 }

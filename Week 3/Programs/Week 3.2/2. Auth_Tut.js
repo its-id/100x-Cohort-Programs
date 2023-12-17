@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const jwtPassword = '123456';
 
 const app = express();
+app.use(express.json());
 
 const ALL_USERS = [
   {
@@ -25,6 +26,9 @@ const ALL_USERS = [
 function userExists(username, password) {
   // write logic to return true or false if this user exists
   // in ALL_USERS array
+  return ALL_USERS.some(function (user) {
+    return user.username === username && user.password === password;
+  });
 }
 
 app.post('/signin', function (req, res) {
@@ -37,7 +41,7 @@ app.post('/signin', function (req, res) {
     });
   }
 
-  var token = jwt.sign({ username: username }, 'shhhhh');
+  var token = jwt.sign({ username: username }, jwtPassword);
   return res.json({
     token,
   });
@@ -48,7 +52,22 @@ app.get('/users', function (req, res) {
   try {
     const decoded = jwt.verify(token, jwtPassword);
     const username = decoded.username;
-    // return a list of users other than this username
+
+    // return a list of users other than this username without password
+    const users = ALL_USERS.filter(function (user) {
+      return user.username !== username;
+    }).map(function (user) {
+      return {
+        username: user.username,
+        name: user.name,
+      };
+    });
+    
+    return res.status(200).json({
+      msg: 'success',
+      username: username,
+      other_users: users,
+    });
   } catch (err) {
     return res.status(403).json({
       msg: 'Invalid token',
@@ -56,4 +75,6 @@ app.get('/users', function (req, res) {
   }
 });
 
-app.listen(3000);
+app.listen(3000, function () {
+  console.log('server started on port 3000');
+});
