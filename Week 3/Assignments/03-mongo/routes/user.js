@@ -19,7 +19,7 @@ router.post('/signup', async (req, res) => {
         //hashing the password, so it can be stored in mongoDB
         const hashedPassword = await bcrypt.hash(password, 10);
         //creating the user
-        const user = await User.create({username, password: hashedPassword});
+        await User.create({username, password: hashedPassword});
         res.status(200).json({message: "User created successfully"});
     }
 });

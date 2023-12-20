@@ -19,7 +19,7 @@ router.post('/signup', async (req, res) => {
         //hashing the password, so it can be stored in mongoDB
         const hashedPassword = await bcrypt.hash(password, 10);
         //creating the admin
-        const admin = await Admin.create({username, password: hashedPassword});
+        await Admin.create({username, password: hashedPassword});
         res.status(200).json({message: "Admin created successfully"});
     }
 
@@ -29,7 +29,7 @@ router.post('/courses', adminMiddleware, async (req, res) => {
     // Implemented course creation logic
     const {title, description, price, imageLink} = req.body;
 
-    //create the course
+    //creating the course
     const course = await Course.create({title, description, price, imageLink});
 
     //adding the course reference to admin's courses array

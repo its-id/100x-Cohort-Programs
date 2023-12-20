@@ -3,11 +3,8 @@ const bodyParser = require('body-parser');
 const app = express();
 const adminRouter = require("./routes/admin")
 const userRouter = require("./routes/user");
-const dotenv = require('dotenv');
 
 const PORT = 3000;
-
-dotenv.config();
 
 // Middleware for parsing request bodies
 app.use(bodyParser.json());

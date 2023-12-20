@@ -1,3 +1,8 @@
+## This solved assignment contains all edge cases including some extra add-ons:
+  1. Unlimited User/Admin Signups and logins. (Schema uses refs Population)
+  2. Courses creation & fetching is admin specific.
+  3. Passwords get hashed so that it gets stored in MongoDB.
+
 ## Create a course selling website
 
 ### Description
