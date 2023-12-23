@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <script>
+      async function calculateASI() {
+        const principle = parseInt(document.getElementById('principle').value);
+        const rate = parseInt(document.getElementById('rate').value);
+        const time = parseInt(document.getElementById('time').value);
+
+        const finalSpan = document.getElementById('finalSpan');
+
+        const sum = await fetch(
+          `https://sum-server.100xdevs.com/interest?principal=${principle}&rate=${rate}&time=${time}`
+        );
+
+        const {total, interest} = await sum.json();
+        finalSpan.innerText = 'Total: ' + total + ' , Interest: ' + interest;
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Calculate Total Amount and Simple Interest</h2>
+    <input
+      type="number"
+      name="principle"
+      id="principle"
+      style="display: block"
+      placeholder="Enter Principle"
+    />
+    <input
+      type="number"
+      name="rate"
+      id="rate"
+      style="display: block"
+      placeholder="Enter Rate"
+    />
+    <input
+      type="number"
+      name="time"
+      id="time"
+      style="display: block"
+      placeholder="Enter Time"
+    />
+    <button onclick="calculateASI()">Calculate Amt & SI</button>
+    <span id="finalSpan"></span>
+  </body>
+</html>
