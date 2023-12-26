@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Todo App using State</title>
+    <script>
+      let globalId = 0;
+
+      //this func same as previous html
+      function markAsDone(id) {
+        var todoItem = document.getElementById(id);
+
+        //using parentNode, we can access the parent of the element
+        todoItem.parentNode.removeChild(todoItem);
+        globalId--;
+      }
+
+      //this func same as previous html
+      function createTodoStructure(todo, description, todoList) {
+        //creating li tag
+        var todoItem = document.createElement('li');
+
+        //create the title
+        var todoText = document.createElement('b');
+        todoText.innerHTML = todo;
+
+        //create the description
+        var todoDescription = document.createElement('span');
+        todoDescription.innerHTML = ': ' + description + ' ';
+
+        //create the button
+        var todoButton = document.createElement('button');
+        todoButton.innerHTML = 'Mark as Done';
+
+        //attaching a function action to the above button using setAttribute
+        todoButton.setAttribute('onclick', `markAsDone(${globalId})`);
+
+        //adding the content to the li tag
+        todoItem.appendChild(todoText);
+        todoItem.appendChild(todoDescription);
+        todoItem.appendChild(todoButton);
+
+        //attaching id to the li tag
+        todoItem.id = globalId;
+        todoList.appendChild(todoItem);
+        console.log('todoList', todoList);
+        globalId++;
+      }
+
+      //main func - which converts the backend data to DOM elements
+      function updateDOMAcctoState(state) {
+        var todoList = document.getElementById('todoList');
+
+        //clear previous state
+        todoList.innerHTML = '';
+
+        for (let i = 0; i < state.length; i++) {
+          createTodoStructure(state[i].title, state[i].descripton, todoList);
+        }
+      }
+
+      //calling the main function
+      window.setInterval(async function () {
+        const res = await fetch('https://sum-server.100xdevs.com/todos');
+        const data = await res.json();
+        updateDOMAcctoState(data.todos);
+      }, 2000);
+
+    </script>
+  </head>
+  <body>
+    <div>
+      <h1>Todo App (Read Only)</h1>
+    </div>
+    <div>
+      <h2>Todo List</h2>
+      <ul id="todoList"></ul>
+    </div>
+  </body>
+</html>
