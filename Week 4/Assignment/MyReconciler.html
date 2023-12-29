@@ -15,9 +15,9 @@
         todoItem.parentNode.removeChild(todoItem);
 
         //also delete from the todoState
-        this.todoState = this.todoState.filter((todo) => {
-          return todo.id !== id;
-        });
+        // this.todoState = this.todoState.filter((todo) => {
+        //   return todo.id !== id;
+        // });
       }
 
       //this func same as previous html
@@ -33,7 +33,7 @@
 
         //create the description
         var todoDescription = document.createElement('span');
-        todoDescription.innerHTML = ': ' + newTodo.descripton + ' ';
+        todoDescription.innerHTML = ': ' + newTodo.desc + ' ';
 
         //create the button
         // var todoButton = document.createElement('button');
@@ -50,9 +50,6 @@
         //attaching id to the li tag
         todoItem.setAttribute('id', newTodo.id);
         todoList.appendChild(todoItem);
-
-        //creating a new todo in the todoState
-        this.todoState.push(newTodo);
       }
 
       //this func updates the oldTodo if it already exists
@@ -67,15 +64,15 @@
 
         //either case, we update the title and description
         element.children[0].innerHTML = '<b>' + newTodo.title + '</b>';
-        element.children[1].innerHTML = ': ' + newTodo.descripton + ' ';
+        element.children[1].innerHTML = ': ' + newTodo.desc + ' ';
 
         //changing only that todo which is updated in the todoState
-        this.todoState = this.todoState.map((todo) => {
-          if (todo.id === newTodo.id) {
-            return newTodo;
-          }
-          return todo;
-        });
+        // this.todoState = this.todoState.map((todo) => {
+        //   if (todo.id === newTodo.id) {
+        //     return newTodo;
+        //   }
+        //   return todo;
+        // });
       }
 
       //main func - which updates only the changed DOM elements
@@ -87,20 +84,19 @@
         //3. updated
 
         console.log('******************NEW CALL*************************');
-        console.log('oldState Before-->', this.oldTodoState);
         this.oldTodoState = this.todoState;
+        console.log('oldState Before-->', this.oldTodoState);
 
         let added = [];
         if (this.oldTodoState.length === 0) {
-            added = newTodos;
+          added = newTodos;
         } else {
-        //storing those objects from newTodos not present in oldTodoState
+          //storing those objects from newTodos not present in oldTodoState
           added = newTodos.map((newTodo) => {
             return this.oldTodoState.filter((oldTodo) => {
               if (oldTodo.id !== newTodo.id) return newTodo;
             });
           });
-          console.log('added', added); //two maps return an array of arrays, so we need to flatten it
         }
 
         let deleted = [];
@@ -111,29 +107,26 @@
             return newTodos.map((newTodo) => {
               if (oldTodo.id !== newTodo.id) return oldTodo;
             });
-          }); //two maps return an array of arrays, so we need to flatten it
+          });
         }
 
         let updated = [];
         if (this.oldTodoState.length === 0) {
           updated = [];
         } else {
-        //storing only the objects from newTodos whose id matches but other data doens't
+          //storing only the objects from newTodos whose id matches but other data doens't
           updated = newTodos.map((newTodo) => {
             return this.oldTodoState.map((oldTodo) => {
               if (
                 oldTodo.id === newTodo.id &&
                 (oldTodo.title !== newTodo.title ||
-                  oldTodo.descripton !== newTodo.descripton)
+                  oldTodo.desc !== newTodo.desc)
               ) {
                 return newTodo;
               }
             });
           });
-          //   .flat(); //two maps return an array of arrays, so we need to flatten it
         }
-
-        console.log(added, deleted, updated);
 
         //calculate these 3 arrays
         //call createTodo, removeTodo, updateTodo functions on each of the elements
@@ -147,31 +140,48 @@
         }
 
         for (let i = 0; i < added.length; i++) {
+          console.log('added 1 item to state!');
           createTodo(added[i]);
         }
 
         for (let i = 0; i < deleted.length; i++) {
+          console.log('removed 1 item from state!');
           removeTodo(deleted[i].id);
         }
 
         for (let i = 0; i < updated.length; i++) {
+          console.log('updated 1 item in state!');
           updateTodo(updated[i]);
         }
-
+        this.todoState = newTodos;
         console.log('currentState-->', this.todoState);
       }
 
-      //calling the main function
-      const interval = window.setInterval(async function () {
-        const res = await fetch('https://sum-server.100xdevs.com/todos');
+      async function callFunc1() {
+        const res = await fetch('http://localhost:3000/todos');
         const data = await res.json();
         updateState(data.todos);
-      }, 2000);
+      }
 
-      window.setTimeout(() => {
-        window.clearInterval(interval);
-      }, 5000);
+      async function callFunc2() {
+        const res2 = await fetch('http://localhost:3000/todos');
+        const data2 = await res2.json();
+        updateState(data2.todos);
+      }
 
+      callFunc1();
+      callFunc2();
+
+      // //calling the main function
+      // const interval = window.setInterval(async function () {
+      //   const res = await fetch('http://localhost:3000/todos');
+      //   const data = await res.json();
+      //   updateState(data.todos);
+      // }, 2000);
+
+      // window.setTimeout(() => {
+      //   window.clearInterval(interval);
+      // }, 5000);
     </script>
   </head>
   <body>
