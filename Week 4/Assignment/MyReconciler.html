@@ -87,7 +87,7 @@
 
         console.log('******************NEW CALL*************************');
         this.oldTodoState = this.todoState;
-        console.log('oldState Before-->', this.oldTodoState);
+        console.log('oldState Before-->', this.oldTodoState.slice());
 
         let added = [];
         if (this.oldTodoState.length === 0) {
@@ -130,6 +130,10 @@
           });
         }
 
+        console.log('added-->', added);
+        console.log('deleted--->', deleted);
+        console.log('updated--->', updated);
+
         //calculate these 3 arrays
         //call createTodo, removeTodo, updateTodo functions on each of the elements
         //update the oldTodoState with newTodos
@@ -142,21 +146,21 @@
         }
 
         for (let i = 0; i < added.length; i++) {
-          console.log('added 1 item to state!');
+          // console.log('added 1 item to state', added[i]);
           createTodo(added[i]);
         }
 
         for (let i = 0; i < deleted.length; i++) {
-          console.log('removed 1 item from state!');
+          // console.log('removed 1 item from state', deleted[i]);
           removeTodo(deleted[i].id);
         }
 
         for (let i = 0; i < updated.length; i++) {
-          console.log('updated 1 item in state!');
+          // console.log('updated 1 item in state', updated[i]);
           updateTodo(updated[i]);
         }
         // this.todoState = newTodos;
-        console.log('currentState-->', this.todoState);
+        console.log('currentState-->', this.todoState.slice());
       }
 
       async function callFunc1() {
