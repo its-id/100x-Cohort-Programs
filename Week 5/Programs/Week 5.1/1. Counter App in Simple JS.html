@@ -3,10 +3,10 @@
 <script>
   function onButtonPress() {
     const currentValue = document.getElementById("btn").innerHTML;
-    console.log(currentValue.split(" "))
-    const currentCounter = currentValue.split(" ")[1];
-    const newCounter = parseInt(currentCounter) + 1;
-    document.getElementById("btn").innerHTML = "Counter " + newCounter;
+    console.log(currentValue.split(" ")); //splits the string into an array: ["Counter", "0"]
+    const currentCounter = currentValue.split(" ")[1]; //gets the counter value from 1st index of the array
+    const newCounter = parseInt(currentCounter) + 1; //converts the counter value to integer and increments it
+    document.getElementById("btn").innerHTML = "Counter " + newCounter; //sets the new counter value
   }
 </script>
 
