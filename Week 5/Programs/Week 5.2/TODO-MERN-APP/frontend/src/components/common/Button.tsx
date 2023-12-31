@@ -1,7 +1,10 @@
-import React from 'react';
+type ButtonProps = {
+  text: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+};
 
-const Button = () => {
-  return <div>Button</div>;
+const Button = ({ text = 'Submit', onClick }: ButtonProps) => {
+  return <button onClick={onClick}>{text}</button>;
 };
 
 export default Button;

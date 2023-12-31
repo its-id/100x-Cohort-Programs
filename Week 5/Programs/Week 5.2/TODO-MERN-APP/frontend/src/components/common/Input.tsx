@@ -1,9 +1,26 @@
-import React from 'react'
+import React from 'react';
 
-const Input = () => {
+type InputProps = {
+  type: string;
+  name: string;
+  placeholder?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+const Input = ({
+  type = 'text',
+  name = '',
+  placeholder = '',
+  onChange,
+}: InputProps) => {
   return (
-    <div>Input</div>
-  )
-}
+    <input
+      type={type}
+      name={name}
+      placeholder={placeholder}
+      onChange={onChange}
+    />
+  );
+};
 
-export default Input
+export default Input;

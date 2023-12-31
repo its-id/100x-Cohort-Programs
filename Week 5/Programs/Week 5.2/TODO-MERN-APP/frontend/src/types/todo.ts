@@ -3,7 +3,7 @@ interface Todo {
   title: string;
   description: string;
   completed: boolean;
-  createdAt: string;
+  createdAt?: string;
 }
 
 export type { Todo };
