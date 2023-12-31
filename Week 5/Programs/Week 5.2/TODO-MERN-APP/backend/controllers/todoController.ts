@@ -10,11 +10,11 @@ const createTodo = async (req: Request, res: Response) => {
     return;
   }
 
-  const { title, description, completed } = parsedPayload.data;
+  const { title, description } = parsedPayload.data;
   const todo = new Todo({
     title,
     description,
-    completed,
+    completed: false
   });
 
   try {
