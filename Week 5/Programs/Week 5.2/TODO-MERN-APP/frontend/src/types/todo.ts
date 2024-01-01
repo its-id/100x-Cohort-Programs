@@ -6,4 +6,11 @@ interface Todo {
   createdAt?: string;
 }
 
-export type { Todo };
+interface TodoState {
+  todos?: Todo[];
+  loading: boolean;
+  error: null | string;
+  loadUser?: () => void;
+}
+
+export type { Todo, TodoState };

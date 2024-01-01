@@ -43,27 +43,29 @@ const Layout = () => {
   };
 
   return (
-    <div className='container'>
-      <div className='header'>
-        <h1>TODO App</h1>
+    <div className='w-[100vw]'>
+      <div className='w-full flex justify-center text-center my-8'>
+        <p className='font-bold text-4xl'>TODO App</p>
       </div>
-      <div className='todos-wrapper'>
-        <div className='add-todo-container'>
+      <div className='flex w-[95%] mx-auto gap-8'>
+        <div className='add-todo-container w-1/4'>
           <Input
             type='text'
             name='title'
             placeholder='Enter Todo Title'
+            styleClass='mb-4'
             onChange={onInputChange}
           />
           <Input
             type='text'
             name='description'
             placeholder='Enter Todo Description'
+            styleClass='mb-4'
             onChange={onInputChange}
           />
           <Button text='Add Todo' onClick={addTodo} />
         </div>
-        <div className='todos-container'>
+        <div className='w-3/4 max-h-[95vh] flex flex-col'>
           {todos.length > 0 &&
             todos.map((todo, idx) => {
               return <TodoItem key={idx} todo={todo} markAsDone={markAsDone} />;

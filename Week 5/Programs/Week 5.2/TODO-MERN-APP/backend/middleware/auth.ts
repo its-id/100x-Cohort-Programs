@@ -6,14 +6,14 @@ const userMiddleware = (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization;
 
     if (!authHeader) {
-      res.status(401).json({ error: 'Auth Header Not Authorized' });
+      res.status(401).json({ error: 'Unauthorized' });
       return;
     }
 
     const token = authHeader.split(' ')[1];
 
     if (!token) {
-      res.status(401).json({ error: 'Token Not Authorized' });
+      res.status(401).json({ error: 'Unauthorized' });
       return;
     }
 
@@ -23,11 +23,11 @@ const userMiddleware = (req: Request, res: Response, next: NextFunction) => {
     );
 
     if (!decoded) {
-      res.status(401).json({ error: 'Decoded Data not valid' });
+      res.status(401).json({ error: 'Unauthorized' });
       return;
     }
 
-    req.body.username = (decoded as jwt.JwtPayload).username; // adding the username to the request object
+    req.body.email = (decoded as jwt.JwtPayload).email;
     next();
   } catch (e) {
     res.status(401).json({ error: 'Unauthorized' });
