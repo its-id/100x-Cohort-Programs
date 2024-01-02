@@ -14,7 +14,7 @@ const createTodo = async (req: Request, res: Response) => {
   const todo = new Todo({
     title,
     description,
-    completed: false
+    completed: false,
   });
 
   try {
@@ -50,4 +50,21 @@ const updateTodo = async (req: Request, res: Response) => {
   }
 };
 
-export { createTodo, getTodos, updateTodo };
+const deleteTodo = async (req: Request, res: Response) => {
+  try {
+    //getting the id in request's url bar
+    const { id } = req.params;
+    const parsedPayload = updateTodoSchema.safeParse({ id });
+    if (!parsedPayload.success) {
+      res.status(411).json({ error: parsedPayload.error });
+      return;
+    }
+
+    await Todo.findByIdAndDelete({ _id: id });
+    res.status(200).json({ message: 'Todo Deleted Successfully!' });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+};
+
+export { createTodo, getTodos, updateTodo, deleteTodo };

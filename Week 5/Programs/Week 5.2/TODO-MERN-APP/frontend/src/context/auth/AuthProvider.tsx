@@ -1,7 +1,8 @@
 import { useEffect, useReducer } from 'react';
+import toast from 'react-hot-toast';
 import axios from 'axios';
 
-import setAuthToken from '../../../utils/SetAuthToken';
+import setAuthToken from '../../utils/SetAuthToken';
 import {
   SIGNUP_USER,
   LOGIN_USER,
@@ -13,7 +14,7 @@ import {
 } from '../types';
 import AuthReducer from './AuthReducer';
 import AuthContext from './AuthContext';
-import { User } from '../../../types/user';
+import { User } from '../../types/user';
 
 const AuthProvider = (props: any) => {
   const initialState = {
@@ -31,6 +32,8 @@ const AuthProvider = (props: any) => {
   const loadUser = async () => {
     if (localStorage.token) {
       setAuthToken(localStorage.token);
+    }else{
+      return;
     }
     dispatch({ type: SET_LOADING });
     try {
@@ -53,17 +56,18 @@ const AuthProvider = (props: any) => {
           'Content-Type': 'application/json',
         },
       };
-      await axios.post(url + '/user/signup', user, config);
+      const res = await axios.post(url + '/user/signup', user, config);
       dispatch({
         type: SIGNUP_USER,
+        payload: res.data,
       });
       // await loadUser();
     } catch (err: any) {
-      console.log(err.response.data.error);
       dispatch({
         type: AUTH_FAIL,
         payload: err.response.data.error,
       });
+      throw new Error(err.response.data.error);
     }
   };
 
@@ -83,16 +87,17 @@ const AuthProvider = (props: any) => {
       });
       // await loadUser();
     } catch (err: any) {
-      console.log(err.response);
       dispatch({
         type: AUTH_FAIL,
         payload: err.response.data.error,
       });
+      throw new Error(err.response.data.error);
     }
   };
 
   // Logout
   const logout = () => {
+    dispatch({ type: SET_LOADING });
     dispatch({ type: LOGOUT_USER });
   };
 
@@ -104,7 +109,7 @@ const AuthProvider = (props: any) => {
 
   useEffect(() => {
     loadUser();
-  }, [localStorage.token]);
+  }, []);
 
   return (
     <AuthContext.Provider

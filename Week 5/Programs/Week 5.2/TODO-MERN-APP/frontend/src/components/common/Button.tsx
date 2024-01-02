@@ -23,13 +23,15 @@ const Button = ({
       type='button'
       className={classNames(
         variant === 'primary'
-          ? 'bg-cyan-600 hover:bg-cyan-700 border-cyan-300 focus:ring-cyan-300 focus:shadow-[0_0_0_0.3rem_#0e7490]'
+          ? `bg-cyan-600 hover:bg-cyan-700 border-cyan-300 focus:ring-cyan-300 focus:shadow-[0_0_0_0.3rem_#0e7490]`
           : variant === 'danger'
-          ? 'bg-red-600 hover:bg-red-700 border-red-300 focus:ring-red-300 focus:border-red-300 focus:shadow-[0_0_0_0.3rem_#7f1d1d]'
+          ? `bg-red-600 hover:bg-red-700 border-red-300 focus:ring-red-300 focus:border-red-300 focus:shadow-[0_0_0_0.3rem_#7f1d1d]`
           : variant === 'success'
-          ? 'bg-emerald-600 hover:bg-emerald-700 border-emerald-300 focus:ring-emerald-300 focus:border-emerald-300 focus:shadow-[0_0_0_0.3rem_#14532d]'
-          : 'bg-gray-500 hover:bg-gray-600 border-gray-300 focus:ring-gray-300 focus:border-gray-300 focus:shadow-[0_0_0_0.3rem_#6b7280]',
-        `w-full inline-flex items-center justify-center px-4 py-2 focus-visible:outline-none border border-transparent text-base font-medium rounded-md shadow-sm text-white ${styleClass}`
+          ? `bg-emerald-600 hover:bg-emerald-700 border-emerald-300 focus:ring-emerald-300 focus:border-emerald-300 focus:shadow-[0_0_0_0.3rem_#14532d]`
+          : `bg-gray-500 hover:bg-gray-600 border-gray-300 focus:ring-gray-300 focus:border-gray-300 focus:shadow-[0_0_0_0.3rem_#6b7280]`,
+        `w-full inline-flex ${
+          disabled && 'hidden'
+        } items-center justify-center px-4 py-2 focus-visible:outline-none border border-transparent text-base font-medium rounded-md shadow-sm text-white ${styleClass}`
       )}
       onClick={onClick}
     >

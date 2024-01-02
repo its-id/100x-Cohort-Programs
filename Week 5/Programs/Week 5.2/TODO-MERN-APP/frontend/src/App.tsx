@@ -1,20 +1,28 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout';
-import PrivateRoutes from './utils/PrivateRoutes';
-import Login from './components/User/Login';
-import Signup from './components/User/Signup';
+import PrivateRoute from './HOC/PrivateRoute';
+import AuthProvider from './context/auth/AuthProvider';
+import TodoProvider from './context/todo/TodoProvider';
+import { Login, Signup, TodoLayout, Page404 } from './components';
+import PublicRoute from './HOC/PublicRoute';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route element={<PrivateRoutes />}>
-          <Route element={<Layout />} path='/' />
-        </Route>
-        <Route path='/user/signin' element={<Login />} />
-        <Route path='/user/signup' element={<Signup />} />
-      </Routes>
-    </Router>
+    <AuthProvider>
+      <TodoProvider>
+        <Router>
+          <Routes>
+            <Route element={<PrivateRoute />}>
+              <Route element={<TodoLayout />} path='/' />
+            </Route>
+            <Route element={<PublicRoute />}>
+              <Route path='/user/signin' element={<Login />} />
+              <Route path='/user/signup' element={<Signup />} />
+            </Route>
+            <Route path='*' element={<Page404 />} />
+          </Routes>
+        </Router>
+      </TodoProvider>
+    </AuthProvider>
   );
 }
 

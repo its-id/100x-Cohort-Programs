@@ -20,7 +20,7 @@ export default (state: any, action: any) => {
     case SIGNUP_USER:
       return {
         ...state,
-        registered: true,
+        isAuthenticated: true,
         loading: false,
       };
     case LOGIN_USER:

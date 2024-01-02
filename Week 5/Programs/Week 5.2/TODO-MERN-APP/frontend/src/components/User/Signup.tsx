@@ -1,12 +1,18 @@
 import { useState, useContext, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Button from '../common/Button';
-import Input from '../common/Input';
-import { User, UserState } from '../../types/user';
-import AuthContext from '../context/auth/AuthContext';
 import toast, { Toaster } from 'react-hot-toast';
 
-const Signup = () => {
+//components imports
+import Button from '../common/Button';
+import Input from '../common/Input';
+
+//types imports
+import { User, UserState } from '../../types/user';
+
+//context imports
+import AuthContext from '../../context/auth/AuthContext';
+
+const Signup = ({ context: path }: any) => {
   const navigate = useNavigate();
 
   const [user, setUser] = useState<User>({
@@ -17,12 +23,8 @@ const Signup = () => {
   });
   const [registering, setRegistering] = useState(false);
 
-  const {
-    isAuthenticated,
-    error,
-    clearError,
-    signup,
-  } = useContext<UserState>(AuthContext);
+  const { isAuthenticated, error, clearError, signup } =
+    useContext<UserState>(AuthContext);
 
   const checkValid = () => {
     if (
@@ -55,18 +57,26 @@ const Signup = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    if (!checkValid() || !signup) return;
+    const loadingToast = toast.loading('Signing Up...', {
+      style: {
+        background: '#333',
+        color: '#fff',
+      },
+    });
+    if (!checkValid()) {
+      toast.dismiss(loadingToast);
+      return;
+    }
 
     setRegistering(true);
     try {
-      const loadingToast = toast.loading('Signing Up...', {
-        style: {
-          background: '#333',
-          color: '#fff',
-        },
-      });
-      await signup(user);
+      signup &&
+        (await signup({
+          email: user.email,
+          password: user.password,
+          username: user.username,
+        }));
+
       if (!error) {
         toast.success('Signed Up Successfully', {
           style: {
@@ -74,17 +84,33 @@ const Signup = () => {
             color: '#fff',
           },
         });
+        console.log('success', error);
         toast.dismiss(loadingToast);
-        navigate('/');
       }
-    } catch (err) {
-      toast.error(error as string, {
-        style: {
-          background: '#333',
-          color: '#fff',
-        },
-      });
+    } catch (err: any) {
+      toast.dismiss(loadingToast);
     }
+
+    // if (error) {
+    //   console.log('error', error);
+    //   toast.dismiss(loadingToast);
+    //   toast.error(`${error} <- from signup` || 'Some error occurred', {
+    //     style: {
+    //       background: '#333',
+    //       color: '#fff',
+    //     },
+    //   });
+    // } else {
+    //   toast.success('Signed Up Successfully', {
+    //     style: {
+    //       background: '#333',
+    //       color: '#fff',
+    //     },
+    //   });
+    //   console.log('success', error);
+    //   toast.dismiss(loadingToast);
+    //   navigate('/');
+    // }
   };
 
   const onInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -100,7 +126,7 @@ const Signup = () => {
     if (isAuthenticated) {
       navigate('/');
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, path]);
 
   useEffect(() => {
     if (error) {
@@ -111,9 +137,7 @@ const Signup = () => {
           color: '#fff',
         },
       });
-      if (clearError) {
-        clearError();
-      }
+      clearError && clearError();
     }
   }, [error]);
 

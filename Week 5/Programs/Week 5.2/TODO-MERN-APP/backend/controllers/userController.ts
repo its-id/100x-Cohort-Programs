@@ -2,6 +2,11 @@ import User from '../models/user';
 import { Request, Response } from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { validate } from 'deep-email-validator';
+
+const isEmailValid = async (email: string) => {
+  return await validate(email);
+};
 
 // User Routes
 const userSignup = async (req: Request, res: Response) => {
@@ -13,13 +18,25 @@ const userSignup = async (req: Request, res: Response) => {
   if (existingUser) {
     res.status(400).json({ error: 'Email already exists' });
     return;
-  } else {
-    //hashing the password, so it can be stored in mongoDB
-    const hashedPassword = await bcrypt.hash(password, 10);
-    //creating the user
-    await User.create({ email, username, password: hashedPassword });
-    res.status(200).json({ message: 'User created successfully' });
   }
+
+  //checking if email is valid
+  const { valid } = await isEmailValid(email);
+  if (!valid) {
+    res.status(400).json({ error: 'Invalid email' });
+    return;
+  }
+
+  if (password.length < 6) {
+    res.status(400).json({ error: 'Password must be at least 6 characters' });
+    return;
+  }
+
+  //hashing the password, so it can be stored in mongoDB
+  const hashedPassword = await bcrypt.hash(password, 10);
+  //creating the user
+  await User.create({ email, username, password: hashedPassword });
+  res.status(200).json({ message: 'User created successfully' });
 };
 
 const userSignin = async (req: Request, res: Response) => {

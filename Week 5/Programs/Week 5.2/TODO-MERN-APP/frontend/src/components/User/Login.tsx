@@ -1,12 +1,18 @@
 import { useEffect, useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
+
+//components imports
 import Button from '../common/Button';
 import Input from '../common/Input';
-import { User, UserState } from '../../types/user';
-import AuthContext from '../context/auth/AuthContext';
 
-const Login = () => {
+//types imports
+import { User, UserState } from '../../types/user';
+
+//context imports
+import AuthContext from '../../context/auth/AuthContext';
+
+const Login = ({ context: path }: any) => {
   const navigate = useNavigate();
 
   const [user, setUser] = useState<User>({
@@ -14,7 +20,7 @@ const Login = () => {
     password: '',
   });
 
-  const { isAuthenticated, error, clearError, loading, signin, loadUser } =
+  const { isAuthenticated, error, clearError, signin } =
     useContext<UserState>(AuthContext);
 
   const checkValid = () => {
@@ -38,34 +44,31 @@ const Login = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const loadingToast = toast.loading('Logging In...', {
+      style: {
+        background: '#333',
+        color: '#fff',
+      },
+    });
 
-    if (!checkValid() || !signin) return;
+    if (!checkValid() || !signin) {
+      toast.dismiss(loadingToast);
+      return;
+    }
 
     try {
-      const loadingToast = toast.loading('Signing Up...', {
-        style: {
-          background: '#333',
-          color: '#fff',
-        },
-      });
-      signin(user);
-      if (!error && !loading) {
+      await signin(user);
+      if (!error) {
         toast.success('Logged in Successfully', {
           style: {
             background: '#333',
             color: '#fff',
           },
         });
-        toast.dismiss(loadingToast);
-        navigate('/');
       }
-    } catch (err) {
-      toast.error(error as string, {
-        style: {
-          background: '#333',
-          color: '#fff',
-        },
-      });
+      toast.dismiss(loadingToast);
+    } catch (err: any) {
+      toast.dismiss(loadingToast);
     }
   };
 
@@ -79,11 +82,10 @@ const Login = () => {
   };
 
   useEffect(() => {
-    // if (!isAuthenticated) { loadUser(); }
-    if(isAuthenticated) {
+    if (isAuthenticated) {
       navigate('/');
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, path]);
 
   useEffect(() => {
     if (error) {
@@ -158,6 +160,15 @@ const Login = () => {
                   onClick={handleSubmit}
                   variant='success'
                 />
+              </div>
+
+              <div className='text-sm'>
+                <Link
+                  to='/user/signup'
+                  className='text-emerald-400 hover:text-emerald-500'
+                >
+                  Don't have an account? Sign Up
+                </Link>
               </div>
             </div>
           </div>

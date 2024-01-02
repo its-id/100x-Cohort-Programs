@@ -1,5 +1,5 @@
 interface Todo {
-  _id: string;
+  _id?: string;
   title: string;
   description: string;
   completed: boolean;
@@ -8,9 +8,14 @@ interface Todo {
 
 interface TodoState {
   todos?: Todo[];
-  loading: boolean;
+  todoLoading?: boolean;
+  loading?: boolean;
   error: null | string;
-  loadUser?: () => void;
+  getTodos?: () => void;
+  createTodo?: (formData: Todo) => void;
+  markComplete?: (id: string) => void;
+  clearError?: () => void;
+  deleteTodo?: (id: string) => void;
 }
 
 export type { Todo, TodoState };
