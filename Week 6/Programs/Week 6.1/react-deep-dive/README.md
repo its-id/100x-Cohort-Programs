@@ -1,4 +1,4 @@
-** Start by uncommenting the "PARTS" codes in App.jsx on by one and run along to understand the concepts.
+**Start by uncommenting the "PARTS" codes in App.jsx on by one and run along to understand the concepts.**
 
 # React + Vite
 
