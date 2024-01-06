@@ -17,7 +17,9 @@ function App() {
   return (
     //below is what we call a fragment
     <>
-      <Header title={title} onClick={changeTitle} />
+      <button onClick={changeTitle}>Click me to change the first title!</button>
+      <Header title={title} />
+      <Header title={title} />
       <Header title='React Deep Dive' />
     </>
   );
