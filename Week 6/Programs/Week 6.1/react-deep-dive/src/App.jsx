@@ -62,7 +62,7 @@ function App() {
       {/* 2nd PART */}
       <button onClick={addTodo}>Add Todo</button>
       {todos.map((todo) => (
-        <Todo title={todo.title} description={todo.description} />
+        <Todo key={todo.id} title={todo.title} description={todo.description} />
       ))}
     </>
   );
