@@ -4,6 +4,7 @@ import Header from './components/Header';
 import HeaderWithButton from './components/HeaderWithButton';
 import Todo from './components/Todo';
 import Card from './components/Card';
+import CardTakingChildren from './components/CardTakingChildren';
 
 function App() {
   // FIRST PART
@@ -70,6 +71,7 @@ function App() {
 
       {/* 3rd PART */}
       <Card innerComponent={<TextComponent />} />
+      <CardTakingChildren>This is a children text!</CardTakingChildren>
     </>
   );
 }
