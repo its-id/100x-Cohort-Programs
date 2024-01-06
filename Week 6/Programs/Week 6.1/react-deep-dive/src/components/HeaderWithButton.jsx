@@ -11,7 +11,12 @@ const HeaderWithButton = () => {
     setTitle(newTitle);
   };
 
-  return <p>{title}</p>;
+  return (
+    <>
+      <button onClick={changeTitle}>Click me to change the first title!</button>
+      <p>{title}</p>
+    </>
+  );
 };
 
 export default HeaderWithButton;
