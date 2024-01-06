@@ -5,6 +5,7 @@ import HeaderWithButton from './components/HeaderWithButton';
 import Todo from './components/Todo';
 import Card from './components/Card';
 import CardTakingChildren from './components/CardTakingChildren';
+import UsingHooks from './components/UsingHooks';
 
 function App() {
   // FIRST PART
@@ -70,8 +71,11 @@ function App() {
       ))} */}
 
       {/* 3rd PART */}
-      <Card innerComponent={<TextComponent />} />
-      <CardTakingChildren>This is a children text!</CardTakingChildren>
+      {/* <Card innerComponent={<TextComponent />} />
+      <CardTakingChildren>This is a children text!</CardTakingChildren> */}
+
+      {/* 4th PART: USING HOOKS */}
+      <UsingHooks />
     </>
   );
 }
