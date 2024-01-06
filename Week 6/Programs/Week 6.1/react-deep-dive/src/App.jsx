@@ -2,8 +2,11 @@ import { useState } from 'react';
 import './App.css';
 import Header from './components/Header';
 import HeaderWithButton from './components/HeaderWithButton';
+import Todo from './components/Todo';
 
 function App() {
+  // FIRST PART
+  /*
   const [title, setTitle] = useState('React Deep Dive');
 
   const changeTitle = () => {
@@ -13,14 +16,54 @@ function App() {
     const newTitle = Math.random().toString(36).substring(7);
     setTitle(newTitle);
   };
+  */
+
+  //2nd PART
+  const [todoId, setTodoId] = useState(4);
+  const [todos, setTodos] = useState([
+    {
+      id: 1,
+      title: '1. Learn React',
+      description: 'Learn React and build a cool app',
+    },
+    {
+      id: 2,
+      title: '2. Learn Firebase',
+      description: 'Learn Firebase and build a cool app',
+    },
+    {
+      id: 3,
+      title: '3. Learn GraphQL',
+      description: 'Learn GraphQL and build a cool app',
+    },
+  ]);
+
+  const addTodo = () => {
+    setTodos([
+      ...todos,
+      {
+        id: todoId,
+        title: `${todoId}. Learn Redux`,
+        description: `Learn Redux and build a cool app ${todoId}`,
+      },
+    ]);
+    setTodoId(todoId + 1);
+  };
 
   return (
     //below is what we call a fragment
     <>
-      <button onClick={changeTitle}>Click me to change the first title!</button>
+      {/* 1st PART */}
+      {/* <button onClick={changeTitle}>Click me to change the first title!</button>
       <Header title={title} />
       <Header title={title} />
-      <Header title='React Deep Dive' />
+      <Header title='React Deep Dive' /> */}
+
+      {/* 2nd PART */}
+      <button onClick={addTodo}>Add Todo</button>
+      {todos.map((todo) => (
+        <Todo title={todo.title} description={todo.description} />
+      ))}
     </>
   );
 }
