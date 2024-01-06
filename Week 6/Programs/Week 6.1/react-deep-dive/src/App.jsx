@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import HeaderWithButton from './components/HeaderWithButton';
 import Todo from './components/Todo';
+import Card from './components/Card';
 
 function App() {
   // FIRST PART
@@ -19,6 +20,7 @@ function App() {
   */
 
   //2nd PART
+  /*
   const [todoId, setTodoId] = useState(4);
   const [todos, setTodos] = useState([
     {
@@ -49,6 +51,7 @@ function App() {
     ]);
     setTodoId(todoId + 1);
   };
+  */
 
   return (
     //below is what we call a fragment
@@ -60,12 +63,20 @@ function App() {
       <Header title='React Deep Dive' /> */}
 
       {/* 2nd PART */}
-      <button onClick={addTodo}>Add Todo</button>
+      {/* <button onClick={addTodo}>Add Todo</button>
       {todos.map((todo) => (
         <Todo key={todo.id} title={todo.title} description={todo.description} />
-      ))}
+      ))} */}
+
+      {/* 3rd PART */}
+      <Card innerComponent={<TextComponent />} />
     </>
   );
 }
+
+// PART 3
+const TextComponent = () => {
+  return <p>This is the Text Component!</p>;
+};
 
 export default App;
