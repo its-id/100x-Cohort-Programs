@@ -1,4 +1,5 @@
 import './App.css';
+import UsingCustomHook from './components/UsingCustomHook';
 import UsingUseCallback from './components/UsingUseCallback';
 import UsingUseEffectHook2 from './components/UsingUseEffectHook2';
 import UsingUseEffectHook from './components/UsinguseEffectHook';
@@ -10,7 +11,8 @@ function App() {
       {/* <UsingUseEffectHook /> */}
       {/* <UsingUseEffectHook2 /> */}
       {/* <UsingUseMemoHook /> */}
-      <UsingUseCallback />
+      {/* <UsingUseCallback /> */}
+      <UsingCustomHook />
     </>
   );
 }
