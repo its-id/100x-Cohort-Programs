@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Todo from './Todo';
+import Todo from '../Todo';
 
 const UsingUseEffectHook = () => {
   const [todos, setTodos] = useState([]);
@@ -21,6 +21,8 @@ const UsingUseEffectHook = () => {
 
   return (
     <>
+      <h1>Using useEffect Hook - Example 1</h1>
+
       {todos.map((todo) => {
         return (
           <Todo

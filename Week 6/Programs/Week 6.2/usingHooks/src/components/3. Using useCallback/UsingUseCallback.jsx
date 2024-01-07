@@ -9,12 +9,15 @@ const UsingUseCallback = () => {
   //   };
   //This is because the function is created again and again with different REFERENTIAL EQUALITY on every re-render. To prevent this, we use useCallback hook
   const onClickHandler = useCallback(() => {
-    console.log('Button clicked');
+    console.log('Parent function called!');
   });
 
   return (
     <>
-      <button onClick={() => setCount(count + 1)}>Button inside Parent</button>
+      <h1>Using useCallback Hook</h1>
+      <button onClick={() => setCount(count + 1)}>
+        Parnet - Click me. (Child component should re-render)
+      </button>
       <br />
       <br />
       <ChildComponent onclick={onClickHandler} />
@@ -24,7 +27,11 @@ const UsingUseCallback = () => {
 
 const ChildComponent = memo(({ onclick }) => {
   console.log('Child component re-rendered');
-  return <button onClick={onclick}>Button inside Child</button>;
+  return (
+    <button onClick={onclick}>
+      Child - Click me. (Child component should not re-render)
+    </button>
+  );
 });
 
 export default UsingUseCallback;

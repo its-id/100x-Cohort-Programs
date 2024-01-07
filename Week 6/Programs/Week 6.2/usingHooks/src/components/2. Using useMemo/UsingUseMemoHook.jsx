@@ -7,7 +7,7 @@ const UsingUseMemoHook = () => {
   //we wrap it under useMemo hook so that it doesn't run everytime the component re-renders
 
   const count = useMemo(() => {
-    console.log('Memo called');
+    console.log('Expensive operation');
     let finalCount = 0;
     for (let i = 1; i <= inputValue; i++) {
       finalCount += i;
@@ -21,6 +21,8 @@ const UsingUseMemoHook = () => {
 
   return (
     <>
+      <h1>Using useMemo Hook</h1>
+      <span>Enter value to run expensive operation </span>
       <input
         type='number'
         onChange={onChangeHandler}
@@ -29,7 +31,12 @@ const UsingUseMemoHook = () => {
       <p>
         Sum from 1 to {inputValue} is {count}
       </p>
-      <button onClick={() => setCounter(counter + 1)}>Counter {counter}</button>
+      <div>
+        <span>Clicking it should not run the expensive operation </span>
+        <button onClick={() => setCounter(counter + 1)}>
+          Click Me to change counter ({counter})
+        </button>
+      </div>
     </>
   );
 };

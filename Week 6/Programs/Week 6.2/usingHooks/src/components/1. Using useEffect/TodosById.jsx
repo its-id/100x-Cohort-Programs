@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Todo from './Todo';
+import Todo from '../Todo';
 
 const TodosById = ({ id }) => {
   const [todos, setTodos] = useState([]);

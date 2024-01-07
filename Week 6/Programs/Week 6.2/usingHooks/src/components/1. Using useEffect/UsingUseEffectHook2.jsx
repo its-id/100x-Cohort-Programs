@@ -6,10 +6,15 @@ const UsingUseEffectHook2 = () => {
 
   return (
     <>
+      <h1>Using useEffect Hook - Example 2</h1>
       <p>Get Todo with ID</p>
       <div>
         {Array.from({ length: 5 }, (_, i) => (
-          <button key={i} onClick={() => setSelectedId(i + 1)}>
+          <button
+            style={{ marginRight: '1rem' }}
+            key={i}
+            onClick={() => setSelectedId(i + 1)}
+          >
             {i + 1}
           </button>
         ))}
