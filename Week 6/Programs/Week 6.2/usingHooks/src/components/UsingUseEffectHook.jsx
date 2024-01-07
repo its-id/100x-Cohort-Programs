@@ -17,10 +17,6 @@ const UsingUseEffectHook = () => {
   //TODO: polling - getTodos every 5 seconds
   useEffect(() => {
     getTodos();
-    const interval = setInterval(() => {
-      getTodos();
-    }, 5000);
-    return () => clearInterval(interval); //cleanup function - runs when component unmounts
   }, []);
 
   return (
