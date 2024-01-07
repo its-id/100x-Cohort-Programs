@@ -1,13 +1,16 @@
-import { useState, memo } from 'react';
+import { useState, memo, useCallback } from 'react';
 
 const UsingUseCallback = () => {
   const [count, setCount] = useState(0);
 
   //whenever we click on the child component, the parent component re-renders, even though the child is wrapper under memo() and the prop function is not changing.
+  //   const onClickHandler = () => {
+  //     console.log('Button clicked');
+  //   };
   //This is because the function is created again and again with different REFERENTIAL EQUALITY on every re-render. To prevent this, we use useCallback hook
-  const onClickHandler = () => {
+  const onClickHandler = useCallback(() => {
     console.log('Button clicked');
-  };
+  });
 
   return (
     <>
