@@ -14,7 +14,7 @@ const UsingUseEffectHook = () => {
     );
   };
 
-  //TODO: polling - getTodos every 5 seconds
+  //BUG: if a state is called two times in a row, and the first call completes after the second call, then the first call's will overwrite the second call.
   useEffect(() => {
     getTodos();
   }, []);
