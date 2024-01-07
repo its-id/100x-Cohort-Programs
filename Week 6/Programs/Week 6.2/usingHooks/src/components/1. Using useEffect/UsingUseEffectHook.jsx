@@ -14,7 +14,8 @@ const UsingUseEffectHook = () => {
     );
   };
 
-  //BUG: if a state is called two times in a row, and the first call completes after the second call, then the first call's will overwrite the second call.
+  //BUG: if a state is called two times in a row, and the second call completes after the first call for some reason, then the first call's operation will overwrite the second call which is wrong.
+  //To Handle this bug: we use a package called use-async-effect package
   useEffect(() => {
     getTodos();
   }, []);
