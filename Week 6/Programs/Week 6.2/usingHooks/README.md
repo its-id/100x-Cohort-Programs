@@ -1,3 +1,6 @@
+### All the components are created acc. to order along with a proper explanation.
+### Uncomment each component one by one from the `App.jsx` file to see the live example of each hook.
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
