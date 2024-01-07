@@ -1,13 +1,19 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 
 const UsingUseMemoHook = () => {
   const [counter, setCounter] = useState(0); //counter state's operation is independent of the inputValue state's operation
   const [inputValue, setInputValue] = useState(1);
 
-  let count = 0;
-  for (let i = 1; i <= inputValue; i++) {
-    count += i;
-  }
+  //we wrap it under useMemo hook so that it doesn't run everytime the component re-renders
+
+  const count = useMemo(() => {
+    console.log('Memo called');
+    let finalCount = 0;
+    for (let i = 1; i <= inputValue; i++) {
+      finalCount += i;
+    }
+    return finalCount;
+  }, [inputValue]); //ensures this function runs only when the inputValue changes
 
   const onChangeHandler = (e) => {
     setInputValue(e.target.value);
