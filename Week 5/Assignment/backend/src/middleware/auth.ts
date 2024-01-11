@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 
 const userMiddleware = async (
   req: Request,
@@ -18,7 +18,7 @@ const userMiddleware = async (
     const docoded = jwt.verify(token, process.env.JWT_SECRET as string);
     if (!docoded) return res.status(401).json({ error: 'Invalid token' });
 
-    req.body.email = docoded;
+    req.body.email = (docoded as JwtPayload).email;
     next();
   } catch (error) {
     throw error;

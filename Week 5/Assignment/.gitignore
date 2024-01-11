@@ -1,4 +1,7 @@
 /backend/node_modules
 /backend/index.js
+/backend/controllers/cardController.js
+/backend/controllers/userController.js
+/backend/middleware/auth.js
 /backend/.env
 /frotnend/node_modules
