@@ -1,3 +1,4 @@
 /backend/node_modules
+/backend/index.js
 /backend/.env
 /frotnend/node_modules
