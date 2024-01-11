@@ -1,0 +1,70 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 200px;
+  height: 200px;
+  background-color: #f5f5f5;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
+}
+
+.container:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.container .name {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.container .description {
+  font-size: 0.8rem;
+  margin: 10px;
+  color: #666;
+}
+
+.container .interests {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.container .interestHeader {
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.container .interests span {
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  background: #eee;
+  border-radius: 5px;
+  margin: 10px;
+  color: #666;
+}
+
+.container .socialsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.container .socialsContainer .singleSocialItem {
+  margin: 0 10px;
+}
+
+.container .socialsContainer .singleSocialItem img {
+  width: 20px;
+  height: 20px;
+}

@@ -1,8 +1,13 @@
 import React from 'react'
 
 const Button = () => {
+
+  const onClickHandler = () => {
+    
+  }
+
   return (
-    <div>Button</div>
+    <button className="btn btn-primary">Click me</button>
   )
 }
 

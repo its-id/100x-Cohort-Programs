@@ -74,7 +74,9 @@ const loginUser = async (req: Request, res: Response) => {
       expiresIn: '1h',
     });
 
-    return res.status(200).json({ token, message: 'Logged in successfully!' });
+    return res
+      .status(200)
+      .json({ token, role: user.role, message: 'Logged in successfully!' });
   } catch (err) {
     res.status(500).json({ error: 'Some error occurred!' });
   }
