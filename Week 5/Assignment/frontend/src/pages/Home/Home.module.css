@@ -1,0 +1,101 @@
+.container {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  /* padding: 0 2rem; */
+  align-items: center;
+  color: white;
+}
+
+.container .header {
+  font-size: 2rem;
+  margin-bottom: 4rem;
+}
+
+.sectionWrapper {
+  display: flex;
+  width: 100%;
+  gap: 4rem;
+}
+
+.container .addCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  width: 27%;
+}
+
+.container .addCard .addCard__input {
+  width: 100%;
+  height: 2rem;
+  border: none;
+  border-radius: 5px;
+  padding: 0 0.5rem;
+  font-size: 1rem;
+}
+
+.container .socialsInputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.container .socialsInputHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: -0.5rem;
+}
+
+.container .socialsInputHeader button {
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  background-color: #595959;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.socialsInputContainer div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.container .socialsInput__input {
+  width: 100%;
+  height: 2rem;
+  border: none;
+  border-radius: 5px;
+  padding: 0 0.5rem;
+  font-size: 1rem;
+}
+
+.addCard .addCardBtn {
+  width: 100%;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  background-color: #1e90ff;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.addCard .addCardBtn:hover {
+  background-color: #1e90ff;
+  opacity: 0.8;
+}
+
+.container .cardsSection {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
