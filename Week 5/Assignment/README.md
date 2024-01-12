@@ -12,7 +12,7 @@
    - admin can see everyone’s cards.
 - **CRUD controls**
    - user can create but not update or delete.
-   - Only admin can update, delete
+   - Only admin can create, update, delete anyone's card.
 
 ### Frontend Checklist:
 - Setup component structure
