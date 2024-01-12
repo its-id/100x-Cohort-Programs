@@ -82,4 +82,17 @@ const loginUser = async (req: Request, res: Response) => {
   }
 };
 
-export { createUser, loginUser };
+const getUser = async (req: Request, res: Response) => {
+  const { email } = req.body;
+  try {
+    const user = await User.findOne({ email });
+    if (!user) return res.status(404).json({ error: 'User not found' });
+
+    return res.status(200).json({ email: user.email, role: user.role });
+  } catch (err) {
+    console.log('getUser() err', err);
+    res.status(500).json({ error: 'Some error occurred!' });
+  }
+};
+
+export { createUser, loginUser, getUser };

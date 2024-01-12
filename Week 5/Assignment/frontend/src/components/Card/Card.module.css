@@ -1,14 +1,12 @@
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-  padding: 10px;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 20px;
+  width: 250px;
   border: 1px solid black;
   border-radius: 5px;
-  width: 200px;
-  height: 200px;
   background-color: #f5f5f5;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease-in-out;
@@ -20,51 +18,76 @@
 }
 
 .container .name {
+  color: #333;
   font-size: 1rem;
   font-weight: bold;
-  margin: 10px;
+}
+
+.container .main {
+  display: flex;
+  flex-direction: column;
+  max-height: 250px;
+  overflow-y: auto;
+  gap: 0.5rem;
 }
 
 .container .description {
   font-size: 0.8rem;
-  margin: 10px;
   color: #666;
 }
 
-.container .interests {
+.container .interestsContainer {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 }
 
 .container .interestHeader {
   font-size: 0.8rem;
-  font-weight: bold;
-  margin: 10px;
+  font-weight: 500;
+  color: #666;
+}
+
+.container .interestsContainer .interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .container .interests span {
   font-size: 0.8rem;
-  padding: 4px 8px;
+  padding: 3px 6px;
   background: #eee;
   border-radius: 5px;
-  margin: 10px;
   color: #666;
 }
 
 .container .socialsContainer {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.container .socialsContainer .singleSocialItem {
-  margin: 0 10px;
+.container .socialsContainer .socialsHeader {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #666;
+}
+
+.container .socialsContainer .socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .container .socialsContainer .singleSocialItem img {
   width: 20px;
   height: 20px;
+}
+
+.container .optionsContainer {
+  justify-self: flex-end;
+  align-self: flex-end;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }

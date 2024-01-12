@@ -10,6 +10,7 @@ const CardSchema = new Schema({
     type: [
       {
         name: { type: String, required: true },
+        img: { type: String, required: true },
         url: { type: String, required: true },
       },
     ],
