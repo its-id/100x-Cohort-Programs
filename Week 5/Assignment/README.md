@@ -1,3 +1,27 @@
+## Week 5 Assignment Solution 
+
+### Covers Advanced areas
+- Authentication & Control authorization (more details below).
+- Written in TS
+
+### Backend Checklist:
+- Type validation using zod
+- Authentication & session management handled
+- **View controls**
+   - user can only see his/her cards.
+   - admin can see everyone’s cards.
+- **CRUD controls**
+   - user can create but not update or delete.
+   - Only admin can update, delete
+
+### Frontend Checklist:
+- Setup component structure
+- UI created from scratch, no third party libraries used.
+- **Missing**: State management using context or third party tools
+
+
+
+### Assignment given initially
 You have to create a simple React App which has a reusable Card Component which has the following
  - Ability to pass in props to the Component
  - The Card must show a person's
