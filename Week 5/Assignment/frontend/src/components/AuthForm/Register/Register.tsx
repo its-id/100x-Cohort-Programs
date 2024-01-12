@@ -9,7 +9,7 @@ const Register = ({ setIsLogin }: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [role, setRole] = useState('');
+  const [role, setRole] = useState('user');
   const navigate = useNavigate();
 
   const checkValid = () => {
@@ -31,8 +31,9 @@ const Register = ({ setIsLogin }: any) => {
     return true;
   };
 
-  const handleLogin = async (e: any) => {
+  const handlRegister = async (e: any) => {
     e.preventDefault();
+    console.log(username, email, password, confirmPassword, role)
     if (!checkValid()) return;
     const loadingToast = toast.loading('Registering...');
     try {
@@ -103,7 +104,7 @@ const Register = ({ setIsLogin }: any) => {
           <option value='admin'>admin</option>
         </select>
         <div className={styles.authBtnContainer}>
-          <button onClick={handleLogin}>Register</button>
+          <button onClick={handlRegister}>Register</button>
         </div>
 
         <div className={styles.lowerAuthContainer}>
