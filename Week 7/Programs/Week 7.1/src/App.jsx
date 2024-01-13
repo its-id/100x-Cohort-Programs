@@ -8,13 +8,16 @@ function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/" element={<Landing />} />
-      </Routes>
-    </BrowserRouter>
-  )
+    <div>
+      <div>TopBar</div>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/' element={<Landing />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;
