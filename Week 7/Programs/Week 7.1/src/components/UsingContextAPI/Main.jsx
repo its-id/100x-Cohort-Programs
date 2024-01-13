@@ -1,11 +1,10 @@
 import { useState } from 'react';
 
-function Main() {
+function App() {
   const [count, setCount] = useState(0);
 
   return (
     <div>
-      {/* even <Count> component doesn't need the 'setCount' prop, but we need it as have to pass it down to <Buttons> component.  */}
       <Count count={count} setCount={setCount} />
     </div>
   );
@@ -14,10 +13,14 @@ function Main() {
 function Count({ count, setCount }) {
   return (
     <div>
-      {count}
+      <CountRenderer count={count} />
       <Buttons count={count} setCount={setCount} />
     </div>
   );
+}
+
+function CountRenderer({ count }) {
+  return <div>{count}</div>;
 }
 
 function Buttons({ count, setCount }) {
@@ -30,6 +33,7 @@ function Buttons({ count, setCount }) {
       >
         Increase
       </button>
+
       <button
         onClick={() => {
           setCount(count - 1);
@@ -41,4 +45,4 @@ function Buttons({ count, setCount }) {
   );
 }
 
-export default Main;
+export default App;
