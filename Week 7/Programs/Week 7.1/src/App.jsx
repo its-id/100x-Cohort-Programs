@@ -1,6 +1,7 @@
+import { Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
-const Dashboard = React.lazy(() => import('./components/Dashboard')); //syntax to load this component 'lazily'
+const Dashboard = lazy(() => import('./components/Dashboard')); //syntax to load this component 'lazily'
 import Landing from './components/Landing';
 
 const TopBar = () => {
@@ -38,7 +39,15 @@ function App() {
       <BrowserRouter>
         <TopBar />
         <Routes>
-          <Route path='/dashboard' element={<Dashboard />} />
+          <Route
+            path='/dashboard'
+            element={
+              //we use suspense to show a fallback component while the component is being loaded.
+              <Suspense fallback={<div>Loading...</div>}>
+                <Dashboard />
+              </Suspense>
+            }
+          />
           <Route path='/' element={<Landing />} />
         </Routes>
       </BrowserRouter>
