@@ -22,6 +22,6 @@ export const filteredTodosSelector = selector({
     const todos = get(todosAtom);
 
     if (filterVal === '') return todos;
-    return todos.filter((todo) => todo.title.includes(filterVal));
+    return todos.filter((todo) => todo.title.toLowerCase().includes(filterVal.toLowerCase()));
   },
 });

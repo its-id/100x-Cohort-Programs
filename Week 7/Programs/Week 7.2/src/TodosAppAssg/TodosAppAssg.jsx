@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   RecoilRoot,
-  useRecoilState,
   useRecoilValue,
   useSetRecoilState,
 } from 'recoil';
@@ -14,7 +13,7 @@ import {
 const TodosAppAssg = () => {
   return (
     <RecoilRoot>
-      <div style={{ width: '100%', display: 'flex', gap: '1rem' }}>
+      <div style={{ width: '100%', display: 'flex', gap: '2rem' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <TodosInput />
           <FilterTodosInput />
@@ -63,8 +62,6 @@ const FilterTodosInput = () => {
 
 const TodosRenderer = () => {
   const todos = useRecoilValue(filteredTodosSelector);
-  console.log('todos', todos);
-  //we get an array with first one being the value and second one being the function to update it
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
       {todos.length > 0 &&
