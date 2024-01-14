@@ -43,14 +43,12 @@ function EvenCountRenderer() {
   const count = useRecoilValue(countAtom);
 
   //METHOD 1: using useMemo() by REACT
-  /*
   const isEven = useMemo(() => {
     return count % 2 == 0; //this logic only runs when count changes
   }, [count]);
-  */
 
   //METHOD 2: using selector by RECOIL
-  const isEven = useRecoilValue(evenSelector);
+  // const isEven = useRecoilValue(evenSelector);
 
   return (
     <div style={{ textAlign: 'center', marginTop: '10px' }}>
