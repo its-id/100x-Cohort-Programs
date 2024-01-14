@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react';
 import { CountContext } from './context';
-import { Navigate } from 'react-router-dom';
 
 function UsingContext() {
   const [count, setCount] = useState(0);
