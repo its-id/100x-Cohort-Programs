@@ -5,7 +5,7 @@ import {
   useSetRecoilState,
   //   useSetRecoilState,
 } from 'recoil';
-import { countAtom } from './store/atoms/count';
+import { countAtom, evenSelector } from './store/atoms/count';
 
 function UsingRecoil() {
   return (
@@ -23,6 +23,7 @@ function Count() {
     <div>
       <CountRenderer />
       <Buttons />
+      <EvenCountRenderer />
     </div>
   );
 }
@@ -32,7 +33,29 @@ function CountRenderer() {
   const count = useRecoilValue(countAtom); //to only get the value. good for performance
   //   const setCount = useSetRecoilState(countAtom); //to only set the value.
   return (
-    <div style={{ textAlign: 'center', marginBottom: '10px' }}>{count}</div>
+    <div style={{ textAlign: 'center', marginBottom: '10px' }}>
+      <span>{count}</span>
+    </div>
+  );
+}
+
+function EvenCountRenderer() {
+  const count = useRecoilValue(countAtom);
+
+  //METHOD 1: using useMemo() by REACT
+  /*
+  const isEven = useMemo(() => {
+    return count % 2 == 0; //this logic only runs when count changes
+  }, [count]);
+  */
+
+  //METHOD 2: using selector by RECOIL
+  const isEven = useRecoilValue(evenSelector);
+
+  return (
+    <div style={{ textAlign: 'center', marginTop: '10px' }}>
+      <span>{isEven && 'It is even'}</span>
+    </div>
   );
 }
 
@@ -44,7 +67,7 @@ function Buttons() {
     <div>
       <button
         onClick={() => {
-          setCount(count => count + 1);
+          setCount((count) => count + 1);
         }}
       >
         Increase
@@ -52,7 +75,7 @@ function Buttons() {
 
       <button
         onClick={() => {
-          setCount(count => count - 1);
+          setCount((count) => count - 1);
         }}
       >
         Decrease
