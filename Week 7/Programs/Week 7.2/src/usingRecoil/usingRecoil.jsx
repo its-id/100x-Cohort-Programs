@@ -1,10 +1,17 @@
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import {
+  RecoilRoot,
+  useRecoilState,
+  useRecoilValue,
+//   useSetRecoilState,
+} from 'recoil';
 import { countAtom } from './store/atoms/count';
 
 function UsingRecoil() {
   return (
     <div>
-      <Count />
+      <RecoilRoot>
+        <Count />
+      </RecoilRoot>
     </div>
   );
 }
@@ -12,7 +19,7 @@ function UsingRecoil() {
 function Count() {
   console.log('This component should not re-render!');
   return (
-    <div>
+    <div style={{textAlign: 'center'}}>
       <CountRenderer />
       <Buttons />
     </div>
@@ -20,8 +27,8 @@ function Count() {
 }
 
 function CountRenderer() {
-//   const [count, setCount] = useRecoilState(countAtom); //to get both value and func to update it.
-    const count = useRecoilValue(countAtom); //to only get the value. good for performance
+  //   const [count, setCount] = useRecoilState(countAtom); //to get both value and func to update it.
+  const count = useRecoilValue(countAtom); //to only get the value. good for performance
   //   const setCount = useSetRecoilState(countAtom); //to only set the value.
   return <div>{count}</div>;
 }
