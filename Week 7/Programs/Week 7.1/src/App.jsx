@@ -6,7 +6,6 @@ import Landing from './components/UsingRoutes/Landing';
 import TopBar from './components/UsingRoutes/Topbar';
 import Main from './components/UsingPropDrilling/Main';
 
-
 function App() {
   return (
     <div>
@@ -23,7 +22,7 @@ function App() {
             }
           />
           <Route path='/' element={<Landing />} />
-            <Route path="/prop-drilling" element={<Main />} />
+          <Route path='/prop-drilling' element={<Main />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -10,17 +10,17 @@ function App() {
 
     <CountContext.Provider value={{ count, setCount }}>
       <div>
-        <Count setCount={setCount} />
+        <Count />
       </div>
     </CountContext.Provider>
   );
 }
 
-function Count({ count, setCount }) {
+function Count() {
   return (
     <div>
-      <CountRenderer count={count} />
-      <Buttons count={count} setCount={setCount} />
+      <CountRenderer />
+      <Buttons />
     </div>
   );
 }
@@ -32,8 +32,8 @@ function CountRenderer() {
   return <div>{count}</div>;
 }
 
-function Buttons({ setCount }) {
-  const count = useContext(CountContext);
+function Buttons() {
+  const {count, setCount} = useContext(CountContext);
 
   return (
     <div>
