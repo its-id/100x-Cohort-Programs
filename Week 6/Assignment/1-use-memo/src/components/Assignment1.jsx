@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 // Use useMemo to ensure that the calculation is only recomputed when the input changes, not on every render.
 
 export default function Assignment1() {
+    const [counter, setCounter] = useState(0);
     const [input, setInput] = useState(0);
     // Your solution starts here
 
@@ -20,13 +21,21 @@ export default function Assignment1() {
     // Your solution ends here
 
     return (
-        <div>
-            <input 
-                type="number" 
-                value={input} 
-                onChange={(e) => setInput(Number(e.target.value))} 
-            />
-            <p>Calculated Value: {expensiveValue}</p>
-        </div>
+      <div>
+        <span>
+          Clicking below button should not run the expensive operation
+        </span><br />
+        <button onClick={() => setCounter(counter + 1)}>
+          Counter ({counter})
+        </button>
+        <br/><br/>
+        <input
+          type='number'
+          placeholder='Enter number to find factorial'
+          value={input}
+          onChange={(e) => setInput(Number(e.target.value))}
+        />
+        <p>Calculated Value: {expensiveValue}</p>
+      </div>
     );
 }

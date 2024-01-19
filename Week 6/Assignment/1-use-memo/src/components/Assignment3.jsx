@@ -3,6 +3,7 @@ import React, { useState, useMemo } from 'react';
 // You need to calculate the total amount of money you spent
 
 const Assignment3 = () => {
+  const [counter, setCounter] = useState(0);
   const [items, setItems] = useState([
   { name: 'Chocolates', value: 10 },
   { name: 'Chips', value: 20 },
@@ -24,6 +25,13 @@ const Assignment3 = () => {
   // Your code ends here
   return (
     <div>
+      <span>Clicking below button should not run the expensive operation</span><br />
+      <button onClick={() => setCounter(counter + 1)}>
+        Counter ({counter})
+      </button>
+      <br />
+      <br />
+      <button onClick={() => setItems([...items, { name: 'New Item', value: 10 }])}> Add new item </button>
       <ul>
         {items.map((item, index) => {
           return (
