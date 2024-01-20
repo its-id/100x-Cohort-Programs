@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import UsingInternalCSS from './components/UsingInternalCSS/UsingInternalCSS';
+import UsingInternalCSS from './components/UsingInternalCSS';
+import UsingTailwind from './components/UsingTailwind';
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <>
-      <UsingInternalCSS />
+      {/* <UsingInternalCSS /> */}
+      <UsingTailwind />
     </>
   );
 }
