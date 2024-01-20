@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import UsingInternalCSS from './components/UsingInternalCSS';
-import UsingTailwind from './components/UsingTailwind';
+import UsingTailwindFlex from './components/UsingTailwindFlex';
+import UsingTailwindGrid from './components/UsingTailwindGrid';
 
 function App() {
-
   return (
     <>
       {/* <UsingInternalCSS /> */}
-      <UsingTailwind />
+      {/* <UsingTailwindFlex /> */}
+      <UsingTailwindGrid />
     </>
   );
 }

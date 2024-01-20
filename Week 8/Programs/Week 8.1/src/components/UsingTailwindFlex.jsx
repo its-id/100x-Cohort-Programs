@@ -1,6 +1,6 @@
 import React from 'react';
 
-const UsingTailwind = () => {
+const UsingTailwindFlex = () => {
   return (
     <div className='flex justify-center'>
       <div className='bg-red-400'>Red Box</div>
@@ -10,4 +10,4 @@ const UsingTailwind = () => {
   );
 };
 
-export default UsingTailwind;
+export default UsingTailwindFlex;
