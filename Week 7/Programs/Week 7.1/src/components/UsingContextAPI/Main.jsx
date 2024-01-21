@@ -8,19 +8,19 @@ function App() {
   return (
     //to make sure any components that wants to use the teleported state or able to teleport the state, we need to wrap them in <CountContext.Provider> component.
 
-    <CountContext.Provider value={{ count, setCount }}>
+    <CountContext.Provider value={{ count }}>
       <div>
-        <Count />
+        <Count setCount={setCount}/>
       </div>
     </CountContext.Provider>
   );
 }
 
-function Count() {
+function Count({setCount}) {
   return (
     <div>
       <CountRenderer />
-      <Buttons />
+      <Buttons setCount={setCount}/>
     </div>
   );
 }
@@ -32,8 +32,8 @@ function CountRenderer() {
   return <div>{count}</div>;
 }
 
-function Buttons() {
-  const {count, setCount} = useContext(CountContext);
+function Buttons({setCount}) {
+  const {count} = useContext(CountContext);
 
   return (
     <div>

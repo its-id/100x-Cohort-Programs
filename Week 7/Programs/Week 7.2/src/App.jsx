@@ -7,9 +7,9 @@ function App() {
 
   return (
     <>
-     {/* <UsingContext /> */}
+     <UsingContext />
      {/* <UsingRecoil /> */}
-     <TodosAppAssg />
+     {/* <TodosAppAssg /> */}
     </>
   );
 }
