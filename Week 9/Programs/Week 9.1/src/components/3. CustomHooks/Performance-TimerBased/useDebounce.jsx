@@ -10,6 +10,7 @@ const useDebounce = (inputValue, delay) => {
       setDebouncedValue(inputValue);
     }, delay);
 
+    //if the input changes quickly, clear the old timeout and start a new one
     return () => clearTimeout(timeout);
   }, [inputValue, delay]);
 
