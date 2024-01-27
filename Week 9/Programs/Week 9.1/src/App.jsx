@@ -3,10 +3,12 @@
 //   FunctionalComponent,
 // } from './components/1. ClassvsFunctional';
 
-import {
-  UnderstandingClassBasedMethods,
-  UnderstandingUseEffect,
-} from './components/2. UnderstandingLifeCycleEvents';
+// import {
+//   UnderstandingClassBasedMethods,
+//   UnderstandingUseEffect,
+// } from './components/2. UnderstandingLifeCycleEvents';
+
+import { DataFetchingHook } from './components/3. CustomHooks';
 
 function App() {
   return (
@@ -24,7 +26,10 @@ function App() {
       {/* <FunctionalComponent /> */}
 
       {/* <UnderstandingUseEffect /> */}
-      <UnderstandingClassBasedMethods />
+      {/* <UnderstandingClassBasedMethods /> */}
+
+
+      <DataFetchingHook />
     </div>
   );
 }
