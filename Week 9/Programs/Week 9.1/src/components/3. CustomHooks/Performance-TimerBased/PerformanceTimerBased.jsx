@@ -23,7 +23,7 @@ function PerformanceTimerBased() {
         onChange={(e) => setInputValue(e.target.value)}
         placeholder='Search...'
       />
-      <span>Debounced Value used for calling on API 👉{debouncedValue}</span>
+      <span>Debounced Value used for calling on API 👉 {debouncedValue}</span>
     </>
   );
 }
