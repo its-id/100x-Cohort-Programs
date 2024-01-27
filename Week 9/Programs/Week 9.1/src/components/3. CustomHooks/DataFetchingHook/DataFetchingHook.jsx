@@ -2,7 +2,7 @@ import useTodos from './useTodos';
 
 function DataFetchingHook() {
   //code looks cleaner now!
-  const {todos, loading} = useTodos();
+  const {todos, loading} = useTodos(5);
 
   return (
     <>
