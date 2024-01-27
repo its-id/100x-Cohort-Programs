@@ -4,6 +4,7 @@
 // } from './components/1. ClassvsFunctional';
 
 import {
+  UnderstandingClassBasedMethods,
   UnderstandingUseEffect,
 } from './components/2. UnderstandingLifeCycleEvents';
 
@@ -22,7 +23,8 @@ function App() {
       {/* <ClassBasedComponent /> */}
       {/* <FunctionalComponent /> */}
 
-      <UnderstandingUseEffect />
+      {/* <UnderstandingUseEffect /> */}
+      <UnderstandingClassBasedMethods />
     </div>
   );
 }
