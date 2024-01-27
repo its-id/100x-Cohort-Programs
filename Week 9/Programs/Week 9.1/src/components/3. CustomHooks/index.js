@@ -1,4 +1,4 @@
-import DataFetchingHook from "./DataFetchingHook";
+import DataFetchingHook from "./DataFetchingHook/DataFetchingHook";
 
 export {
     DataFetchingHook
