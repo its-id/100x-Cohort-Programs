@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function DataFetchingHook() {
+
+  //all the data fetching and rendering logic is shoved inside a single component.
+  //ugle code.
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
