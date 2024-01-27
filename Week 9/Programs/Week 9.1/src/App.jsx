@@ -9,6 +9,7 @@
 // } from './components/2. UnderstandingLifeCycleEvents';
 
 import { BrowserFuncHook, DataFetchingHook } from './components/3. CustomHooks';
+import PerformanceTimerBased from './components/3. CustomHooks/Performance-TimerBased/PerformanceTimerBased';
 
 function App() {
   return (
@@ -29,7 +30,10 @@ function App() {
       {/* <UnderstandingClassBasedMethods /> */}
 
       {/* <DataFetchingHook /> */}
-      <BrowserFuncHook />
+      {/* <BrowserFuncHook /> */}
+      <PerformanceTimerBased />
+
+
     </div>
   );
 }

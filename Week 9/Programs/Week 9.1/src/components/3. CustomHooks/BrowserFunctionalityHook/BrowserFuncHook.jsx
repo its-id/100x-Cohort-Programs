@@ -1,5 +1,5 @@
 import useIsOnline from './useIsOnline';
-import useMousePointer from './useMousePointer';
+import useMousePointer from './useDimensions';
 
 const BrowserFuncHook = () => {
   const isOnline = useIsOnline();
