@@ -1,5 +1,11 @@
-import ClassBasedComponent from './components/1. ClassvsFunctional/ClassBasedComponent'
-import FunctionalComponent from './components/1. ClassvsFunctional/FunctionalComponent'
+// import {
+//   ClassBasedComponent,
+//   FunctionalComponent,
+// } from './components/1. ClassvsFunctional';
+
+import {
+  UnderstandingUseEffect,
+} from './components/2. UnderstandingLifeCycleEvents';
 
 function App() {
   return (
@@ -13,8 +19,10 @@ function App() {
         justifyContent: 'center',
       }}
     >
-      <ClassBasedComponent />
+      {/* <ClassBasedComponent /> */}
       {/* <FunctionalComponent /> */}
+
+      <UnderstandingUseEffect />
     </div>
   );
 }
