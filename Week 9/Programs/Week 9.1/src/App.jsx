@@ -8,7 +8,7 @@
 //   UnderstandingUseEffect,
 // } from './components/2. UnderstandingLifeCycleEvents';
 
-import { DataFetchingHook } from './components/3. CustomHooks';
+import { BrowserFuncHook, DataFetchingHook } from './components/3. CustomHooks';
 
 function App() {
   return (
@@ -28,10 +28,10 @@ function App() {
       {/* <UnderstandingUseEffect /> */}
       {/* <UnderstandingClassBasedMethods /> */}
 
-
-      <DataFetchingHook />
+      {/* <DataFetchingHook /> */}
+      <BrowserFuncHook />
     </div>
   );
 }
 
-export default App
+export default App;

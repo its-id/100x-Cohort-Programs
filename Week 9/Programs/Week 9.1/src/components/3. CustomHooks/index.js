@@ -1,5 +1,6 @@
 import DataFetchingHook from "./DataFetchingHook/DataFetchingHook";
 
-export {
-    DataFetchingHook
-}
+import BrowserFuncHook from "./BrowserFunctionalityHook/BrowserFuncHook";
+
+
+export { DataFetchingHook, BrowserFuncHook };
