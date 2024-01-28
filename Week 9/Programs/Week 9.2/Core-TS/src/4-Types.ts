@@ -1,14 +1,11 @@
+// TYPE: SYNTAX
+/*
 type User = {
 	firstName: string;
 	lastName: string;
 	age: number
 }
-
-type User2 = {
-    firstName: string;
-    lastName: string;
-    age: number
-}
+*/
 
 // Some of the differences between interfaces and types are:
 // 1. Interfaces can be used to extend other interfaces and classes, but types can't.
@@ -27,6 +24,7 @@ greet("1");
 
 
 // FEATURE 2: INTERSECTION
+/*
 type Employee = {
   name: string;
   startDate: Date;
@@ -45,6 +43,9 @@ const teamLead: TechLead = {
   startDate: new Date(),
   department: 'Software developer',
 };
+
+console.log(teamLead);
+*/
 
 
 
