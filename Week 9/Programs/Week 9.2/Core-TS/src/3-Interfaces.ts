@@ -15,7 +15,7 @@ console.log(isLegal({ firstName: 'John', lastName: 'Doe', age: 17 }));
 */
 
 // PROBLEM 2: Implementing interfaces in classes
-
+/*
 interface Person {
   name: string;
   age: number;
@@ -41,3 +41,4 @@ class Employee implements Person {
     console.log(`${phrase} ${this.name}`);
   }
 }
+*/
