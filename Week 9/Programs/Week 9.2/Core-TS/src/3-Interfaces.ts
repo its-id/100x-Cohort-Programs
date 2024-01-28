@@ -14,6 +14,12 @@ function isLegal(user: User) {
 console.log(isLegal({ firstName: 'John', lastName: 'Doe', age: 17 }));
 */
 
+
+
+
+
+
+
 // PROBLEM 2: Implementing interfaces in classes
 /*
 interface Person {

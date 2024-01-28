@@ -7,9 +7,15 @@ type User = {
 }
 */
 
-// Some of the differences between interfaces and types are:
-// 1. Interfaces can be used to extend other interfaces and classes, but types can't.
-// 2. Types lets you do below things
+
+
+
+
+// Basic differences b/w interfaces and types are:
+// 1. Interfaces can be used to extend other INTERFACES (uses 'extends') and CLASSES (uses 'implements'), but types can't.
+// 3. Types lets you do below things 👇
+
+
 
 // FEATURE 1: UNIONS
 /*
@@ -21,6 +27,10 @@ function greet(id: GreetArg) {
 greet(1);
 greet("1");
 */
+
+
+
+
 
 
 // FEATURE 2: INTERSECTION

@@ -13,6 +13,11 @@ function getMax(arr: number[]) {
 console.log(getMax([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
 */
 
+
+
+
+
+
 //EXAMPLE 2: GIVING TYPE TO AN ARRAY OF OBJECTS 
 // Problem: Given a list of users, filter out the users that are legal (greater than 18 years of age)
 interface User {
