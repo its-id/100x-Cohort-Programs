@@ -23,6 +23,7 @@ docker run --name 100x-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:54
 
 Step 7: Access PostgreSQL using psql: `docker exec -it 100x-postgres psql -U postgres`
 
+
 <br>
 
 **Important Step**: Create a **.env** file in the root directory and add content like shown in .env.example file
@@ -37,3 +38,24 @@ Step 7: Access PostgreSQL using psql: `docker exec -it 100x-postgres psql -U pos
 4. `node dist/index.js`
 
 > **Note**: If you are using windows, you might need to change the volume path to `C:\ProgramData\docker\volumes\100x-postgres\_data` or something similar.
+
+
+---
+### Stop the container
+```
+docker stop 100x-postgres
+```
+
+### Remove the container
+```
+docker rm 100x-postgres
+```
+
+### Remove the postgres docker image
+```
+docker rmi postgres
+```
+---
+
+
+
