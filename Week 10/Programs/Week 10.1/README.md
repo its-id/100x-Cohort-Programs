@@ -33,9 +33,11 @@ Step 7: Access PostgreSQL using psql: `docker exec -it 100x-postgres psql -U pos
 ### To run the steps.
 
 1. `npm install` (one time)
-2. Uncomment the /_ .. _/ part for each STEP in the `index.ts` file and run the following command in the terminal.
-3. `tsc -b`
-4. `node dist/index.js`
+2. Uncomment the /* .. */ part for each STEP in the `index.ts` file and run the following command in the terminal 👇
+
+   a. `tsc -b`
+   
+   b. `node dist/index.js`
 
 > **Note**: If you are using windows, you might need to change the volume path to `C:\ProgramData\docker\volumes\100x-postgres\_data` or something similar.
 
