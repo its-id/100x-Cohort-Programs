@@ -1,8 +1,8 @@
-### To get Database url online
+### To get Database url online (Option 1)
 
 Create one at [Neon](https://neon.tech/)
 
-### Steps to run the database locally
+### Steps to run the database locally (Option 2)
 
 Step 1: Install docker [here](https://docs.docker.com/engine/install/)
 
