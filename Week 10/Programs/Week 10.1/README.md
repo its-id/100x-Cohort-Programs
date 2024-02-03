@@ -26,7 +26,7 @@ Step 7: Access PostgreSQL using psql: `docker exec -it 100x-postgres psql -U pos
 
 <br>
 
-**Important Step**: Create a **.env** file in the root directory and add content like shown in .env.example file
+**Important Step**: Create a **.env** file in the root directory and paste your DB url as shown in .env.example file
 
 ---
 
