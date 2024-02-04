@@ -9,3 +9,22 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+//WE DEFINE OUR MODEL. Similar to MONGOOSE.
+model User {
+  id         Int      @id @default(autoincrement()) //same as: id SERIAL PRIMARY KEY
+  email   String   @unique
+  firstName   String?
+  lastName  String?
+  password   String
+}
+
+model Todo {
+  id        Int      @id @default(autoincrement())
+  title     String
+  description String?
+  done      Boolean  @default(false)
+  userId    Int
+}
+
+// WE MIGRATE THE MODEL TO THE DATABASE. in terminal: npx prisma migrate dev --name UserAndTodoAdded
