@@ -29,5 +29,5 @@
 3. Login to the browser pop up window
 4. To Deploy run:
    ```
-   npm deploy
+   npm run deploy
    ```
