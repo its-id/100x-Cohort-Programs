@@ -1,4 +1,4 @@
-name = "my-app"
+name = "100x-test"
 main = "src/index.ts"
 compatibility_date = "2024-02-08"
 
