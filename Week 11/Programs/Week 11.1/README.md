@@ -15,10 +15,7 @@
 
 1. cd into the `hono-app` directory
 2. run `npm i` (one time)
-3. Uncomment the Step in `index.ts` file which you want to run, and do:
-   ```
-   npm run dev
-   ```
+3. Uncomment the Step in `index.ts` file which you want to run
 4. run `npm run dev` to start the server
 5. For GET request, simply open the browser and go to `http://localhost:8787` and check the console.
 6. For POST request, use Postman or any other API testing tool and pass the data in different sections as shown in the image below (check any consoles in the terminal):
