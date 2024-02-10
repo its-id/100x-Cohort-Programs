@@ -4,15 +4,16 @@ const app = new Hono();
 
 // STEP 1: GET THE REQUEST
 app.get('/', async (c: any) => {
-  const body = await c.req.json();
-  console.log(body);
   console.log(c.req.header('Authorization'));
   console.log(c.req.query('param'));
 
-  return c.text('Hello Hono!');
+  return c.html(
+    `<h1>Hi 👋, Everyone!</h1> <p> Response sent from Hono (compatible with wrangler cli for cloudflare workers)! </p>`
+  );
 });
 
 // STEP 2: APPLYING MIDDLEWARES
+
 /*
 async function authMiddleware(c: any, next: any) {
   if (c.req.header('Authorization')) {
@@ -28,12 +29,13 @@ async function authMiddleware(c: any, next: any) {
 
 // OR
 app.post('/', authMiddleware, async (c) => {
-  const body = await c.req.parseBody();
+  // const body = await c.req.parseBody();
+  const body = await c.req.json();
   console.log(body);
   console.log(c.req.header('Authorization'));
   console.log(c.req.query('param'));
 
-  return c.json({ msg: 'as' });
+  return c.json({ msg: `Hello ${body.name}` });
 });
 */
 
