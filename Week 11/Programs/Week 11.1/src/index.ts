@@ -27,8 +27,21 @@ export interface Env {
 
 export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
-		return Response.json({
-			message: 'hi',
-		});
+		console.log(request.body);
+		console.log(request.headers);
+		let uri = new URL(request.url);
+
+		if (request.method === 'GET') {
+			return Response.json({
+				uri: uri,
+				message: 'you sent a get request',
+			});
+		} else {
+			return Response.json({
+				message: 'you did not send a get request',
+			});
+		}
 	},
 };
+
+// uses `wrangler` cli to deploy
