@@ -1,11 +1,9 @@
-import { Hono, Next } from 'hono';
-import { Context } from 'hono/jsx';
+import { Hono } from 'hono';
 
 const app = new Hono();
 
 // STEP 1: GET THE REQUEST
-/*
-app.get('/', async (c) => {
+app.get('/', async (c: any) => {
   const body = await c.req.json();
   console.log(body);
   console.log(c.req.header('Authorization'));
@@ -13,15 +11,9 @@ app.get('/', async (c) => {
 
   return c.text('Hello Hono!');
 });
-*/
-
-
-
-
-
-
 
 // STEP 2: APPLYING MIDDLEWARES
+/*
 async function authMiddleware(c: any, next: any) {
   if (c.req.header('Authorization')) {
     // Do validation
@@ -43,5 +35,6 @@ app.post('/', authMiddleware, async (c) => {
 
   return c.json({ msg: 'as' });
 });
+*/
 
 export default app;
