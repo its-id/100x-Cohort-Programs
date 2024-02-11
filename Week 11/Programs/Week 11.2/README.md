@@ -79,6 +79,8 @@ The main benefit which matters for us is that we can deploy a express app here w
    - Click on your instance in the EC2 dashboard.
 
    - Click on `Connect` button on top.
+     <br><img width="500" alt="Screenshot 2024-02-11 at 8 20 34 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/276d3d27-08a2-41c4-87be-f9fb2ca6c6f8">
+
 
    - Navigate to the `SSH Client` tab. There you will see the example command, either copy the whole command or just the public DNS part.
      <br><img width="500" alt="Screenshot 2024-02-11 at 7 44 51 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/3f8085aa-f02d-4d23-bb54-436d9e37ccb3">
