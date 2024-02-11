@@ -61,3 +61,21 @@ In simple words, it is a cloud services provider. We can get a remote server fro
    - Click on `Connect` button on top.
 
    - Navigate to the `SSH Client` tab. There you will see the example command, either copy the whole command or just the public DNS part.
+
+
+## 3. How to deploy your application on the EC2 instance?
+
+1. Once you are connected to the instance, run the following commands:
+
+   ```bash
+    sudo yum update -y
+    sudo yum install git -y
+    git clone https://github.com/its-id/100x-Cohort-Programs.git
+    cd 100x-Cohort-Programs/Week\ 11/Programs/Week\ 11.2
+    sudo yum install nodejs -y
+    sudo yum install npm -y
+    npm install
+    npm start
+   ```
+
+   where `your-repo-url` is the url of your repository and `your-repo-name` is the name of your repository.
