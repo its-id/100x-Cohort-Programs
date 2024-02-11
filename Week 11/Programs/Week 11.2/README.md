@@ -75,7 +75,7 @@ In simple words, it is a cloud services provider. We can get a remote server fro
     sudo yum install nodejs -y
     sudo yum install npm -y
     npm install
-    npm start
+    node index.js
    ```
 
-   where `your-repo-url` is the url of your repository and `your-repo-name` is the name of your repository.
+   where `https://github.com/its-id/100x-Cohort-Programs.git` is the url of this repository, you can replace it with your own repository url and cd into your own directory.
