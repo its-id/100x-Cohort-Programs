@@ -1,8 +1,10 @@
 # Deploying on AWS
 
-## What is AWS?
+## What is AWS & Why is it better?
 
 In simple words, it is a cloud services provider. We can get a remote server from here.
+
+The main benefit which matters for us is that we can deploy a express app here which was not possible on Cloudflare workers.
 
 <!-- image here -->
 
@@ -30,6 +32,7 @@ In simple words, it is a cloud services provider. We can get a remote server fro
 ## 2. How to connect to the EC2 instance?
 
 1. Open your terminal and navigate to the directory where your .pem file is located.
+   <br>
 2. Run the following command to change the permissions of the .pem file:
 
    ```bash
@@ -45,6 +48,7 @@ In simple words, it is a cloud services provider. We can get a remote server fro
 
    - `700` is the permission code. It means that the owner can **read, write and execute** the file, but no one else can do anything with it.
    </details>
+   <br>
 
 3. Now, you can connect to the instance using the following command:
 
@@ -62,20 +66,19 @@ In simple words, it is a cloud services provider. We can get a remote server fro
 
    - Navigate to the `SSH Client` tab. There you will see the example command, either copy the whole command or just the public DNS part.
 
-
 ## 3. How to deploy your application on the EC2 instance?
 
-1. Once you are connected to the instance, run the following commands:
+Once you are connected to the instance, run the following commands:
 
-   ```bash
-    sudo yum update -y
-    sudo yum install git -y
-    git clone https://github.com/its-id/100x-Cohort-Programs.git
-    cd 100x-Cohort-Programs/Week\ 11/Programs/Week\ 11.2
-    sudo yum install nodejs -y
-    sudo yum install npm -y
-    npm install
-    node index.js
-   ```
+```bash
+ sudo yum update -y
+ sudo yum install git -y
+ git clone https://github.com/its-id/100x-Cohort-Programs.git
+ cd 100x-Cohort-Programs/Week\ 11/Programs/Week\ 11.2
+ sudo yum install nodejs -y
+ sudo yum install npm -y
+ npm install
+ node index.js
+```
 
-   where `https://github.com/its-id/100x-Cohort-Programs.git` is the url of this repository, you can replace it with your own repository url and cd into your own directory.
+where `https://github.com/its-id/100x-Cohort-Programs.git` is the url of this repository, you can replace it with your own repository url and cd into your own directory.
