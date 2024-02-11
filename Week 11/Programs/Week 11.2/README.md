@@ -90,7 +90,7 @@ The main benefit which matters for us is that we can deploy a express app here w
 
 ## 3. How to deploy your application on the EC2 instance?
 
-Once you are connected to the instance, run the following commands:
+1. Once you are connected to the instance, run the following commands:
 
 ```bash
  sudo yum update -y
@@ -104,3 +104,102 @@ Once you are connected to the instance, run the following commands:
 ```
 
 where `https://github.com/its-id/100x-Cohort-Programs.git` is the url of this repository, you can replace it with your own repository url and cd into your own directory.
+
+2. Check if your app is running by visiting your public DNS in the browser.
+
+   **Route**: `http://your-public-dns:8080/todos`
+
+> **Note**: Since we are running the app on port 8080, we need to add the port number as a custom TCP rule in the security group settings.
+>
+> <details>
+>    <summary>Steps 👇</summary>
+> 1. In your instance details page in the EC2 dashboard.
+> <br>2. Click on *Security* tab.
+> <br>3. Click on the security group name.
+> <br>4. Click on *Edit inbound rules.
+> <br>5. Click on *Add rule*. Add the port number under *Port range* and select *Custom TCP* from the dropdown. Also select *Anywhere from ipv4* under *Source*.
+> <br>6. Click on `Save rules`.
+
+</details>
+
+## 4. How to enable Reverse Proxy?
+
+### What it does?
+
+Basically helps you rent a single server and host multiple websites on it. Best way to make one web server handle multiple domains (if you are cheap like me 😅).
+
+1. Install nginx:
+
+   ```bash
+   sudo yum install -y nginx
+   ```
+   <br>
+2. Create a reverse proxy:
+
+   - Open the nginx configuration file:
+
+     ```bash
+     sudo vi /etc/nginx/nginx.conf
+     ```
+
+   - Replace the contents of the file with the following:
+
+     ```bash
+     events {
+         # Event directives...
+     }
+
+     # for pointing to multiple domains
+        http {
+            server {
+            listen 80;
+            server_name [YOUR_CUSTOM_DOMAIN_1];
+
+                location / {
+                    proxy_pass http://localhost:8080;
+                    proxy_http_version 1.1;
+                    proxy_set_header Upgrade $http_upgrade;
+                    proxy_set_header Connection 'upgrade';
+                    proxy_set_header Host $host;
+                    proxy_cache_bypass $http_upgrade;
+                }
+            }
+
+            server {
+            listen 80;
+            server_name [YOUR_CUSTOM_DOMAIN_2];
+
+                location / {
+                    proxy_pass http://localhost:8080;
+                    proxy_http_version 1.1;
+                    proxy_set_header Upgrade $http_upgrade;
+                    proxy_set_header Connection 'upgrade';
+                    proxy_set_header Host $host;
+                    proxy_cache_bypass $http_upgrade;
+                }
+            }
+        }
+     ```
+
+     > Make sure to replace `[YOUR_CUSTOM_DOMAIN_1]` and `[YOUR_CUSTOM_DOMAIN_2]` with your own domain names.
+
+   - Save and exit the file by pressing `esc` and then `:wq` and then `enter`.
+     <br>
+
+3. Restart nginx:
+
+   ```bash
+   sudo service nginx restart
+   ```
+
+4.
+
+---
+
+<details>
+    <summary> If you want to point a domain to your own machine (For ex: pointing google.com to your machine's server, for fooling your friends 🤓)</summary>
+
+- `chmod` is a command used to change the permissions of a file or directory.
+
+- `700` is the permission code. It means that the owner can **read, write and execute** the file, but no one else can do anything with it.
+</details>
