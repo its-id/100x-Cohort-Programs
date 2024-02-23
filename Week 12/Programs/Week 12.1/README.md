@@ -69,6 +69,7 @@ We need it cause distributing files from a single server can be slow and expensi
 
 ### <p align="center">And Wallah 🎉</p>
 <p align="center">
-<img width="500" alt="Screenshot 2024-02-23 at 8 16 02 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/1291925b-479e-45d8-95f6-9674dc5c8a2d"> </p>
+<img width="500" alt="Screenshot 2024-02-23 at 8 36 51 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/281c7f31-b96a-4b28-ba07-d5e21261e7e5"> </p>
+
 <p align="center">Our app is successfully deployed to AWS S3 and distributed using CloudFront
 </p>
