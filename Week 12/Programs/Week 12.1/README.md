@@ -28,7 +28,7 @@ We need it cause distributing files from a single server can be slow and expensi
 
 2. Open the AWS account. Search for S3.
 
-3. Name the bucket and select the region. Click on `Create bucket`.
+3. Name the bucket and select the region. Click on `Create bucket`.<br>
    <img width="500" alt="Screenshot 2024-02-23 at 7 43 31 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/c0b10730-ff7b-469a-b29d-1fcf27938b59">
 
    Scroll to the bottom and click on `Create bucket`. <br>
