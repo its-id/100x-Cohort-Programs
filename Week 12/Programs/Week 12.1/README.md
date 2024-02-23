@@ -111,18 +111,34 @@ We need it cause distributing files from a single server can be slow and expensi
 
 <p align="center"><b>and there we go!</b> 🎉</p>
 
-<p align="center"></p>
+<p align="center"><img width="500" alt="Screenshot 2024-02-23 at 9 27 34 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/95a73dfb-9381-4628-b8ef-72850e8ea945">
+</p>
 
 <p align="center">Our custom domain now points to the CloudFront distribution.
 </p>
 
-### Last thing: Error Pages.
+<hr />
 
+## Last thing: Error Pages.
+
+<p align="center"><img width="500" alt="Screenshot 2024-02-23 at 9 29 13 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/ad56bda1-c854-45f8-af9c-ad0ff5d7a569"></p>
 If we try to access any route other than the root, we get an error. To fix this, we need to add error pages to our cloudfront distribution. For now, we want to point all the errors to the root of our app.
 
 1. Go to the CloudFront distribution page and click on `Error Pages`.<br>
+   <img width="500" alt="Screenshot 2024-02-23 at 9 31 03 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/c4f9aac4-9dc1-4e1f-bc6c-bbbe392f1c03">
+   <img width="500" alt="Screenshot 2024-02-23 at 9 31 21 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/fe521f56-25bc-4d52-b817-88d7d6b36c32">
 
 2. Create an error page response for 404 and 403 errors. Set the response page path to `/index.html`.<br>
+   <img width="500" alt="Screenshot 2024-02-23 at 9 32 03 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/ecafb78e-11c4-43e7-ab02-5de3720b76f5">
 
 3. Also add invalidation to the CloudFront distribution which clears the cache and updates the files.<br>
+   <img width="500" alt="Screenshot 2024-02-23 at 9 33 37 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/1d6815a3-8de1-4615-ab16-af70832af118">
+   <img width="500" alt="Screenshot 2024-02-23 at 9 33 43 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/51223817-1db3-4ff8-bcd3-3d10293c54e7">
+   
+### <p align="center">Finally 🎉</p>
+<p align="center">
+   <img width="500" alt="Screenshot 2024-02-23 at 9 42 19 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/fa84756d-65c5-44e4-97b1-cc4fd6e6ef42">
+</p>
+<p align="center">Our app is successfully deployed to AWS S3, distributed using CloudFront, connected to a custom domain and has error pages set up.
+</p>
 
