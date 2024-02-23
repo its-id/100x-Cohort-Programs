@@ -78,9 +78,11 @@ We need it cause distributing files from a single server can be slow and expensi
 
 ## Connecting a Custom Domain
 
-1. In the newly created CloudFront distribution page, click on `Edit`.
+1. In the newly created CloudFront distribution page, click on `Edit`.<br>
+   <img width="500" alt="Screenshot 2024-02-23 at 8 40 37 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/ff1892d5-7cfa-4532-9fc7-3f656fc9ac8d">
 
-2. Add the domain name you own in the `Alternate Domain Names (CNAMEs)` field.
+2. Add the domain name you own in the `Alternate Domain Names (CNAMEs)` field.<br>
+   <img width="500" alt="Screenshot 2024-02-23 at 8 42 06 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/daf649af-b483-4f03-b96b-f2e3e04667c9">
 
 **Some Important Points**:
 
@@ -93,10 +95,18 @@ We need it cause distributing files from a single server can be slow and expensi
 
 3. Once domain is added, request for a certificate from Amazon Certificate Manager (ACM).
 
-4. Go to the ACM page and click on `Request a certificate`.
+4. Go to the ACM page and click on `Request a certificate`.<br>
+   <img width="500" alt="Screenshot 2024-02-23 at 8 55 12 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/996702d5-59dc-4d4e-8f1d-451195858146">
 
-5. Once requested, to approve the status of the certificate, we need to add the CNAME record generated in the DNS settings of our domain hosting manager.
+5. Once requested, to approve the status of the certificate, we need to add the CNAME record generated in the DNS settings of our domain hosting manager.<br>
+   <img width="500" alt="Screenshot 2024-02-23 at 8 57 36 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/afc560ce-7083-4e62-8029-4372cb1aeec8"><br>
+   <img width="500" alt="Screenshot 2024-02-23 at 9 03 39 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/f59d6ac8-721c-443c-8c51-9b085a48939c">
 
-6. After its done, AWS will verify the certificate and it will be issued.
+6. After its done, AWS will verify the certificate and it will be issued.<br>
+   <img width="500" alt="Screenshot 2024-02-23 at 9 06 59 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/9dbf922b-c060-4506-998a-acf5b3103b9d">
+   <img width="500" alt="Screenshot 2024-02-23 at 9 09 16 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/e155a799-8288-4f4a-b55f-aa9eb15f9b0f">
 
-7. But, an **important step**. In order for our custom domain to work, we need to **add the CloudFront distribution domain** to the DNS settings of our domain hosting manager.
+
+8. But, an **important step**. In order for our custom domain to work, we need to **add the CloudFront distribution domain** to the DNS settings of our domain hosting manager.<br>
+   <img width="500" alt="Screenshot 2024-02-23 at 9 12 27 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/7ace1ac8-cd85-476e-a08d-e48a69777276">
+
