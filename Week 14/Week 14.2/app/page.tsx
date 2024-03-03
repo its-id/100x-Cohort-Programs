@@ -1,5 +1,6 @@
 import axios from 'axios';
 import client from '@/db';
+import { getUser } from '@/actions/user';
 
 async function getUserDetails() {
   await new Promise((r) => setTimeout(r, 1000)); //fake delay
@@ -11,6 +12,7 @@ async function getUserDetails() {
   */
 
   // APPROACH 2: BETTER FETCHING (RECOMMENDED)
+  /*
   try {
     const user = await client.user.findFirst({});
     if (!user) return { message: 'No user found' };
@@ -18,6 +20,11 @@ async function getUserDetails() {
   } catch (e) {
     console.log(e);
   }
+  */
+
+  // APPROACH 3: USING SERVER ACTIONS (RECOMMENDED)
+  const user = await getUser();
+  return user;
 }
 
 export default async function Home() {
