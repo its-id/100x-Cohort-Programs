@@ -1,7 +1,22 @@
-### Objectives
+## Objectives
 
 - To Learn about server side working of Next.js.
 - To recreate this react [app](https://github.com/100xdevs-cohort-2/week-14-2.1) in Next.js.
+
+### Steps to Run
+
+- Get a PostgreSQL database URL.
+- `npm i` to install the dependencies.
+- Create a `.env.local` file and add the following:
+  ```env
+  DATABASE_URL=your-database-url
+  ```
+- `npm run dev` to start the server.
+
+### API Routes
+
+- `/` - To get the user. UI shows the first user from db.
+- `/signup` - To signup the user.
 
 ---
 

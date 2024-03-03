@@ -1,9 +1,25 @@
 import axios from 'axios';
+import { PrismaClient } from '@prisma/client';
+
+const client = new PrismaClient();
 
 async function getUserDetails() {
   await new Promise((r) => setTimeout(r, 1000)); //fake delay
+
+  // APPROACH 1: SENDING REQUEST TO NEXT.JS ITSELF (NOT RECOMMENDED)
+  /*
   const response = await axios.get('http://localhost:3000/api/user');
   return response.data;
+  */
+
+  // APPROACH 2: BETTER FETCHING (RECOMMENDED)
+  try {
+    const user = await client.user.findFirst({});
+    if (!user) return { message: 'No user found' };
+    return { name: user?.username, email: user?.username };
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 export default async function Home() {
