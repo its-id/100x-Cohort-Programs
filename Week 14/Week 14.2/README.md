@@ -1,6 +1,7 @@
 ### Objectives
 
-To Learn about server side working of Next.js
+- To Learn about server side working of Next.js.
+- To recreate this react [app](https://github.com/100xdevs-cohort-2/week-14-2.1) in Next.js.
 
 ---
 
