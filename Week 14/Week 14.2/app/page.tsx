@@ -1,7 +1,5 @@
 import axios from 'axios';
-import { PrismaClient } from '@prisma/client';
-
-const client = new PrismaClient();
+import client from '@/db';
 
 async function getUserDetails() {
   await new Promise((r) => setTimeout(r, 1000)); //fake delay

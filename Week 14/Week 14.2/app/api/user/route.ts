@@ -1,7 +1,5 @@
-import { PrismaClient } from '@prisma/client';
+import client from '@/db';
 import { NextRequest, NextResponse } from 'next/server';
-
-const client = new PrismaClient();
 
 export async function GET() {
   const user = await client.user.findFirst({});
