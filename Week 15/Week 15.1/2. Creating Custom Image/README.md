@@ -142,6 +142,16 @@ A Dockerfile has two main parts:
 docker run -p 3000:3000 -e PORT=3000 -e DATABASE_URL="postgresql://user:password@localhost:5432/mydb" 100x-node
 ```
 
+### <p align="center">Congratulations 🎉</p>
+
+<p align="center">You have successfully created a custom Docker image and ran a container using it.</p>
+<p align="center">
+<img width="1382" alt="Screenshot 2024-03-09 at 9 07 24 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/72a2d8a5-b9f5-432e-91d1-029b56f91c57">
+<img width="1382" alt="Screenshot 2024-03-09 at 9 07 44 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/8ea90b91-fdfd-45a7-a289-e088dc61c61a">
+<img width="500" alt="Screenshot 2024-03-09 at 8 50 44 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/95ae1852-bb29-4ae1-9ab6-5b0b12d7e702">
+   
+</p>
+
 ---
 
 ### Running an interactive bash:
@@ -149,6 +159,7 @@ docker run -p 3000:3000 -e PORT=3000 -e DATABASE_URL="postgresql://user:password
 ```bash
 docker run -it 100x-node sh
 ```
+<img width="800" alt="Screenshot 2024-03-09 at 8 51 09 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/1b094fbe-accd-4d0c-bed4-7808d6575df0">
 
 <details>
 <summary><b>Explaining the above command</b></summary>
