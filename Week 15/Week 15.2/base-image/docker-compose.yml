@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: 100x-mongo
+    ports:
+      - '27017:27017'
+    volumes:
+      - 100x-mongo-data:/data/db
+
+  backend_app:
+    image: 100x-node
+    container_name: 100x-node
+    depends_on:
+      - mongodb
+    ports:
+      - '3000:3000'
+    environment:
+      MONGO_URL: 'mongodb://100x-mongo:27017/100x-db'
+
+volumes:
+  100x-mongo-data:
