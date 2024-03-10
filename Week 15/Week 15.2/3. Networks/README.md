@@ -76,9 +76,10 @@
 
     <p align="center">You have successfully connected the <code>node</code> container to the <code>mongodb</code> container using a custom network.</p>
     <p align="center">
-    <!-- <img width="1382" alt="Screenshot 2024-03-09 at 9 07 24 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/72a2d8a5-b9f5-432e-91d1-029b56f91c57">
-    <img width="1382" alt="Screenshot 2024-03-09 at 9 07 44 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/8ea90b91-fdfd-45a7-a289-e088dc61c61a">
-    <img width="500" alt="Screenshot 2024-03-09 at 8 50 44 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/95ae1852-bb29-4ae1-9ab6-5b0b12d7e702"> -->
+       <img width="1000" alt="Screenshot 2024-03-10 at 8 39 22 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/6c5ef204-8380-4f8d-9750-9f6e142d4d2d">
+       <img width="1000" alt="Screenshot 2024-03-10 at 8 43 01 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/c0d634e3-847e-47e2-9a5d-eeaf70f698cb">
+        <img width="1000" alt="Screenshot 2024-03-10 at 8 40 24 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/01daceca-003b-4d06-9a4c-e5859d5f560c">
+
       
     </p>
 
