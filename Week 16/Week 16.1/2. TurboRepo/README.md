@@ -213,3 +213,9 @@ It's important to understand the dependencies between these workspaces. Let's ma
     ```bash
     npm run dev
     ```
+
+### <p align="center">Congratulations 🎉</p>
+
+<p align="center">You have successfully added a different project to the TurboRepo.</p>
+<p align="center">
+</p>
