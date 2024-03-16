@@ -189,7 +189,7 @@ It's important to understand the dependencies between these workspaces. Let's ma
       }
       ```
 
-3.  Create a new `turbo.json` file in the root of the `test-app` project and override the `pipeline` object with the following tasks:
+3.  Create a new `turbo.json` file in the root of the `test-app` project and override the `pipeline` object with the following tasks. More info [here](https://turbo.build/repo/docs/core-concepts/monorepos/configuring-workspaces):
 
     ```json
     {
