@@ -218,4 +218,5 @@ It's important to understand the dependencies between these workspaces. Let's ma
 
 <p align="center">You have successfully added a different project to the TurboRepo.</p>
 <p align="center">
+  <img width="1104" alt="Screenshot 2024-03-16 at 9 18 26 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/08def320-0b6c-47db-9b12-205e874b9497">
 </p>
