@@ -90,6 +90,8 @@ Check out the [official documentation](https://arc.net/l/quote/ditaxuxg) for det
 
 <p align="center">You have successfully created and run a TurboRepo project.</p>
 <p align="center">
+<img width="1580" alt="Screenshot 2024-03-16 at 8 04 15 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/bfdd39d7-b577-4c60-9ab4-441cb9f2d49a">
+<img width="1580" alt="Screenshot 2024-03-16 at 8 04 24 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/c91c5edd-951d-41bc-b532-1fb7998147c5">
 </p>
 
 ---
@@ -117,15 +119,18 @@ Check out the [official documentation](https://arc.net/l/quote/ditaxuxg) for det
 
 ## Adding a New Page: `/admin`
 
-1. Create a new file `admin.tsx` in the `apps/web/pages` folder.
+1. Create a new `/admin` page i.e  `apps/web/admin/page.tsx` folder.
 
 2. Create a new component `Admin` in the `ui` package.
+    <img width="800" alt="Screenshot 2024-03-16 at 8 35 30 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/33edff3e-ef5a-4f19-8d8b-279d5f067830">
 
 3. Add the path of the `Admin` component in the `exports` field of the `package.json` file of the `ui` package.
+    <img width="800" alt="Screenshot 2024-03-16 at 8 35 30 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/55887a6e-fc3b-4c92-947d-d83de6fdad9e">
 
-4. Import the `Admin` component in the `page.tsx` file of the `apps/web/admin/page.tsx` folder.
+5. Import the `Admin` component in the `page.tsx` file of the `apps/web/admin/page.tsx` folder.
+    <img width="800" alt="Screenshot 2024-03-16 at 8 38 48 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/e9b4c1c0-ac9c-47cd-8f99-9ede414bb12e">
 
-5. Run the project and go to the `http://localhost:3000/admin` route to see the new page.
+7. Run the project and go to the `http://localhost:3000/admin` route to see the new page.
 
 **Bonus**:
 
