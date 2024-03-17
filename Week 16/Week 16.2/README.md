@@ -1,4 +1,4 @@
-# Customizations in MonoRepos
+# Advanced Customizations in TurboRepo
 
 ## Introduction
 
@@ -16,15 +16,27 @@
    npm run generate:component
    ```
 
+   <img width="586" alt="Screenshot 2024-03-17 at 7 26 57 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/5d4cb04e-c80d-4691-9ff5-a079928c1d72">
+
+
    > We can also generate entire packages. More info [here](https://turbo.build/repo/docs/core-concepts/monorepos/code-generation).
 
-4. Include this newly created component in our admin page.
+4. Include these newly created components in our admin page.
 
---
+### <p align="center">Congratulations 🎉</p>
+
+   <p align="center">You have successfully created custom components using two different methods and used inside a newly created page.</p>
+   <p align="center">
+      <img width="1582" alt="Screenshot 2024-03-17 at 10 00 29 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/c8f37f94-1a7c-413e-9af8-7e6703db4e76">
+   </p>
+
+---
 
 ## Understanding turbo.json in depth
 
-It contains the configuration for our turbo repo. Explaining each
+<img width="500" alt="Screenshot 2024-03-17 at 9 45 14 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/d6d99d42-673b-4934-97c3-35aa52065047">
+<br>
+It contains the configuration for our turbo repo. Explaining main parts below:
 
 ### `build: { .. }`
 
@@ -63,9 +75,11 @@ It contains the configuration for our turbo repo. Explaining each
 - When `"persistent": true` ➡ it will keep the `dev` command running.
 - When `"persistent": false` ➡ it will stop the `dev` command after the `start` command is run.
 
+---
+
 ## Customizations in a different project (React.js app)
 
-1. Create a new react app using instructions [here](https://github.com/its-id/100x-Cohort-Programs/blob/master/Week%2016/Week%2016.1/2.%20TurboRepo/README.md#adding-a-new-page-admin)
+1. Create a new react app using instructions [here](https://arc.net/l/quote/dtkfxchl).
 
 2. Try to import one of the components in `/packages/ui` in our newly created app.
    <details>
@@ -73,9 +87,18 @@ It contains the configuration for our turbo repo. Explaining each
 
    - In our case, these component got included in the `@repo/ui` folder in `node_modules` of the newly created app.
    - This is because we have added the `@repo/ui` package as a dependency in the `package.json` file of the newly created app.
-   - But as a good practice, we should add the `packages/ui` as a dependency in the `package.json` file of the newly created app.
+   - But as a good practice, we should add the `packages/ui` as a dependency in the `package.json`.
 
    </details>
+### <p align="center">Congratulations 🎉</p>
+
+   <p align="center">You have successfully added a custom component to a new app.</p>
+   <p align="center">
+      <img width="1582" alt="Screenshot 2024-03-17 at 10 00 05 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/e5b10960-bda5-4648-8a92-8b355bff6a89">
+   </p>
+
+
+---
 
 ## Caching in TurboRepo
 
@@ -87,6 +110,8 @@ It contains the configuration for our turbo repo. Explaining each
   turbo run dev --no-cache
   ```
 - More Info [here](https://turbo.build/repo/docs/getting-started/create-new#using-the-cache).
+
+---
 
 ## Adding a Node.js app
 
@@ -105,12 +130,13 @@ It contains the configuration for our turbo repo. Explaining each
      "extends": "@repo/typescript-config/base.json",
      "compilerOptions": {
        "lib": ["ES2015"],
-       "module": "CommonJS",
+       "rootDir": "./src",
        "outDir": "./dist",
-       "rootDir": "./src"
-     },
-     "exclude": ["node_modules"],
-     "include": ["."]
+       "esModuleInterop": true,
+       "forceConsistentCasingInFileNames": true,
+       "strict": true,
+       "skipLibCheck": true
+     }
    }
    ```
 
@@ -161,7 +187,6 @@ It contains the configuration for our turbo repo. Explaining each
        "build": "tsc",
        "dev": "node dist/index.js --port 3002"
      }
-     ...
    }
    ```
 
@@ -181,7 +206,6 @@ It contains the configuration for our turbo repo. Explaining each
   {
     "scripts": {
       "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js"
-      ...
     }
   }
   ```
@@ -213,6 +237,7 @@ It contains the configuration for our turbo repo. Explaining each
 
    <p align="center">You have successfully added a backend (node.js) project to the TurboRepo.</p>
    <p align="center">
+      <img width="1582" alt="Screenshot 2024-03-17 at 9 28 23 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/2bca86d1-f494-4bc1-a4eb-17ef97bd6d14">
    </p>
 
 ---
@@ -267,11 +292,9 @@ It contains the configuration for our turbo repo. Explaining each
 
    ```json
    {
-     ...
      "dependencies": {
        "@repo/common": "1.0.0"
      }
-     ...
    }
    ```
 
@@ -298,4 +321,5 @@ It contains the configuration for our turbo repo. Explaining each
 
    <p align="center">You have successfully added and used a common package in the TurboRepo.</p>
    <p align="center">
+      <img width="1582" alt="Screenshot 2024-03-17 at 9 42 37 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/252c5402-6c08-4aa5-a519-40af21cc2799">
    </p>
