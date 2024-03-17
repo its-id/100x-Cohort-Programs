@@ -18,7 +18,6 @@
 
    <img width="586" alt="Screenshot 2024-03-17 at 7 26 57 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/5d4cb04e-c80d-4691-9ff5-a079928c1d72">
 
-
    > We can also generate entire packages. More info [here](https://turbo.build/repo/docs/core-concepts/monorepos/code-generation).
 
 4. Include these newly created components in our admin page.
@@ -90,13 +89,13 @@ It contains the configuration for our turbo repo. Explaining main parts below:
    - But as a good practice, we should add the `packages/ui` as a dependency in the `package.json`.
 
    </details>
+
 ### <p align="center">Congratulations 🎉</p>
 
    <p align="center">You have successfully added a custom component to a new app.</p>
    <p align="center">
       <img width="1582" alt="Screenshot 2024-03-17 at 10 00 05 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/e5b10960-bda5-4648-8a92-8b355bff6a89">
    </p>
-
 
 ---
 
