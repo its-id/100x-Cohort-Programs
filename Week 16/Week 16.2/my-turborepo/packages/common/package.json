@@ -1,0 +1,12 @@
+{
+  "name": "@repo/common",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

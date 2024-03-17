@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "exports": {
+    "./input-component": "./src/input-component.tsx",
     "./button": "./src/button.tsx",
     "./card": "./src/card.tsx",
-    "./code": "./src/code.tsx"
+    "./code": "./src/code.tsx",
+    "./admin": "./src/admin.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
