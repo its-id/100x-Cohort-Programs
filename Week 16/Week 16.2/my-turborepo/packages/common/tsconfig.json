@@ -1,7 +1,6 @@
 {
   "extends": "@repo/typescript-config/base.json",
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src"]
   // "compilerOptions": {
   /* Visit https://aka.ms/tsconfig to read more about this file */
   /* Projects */

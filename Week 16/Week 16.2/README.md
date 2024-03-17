@@ -79,6 +79,15 @@ It contains the configuration for our turbo repo. Explaining each
 
 ## Caching in TurboRepo
 
+- It is one of the main features of TurboRepo.
+- It caches the build files and uses them for subsequent runs.
+- Try running the `build` command multiple times and see the difference in time taken for the first and subsequent runs.
+- All of the cache is stored in the `node_modules/.cache/turbo` folder. To turn off cache, run the following command:
+  ```bash
+  turbo run dev --no-cache
+  ```
+- More Info [here](https://turbo.build/repo/docs/getting-started/create-new#using-the-cache).
+
 ## Adding a Node.js app
 
 1. Go to `apps` directory and create a new directory `backend`.
@@ -126,7 +135,7 @@ It contains the configuration for our turbo repo. Explaining each
 
    app.get('/', (req, res) => {
      res.json({
-       message: 'hello world',
+       message: 'Hello from the backend.',
      });
    });
    ```
@@ -144,32 +153,73 @@ It contains the configuration for our turbo repo. Explaining each
    }
    ```
 
-8. Install `eslint` for linting and bundling:
-
-   ```bash
-   npm install esbuild
-   ```
-
-9. Update the `package.json` file to include the `build` and `dev` commands.
+8. Update the `package.json` file to include the `build` and `dev` commands.
 
    ```json
    {
      "scripts": {
-       "build": "esbuild src/index.ts --platform=node --bundle --outdir=dist",
+       "build": "tsc",
        "dev": "node dist/index.js --port 3002"
      }
+     ...
    }
    ```
 
-10. Run the server in the root directory `my-turborepo`:
+   > Note: This build command may or may not work depending on the system. If it doesn't work, then follow the below step.
+
+   <p align="center"> OR </p>
+
+- Install `esbuild` for building the ts file.
+
+  ```bash
+  npm install esbuild
+  ```
+
+- Update `build` command in `package.json`:
+
+  ```json
+  {
+    "scripts": {
+      "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js"
+      ...
+    }
+  }
+  ```
+
+    <details>
+       <summary>Why are we using esbuild for building?</summary>
+
+  - We are using esbuild for building the ts file because it is faster than the typescript compiler and **does not throw import errors like the typescript compiler**.
+  - Recommended by the turbo repo.
+  - Alternative build command [here](https://github.com/vercel/turbo/blob/main/examples/kitchen-sink/apps/api/package.json).
+
+    </details>
+
+<br>
+
+9. Build the project:
+
+   ```bash
+   npm run build
+   ```
+
+10. Run the monorepo in the root directory `my-turborepo`:
 
     ```bash
     npm run dev
     ```
 
+    ### <p align="center">Congratulations 🎉</p>
+
+   <p align="center">You have successfully added a backend (node.js) project to the TurboRepo.</p>
+   <p align="center">
+   </p>
+
+---
+
 ## Creating a common package
 
-Goal: This package will contain the common code that can be shared across different apps (fronend, backend).
+**Goal**: This package will contain the common code that can be shared across different apps (fronend, backend).
 
 1. Go to the `packages` directory and create a new directory `common`.
 2. Create a new `tsconfig.json` file in the `common` directory.
@@ -178,27 +228,26 @@ Goal: This package will contain the common code that can be shared across differ
    npx tsc --init
    ```
 
-3. Extend base tsconfig from `packages/typescript-config/base.json`.
+3. Extend base tsconfig from `packages/typescript-config/base.json` in the created `tsconfig.json`.
 
    ```json
    {
      "extends": "@repo/typescript-config/base.json",
-     "include": ["src"],
-     "exclude": ["node_modules", "dist"]
+     "include": ["src"]
    }
    ```
 
-4. Create a new `package.json` file in the `common` directory.
+4. Add a common variable in the `src/index.ts` file.
+
+   ```ts
+   export const PORT = 3002;
+   export const commonVariable = 'commonVariable';
+   ```
+
+5. Create a new `package.json` file in the `common` directory.
 
    ```bash
    npm init -y
-   ```
-
-5. Add a common variable in the `src/index.ts` file.
-
-   ```ts
-   export const PORT = 5000;
-   export const commonVariable = 'commonVariable';
    ```
 
 6. Change the module name to `@repo/common` and give the export path in the `package.json` file.
@@ -214,30 +263,39 @@ Goal: This package will contain the common code that can be shared across differ
    }
    ```
 
-7. Add this package as a dependency in the `apps/backend/package.json` file.
+7. Go to `apps/backend/` and add this package as a dependency in the `package.json` file.
 
    ```json
    {
+     ...
      "dependencies": {
        "@repo/common": "1.0.0"
      }
+     ...
    }
    ```
 
 8. Import and use this common variable in the `apps/backend/src/index.ts` file.
 
    ```ts
-   import { PORT } from '@repo/common';
+   import { PORT, commonVariable } from '@repo/common';
+   ...
    ```
 
-9. Run the server in the root directory `my-turborepo`:
+9. Rebuild the backend project:
 
    ```bash
-   npm run dev
+   npm run build
    ```
 
-   <details>
-      <summary>If still runs on different port.</summary>
-      - Try deleting the `./dist` folder in the `apps/backend` directory and then run the server.
-      - Try deleting the cache i.e `./.turbo/cache` folder and then run the server.
-   </details>
+10. Run the server in the root directory `my-turborepo`:
+
+    ```bash
+    npm run dev
+    ```
+
+    ### <p align="center">Congratulations 🎉</p>
+
+   <p align="center">You have successfully added and used a common package in the TurboRepo.</p>
+   <p align="center">
+   </p>

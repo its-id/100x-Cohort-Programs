@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "dev": "node dist/index.js --port 5000",
+    "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js",
+    "dev": "node dist/index.js --port 3002",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
