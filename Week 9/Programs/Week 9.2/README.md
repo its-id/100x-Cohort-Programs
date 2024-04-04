@@ -11,6 +11,7 @@
 - Go to `Core-TS/src` folder.
 - `npm install -g typescript`
 - `npm install`
+- Link to slides [here](https://projects.100xdevs.com/tracks/6SbPPXGkG8QKFOTW9BmL/ts-5).
 
 ### To build and run the TS code, run the following command 👇
 
