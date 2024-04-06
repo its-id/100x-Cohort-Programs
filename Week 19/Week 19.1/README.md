@@ -1,6 +1,4 @@
-## From here is the official commencement of 1-100 Cohort
-
-Slides [here](https://projects.100xdevs.com/tracks/ABEC).
+**Note**: From here is the official commencement of 1-100 Cohort.
 
 # Advanced Backend Communications
 
@@ -18,6 +16,8 @@ Slides [here](https://projects.100xdevs.com/tracks/ABEC).
 
 - For eg: The main work of handling the payment should be done by primary server, and rest of the work (**asynchronous processes**) like notifications etc. can be done by secondary servers.
 
+---
+
 ## What are syncrhonous and asynchronous processes?
 
 - **Synchronous Processes**: The processes that are executed one after the other. Eg: REST API.
@@ -34,6 +34,8 @@ Slides [here](https://projects.100xdevs.com/tracks/ABEC).
   - The client will get the response even if the server is down.
   - The client will get the response after the server has processed the request.
   - Eg: Message Queues.
+
+---
 
 ## How does Backends communicate with each other?
 
