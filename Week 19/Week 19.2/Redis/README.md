@@ -245,7 +245,7 @@ Consider example: two types of user requests are happening to the BE.
     <p align="center">You have successfully stored data in Redis.</p>
     <p align="center">
     <img width="700" alt="Screenshot 2024-04-07 at 8 52 34 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/79ba9dcf-9e83-4ecf-9af7-d80f5f908b02">
-    <img width="600" alt="Screenshot 2024-04-07 at 8 53 24 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/0b78f25b-fc79-494f-bbcf-9da0e915d14c">
+    <img width="600" alt="Screenshot 2024-04-07 at 8 53 24 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/3595efe3-4ede-4133-ab89-93129232b5cd">
     </p>
 
     <br>
