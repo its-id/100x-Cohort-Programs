@@ -5,11 +5,15 @@
 - Its main purpose is to cache data i.e store data in memory and retrieve it quickly.
 - As a message broker, it can be used to send messages between different services. Eg: **Pub/Sub** model.
 
+---
+
 ## How does Caching works?
 
 - Assume "DailyCode" Website example.
 - When user comes first time, the server fetches the data from the database and **stores it in an in-memory location**.
 - When the user comes again, the server fetches the data from that in-memory location and not from the database.
+
+---
 
 ## Redis as a Cache Store:
 
@@ -19,10 +23,14 @@
 - Redis is atomic.
 - Redis is single-threaded.
 
+---
+
 ## Use cases where Redis has advantage:
 
 - In case of microservices architecture, Redis (stored seperately in another VM) can be used to store the data that is shared among the services. This is called **"Distributed Caching"**.
 - In case Redis goes down, Redis does store the data in the file system as well. So, when Redis comes back up, it can fetch the data from the file system and bring back to its original state.
+
+---
 
 ## Snapshots in Redis (Persistance in Redis):
 
@@ -31,20 +39,25 @@
 - The snapshot is taken at regular intervals.
 - The snapshot is stored in the disk as an RDB (Redis Database) file.
 
+---
+
 ## Interesting Scenario (Multple Requests to DB):
 
-- Consider example: two types of user requests are happening to the BE.
-  - User Browser.
-  - Admin Browser.
-  - In the third minute, the admin browser makes a request to the BE to update the data.
+Consider example: two types of user requests are happening to the BE.
 
-What would you do? By first priniciples:
+- User Browser.
+- Admin Browser.
+- In the third minute, the admin browser makes a request to the BE to update the data.
+
+**Q.** What would you do? Answer by first priniciples?
 
 1. clear redis, put data in postgres.
 2. update data in redis, update data in postgres.
 3. update data in postgres, update data in redis.
 
-Ans: 1. clear redis, put data in postgres. Because in other two cases, there is a chance that one of the services goes down. This is a major problem than no change in both
+**Ans: 1.** clear redis, put data in postgres. Because in other two cases, there is a chance that one of the services goes down. This is a major problem than no change in both
+
+---
 
 ## Setting up & Running Redis
 
@@ -66,9 +79,11 @@ Ans: 1. clear redis, put data in postgres. Because in other two cases, there is 
     redis-cli
   ```
 
+---
+
 ## Using Redis as a DB (CLI)
 
-- Setting Data: To store data in Redis, we use the `set` command. It takes two arguments, the key and the value. We can store strings, integers, and even JSON objects.
+- **Setting Data**: To store data in Redis, we use the `set` command. It takes two arguments, the key and the value. We can store strings, integers, and even JSON objects.
 
   ```bash
   set key value
@@ -76,7 +91,9 @@ Ans: 1. clear redis, put data in postgres. Because in other two cases, there is 
 
   Eg: `set name "100x"`, `set tracks "[{title: 'typescript', difficulty: 'easy'}]"`
 
-- Getting Data: To get data from Redis, we use the `get` command. It takes one argument, the key.
+<br>
+
+- **Getting Data**: To get data from Redis, we use the `get` command. It takes one argument, the key.
 
   ```bash
   get key
@@ -84,7 +101,9 @@ Ans: 1. clear redis, put data in postgres. Because in other two cases, there is 
 
   Eg: `get name`, `get tracks`
 
-- Deleting Data: To delete data from Redis, we use the `del` command. It takes one argument, the key.
+<br>
+
+- **Deleting Data**: To delete data from Redis, we use the `del` command. It takes one argument, the key.
 
   ```bash
   del key
@@ -92,15 +111,21 @@ Ans: 1. clear redis, put data in postgres. Because in other two cases, there is 
 
   Eg: `del name`, `del tracks`
 
-**If you want to set multiple values in a key, you can use 'HDEL/HGET/HDEL' command.**
+  <br>
 
-- Setting Data: To store data in Redis, we use the `HSET` (H = Hash) command. It takes three arguments, the key, the field, and the value.
+  **If you want to set multiple values in a key, you can use 'HDEL/HGET/HDEL' (H=Hash) command.**
+
+  <br>
+
+  It takes four arguments, the key, the field, size (optional) and the value.
 
   ```bash
-  HSET key:<size> field value #Eg: `HSET user:100x name "100x"`, `HSET user:100x age 20`
-  HGET user:100 name #Eg: `HGET user:100 name`
-  HDEL user:100 #Eg: `HDEL user
+  HSET |key or key:<size>| field value #Eg: `HSET user:100x name "100x" age 20`
+  HGET |key or key:<size>| field value #Eg: `HGET user:100 name`
+  HDEL |key or key:<size>| field value #Eg: `HDEL user:100 name`
   ```
+
+  More Commands [here](https://redis.io/commands/).
 
 ---
 
@@ -116,6 +141,8 @@ Ans: 1. clear redis, put data in postgres. Because in other two cases, there is 
 
   Eg: `LPUSH problems "{problem_id: 1, language: 'java'}"`, `LPUSH problems "{problem_id: 2, language: 'python'}"`
 
+    <br>
+
 - Pop data from the queue using the `RPOP` (from right) command.
 
   ```bash
@@ -123,6 +150,8 @@ Ans: 1. clear redis, put data in postgres. Because in other two cases, there is 
   ```
 
   Eg: `RPOP problems`
+
+  <br>
 
 - If you want to block the thread until a value is available in the queue, you can use the `BRPOP/BLPOP` command. Here, `B` stands for blocking. Takes a key and a timeout (in seconds).
 
@@ -132,7 +161,7 @@ Ans: 1. clear redis, put data in postgres. Because in other two cases, there is 
 
   Eg: `BRPOP problems 0`
 
-  ***
+---
 
 ## Talking to Redis from Node.js
 
@@ -171,7 +200,11 @@ Ans: 1. clear redis, put data in postgres. Because in other two cases, there is 
     npm i redis
     ```
 
-    **Completing the pushing of data to the queue will be done in the next step.**
+    <br>
+
+    **Completing the pushing of data to the queue will be done in the next step 👇**
+
+    <br>
 
 7.  Create a new file `index.ts` in the `express-backend/src` folder and add the code to connect to Redis and store data in queue.
 
@@ -193,7 +226,11 @@ Ans: 1. clear redis, put data in postgres. Because in other two cases, there is 
     LRANGE problems 0 -1
     ```
 
-    **Completing the popping of data from the queue and processing it will be done in the next step.**
+    <br>
+
+    **Completing the popping of data from the queue and processing it will be done in the next step👇**
+
+    <br>
 
 11. Now, create a new file `index.ts` in the `workers/src` folder and add the logic of popping the data from the queue and processing it.
 
