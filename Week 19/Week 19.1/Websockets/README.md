@@ -4,15 +4,15 @@ they provide a way to establish a **persistant connection** between the client a
 
 **Why is it so important?**
 
-- used by the browser to communicate with the server.
+- used by the server to communicate with the browser.
 - provides a full-duplex communication channel over a single TCP connection. In simple words, a **persistant connection is established**.
 
 <br>
 
 **Why is it more preferred over HTTP?**
 
-- In HTTP, browser can't send the data to the server until the server sends the response.
-- But in WebSockets, the browser can send the data to the server without waiting for the response.
+- In HTTP, server can't send the data to the browser until the browser sends the request.
+- But in WebSockets, the server can send the data to the browser without waiting for a request.
 
 <br>
 
@@ -26,7 +26,7 @@ they provide a way to establish a **persistant connection** between the client a
 <br>
 
 - Another way to achieve this is **Polling**. But it is not efficient as it sends the request to the server at regular intervals. (which is not efficient)
-- Eg: Leetcode does it when you are waiting for the result of your code.
+- Eg: Leetcode does it when you are waiting for the result of your submission.
 
 ---
 
@@ -56,6 +56,13 @@ they provide a way to establish a **persistant connection** between the client a
   - `node dist/server.js`
   - Go to [Hopscotch](https://hoppscotch.io/realtime/websocket) and paste URL as `ws://localhost:8080`.
   - Send a message from different connections and see the response.
+
+    <br>
+
+    <img width="1446" alt="Screenshot 2024-04-06 at 9 17 14 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/ccac3ba6-6f7f-415e-afaa-e60dc3eb118a"> <br/>
+    
+    <img width="570" alt="Screenshot 2024-04-06 at 8 23 19 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/0aa4f86e-5712-4a7d-b039-1b16f031baa2">
+
 
   <br>
 
