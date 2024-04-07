@@ -34,14 +34,21 @@
 
 ## Snapshots in Redis (Persistance in Redis):
 
+  <p align="center"><img width="500" alt="Screenshot 2024-04-07 at 7 50 00 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/ac5bce3e-b27d-4979-a879-6e3f17ab13bb"></p>
+
+
 - Redis takes snapshots of the data in the memory and stores it in the disk.
 - This is done to ensure that the data is not lost in case of a crash.
 - The snapshot is taken at regular intervals.
 - The snapshot is stored in the disk as an RDB (Redis Database) file.
 
+  **Note**: Always push the req data to queue first, before updating the redis. In this way, even when redis goes down, it can get the data back.
+
 ---
 
 ## Interesting Scenario (Multple Requests to DB):
+
+<p align="center><img width="500" alt="Screenshot 2024-04-07 at 7 54 22 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/4febae29-7be1-42e2-9851-699ab6ffc2a7"></p>
 
 Consider example: two types of user requests are happening to the BE.
 
@@ -78,6 +85,12 @@ Consider example: two types of user requests are happening to the BE.
   ```bash
     redis-cli
   ```
+
+  ### <p align="center">Congratulations 🎉</p>
+    <p align="center">You have successfully installed and started Redis.</p>
+    <p align="center">
+      <img width="700" alt="Screenshot 2024-04-07 at 8 11 35 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/4f70de72-ad23-4417-98f6-2ca290cf8902">
+    </p>
 
 ---
 
@@ -226,6 +239,13 @@ Consider example: two types of user requests are happening to the BE.
     LRANGE problems 0 -1
     ```
 
+    ### <p align="center">Congratulations 🎉</p>
+    <p align="center">You have successfully stored data in Redis.</p>
+    <p align="center">
+    <img width="700" alt="Screenshot 2024-04-07 at 8 52 34 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/79ba9dcf-9e83-4ecf-9af7-d80f5f908b02">
+    <img width="600" alt="Screenshot 2024-04-07 at 8 53 24 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/0b78f25b-fc79-494f-bbcf-9da0e915d14c">
+    </p>
+    
     <br>
 
     **Completing the popping of data from the queue and processing it will be done in the next step👇**
@@ -235,3 +255,10 @@ Consider example: two types of user requests are happening to the BE.
 11. Now, create a new file `index.ts` in the `workers/src` folder and add the logic of popping the data from the queue and processing it.
 
 12. Check by running multiple workers to check if the data is processed by multiple workers.
+
+     ### <p align="center">Congratulations 🎉</p>
+    <p align="center">You have successfully implemented a queue using Redis and processed the data using multiple workers.</p>
+    <p align="center">
+      <img width="450" alt="Screenshot 2024-04-07 at 8 55 00 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/04ee31fe-0f06-4939-8862-aa531ca4c013">
+    </p>
+
