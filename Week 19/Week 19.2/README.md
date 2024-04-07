@@ -28,6 +28,9 @@ The **best and robust way** is through the below three:
 
 ### Approach 2 (More Optimized usign Pub/Sub):
 
+<p align="center"><img width="927" alt="Screenshot 2024-04-07 at 7 23 07 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/420cdd0b-4600-4104-bd04-e32feb6b914c"></p>
+
+
 - User interacts with a server running on an EC2 Machine.
 - The server places the code in a queue.
 - The queue is then pickedup by different EC2 machines and processed.
@@ -74,6 +77,9 @@ The **best and robust way** is through the below three:
 - The websocket that wants to listen to the event, **subscribes to the PubSub**. 
 
 - Anyone who subscribes to this specific PubSub will receive the message.
+
+  <img width="799" alt="image" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/05ce1181-0a06-45ae-80e7-061121e3e327">
+
   <br>
 
 - The websockets then process the message and return the result to the user.
