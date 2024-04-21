@@ -42,11 +42,16 @@
 
 ### Alternate
 
+<img width="762" alt="Screenshot 2024-04-21 at 7 38 37 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/99909f95-1334-425f-8eb2-c5ccbf129efb">
 - Use Redis as cache.
 - In this, all servers store the state in a Redis cache.
 - Even if two users in same room are connected to different servers, they
 
+<br>
+
 **Q: How does Load Balancing happens in Stateful servers?**
+
+<img width="712" alt="Screenshot 2024-04-21 at 7 41 36 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/b9481156-6868-471f-9c65-16155c321b5a">
 
 - In a large scale application, we have routers that are responsible for routing the requests to the servers.
 - The routers are responsible for maintaining the stickiness.
@@ -59,9 +64,13 @@
 
 ## How to Store State in JS process
 
+![image](https://github.com/its-id/100x-Cohort-Programs/assets/60315832/1ab530eb-0a11-43f2-80fd-c98eac161c59)
+
 - In a stateful server, above representation is a basic way to store the data in the backend.
 - But in a real world scenario, we can use a database or a cache to store the data.
-- If we are storing in-memory, we should seperate the state from the server processes.
+- If we are storing in-memory, we should seperate the state from the server processes like below.
+  ![image](https://github.com/its-id/100x-Cohort-Programs/assets/60315832/dfda278f-d0d8-44bd-9726-e7141b0220e1)
+
 
 ### Method 1: Storing States In-Memory
 
@@ -193,6 +202,8 @@ store.logState();
 
 - We have successfully created a stateful server in the most secure way. (no chance of accidental creation of local states.)
 - Try creating a local instance inside one of the files. It won't let you.
+  <img width="837" alt="Screenshot 2024-04-21 at 10 03 46 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/f656fb30-fcd4-4c80-9e01-ee618040dc1b">
+
 
 ---
 
@@ -222,6 +233,9 @@ Here, we try to create a PubSubManager Class that is a singleton class.
 - Keep track of all stocks users `on a specific server` are interested in.
 - Should tell the pub sub whenever a new stock is added or a stock is removed from the list of interested stocks on that server.
 - Should Relay the events to the right sockets whenever an event is received.
+
+<img width="883" alt="Screenshot 2024-04-21 at 8 38 08 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/381c6dfd-b05d-4f64-8c97-a8ccbf379840">
+
 
 **Implementation**
 
@@ -289,5 +303,7 @@ Here, we try to create a PubSubManager Class that is a singleton class.
 4. Check the `index.ts` file to see how we create a dummy subscription service to test the PubSubManager class.
 
 5. Run the server using `npm start` in terminal with the above directory as root. (Make sure your redis server is running)
+
+<img width="441" alt="Screenshot 2024-04-21 at 11 16 32 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/0e9772fa-327a-46d6-a6ef-9928e734d5ce">
 
 
