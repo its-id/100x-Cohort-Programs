@@ -40,18 +40,19 @@
 - For example, in a realtime game, both the users should be connected to the same server to play the game.
 - This is achieved by using a load balancer.
 
-### Alternate
+### Alternative
 
-<img width="762" alt="Screenshot 2024-04-21 at 7 38 37 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/99909f95-1334-425f-8eb2-c5ccbf129efb">
+<p align="center"><img width="600" alt="Screenshot 2024-04-21 at 7 38 37 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/99909f95-1334-425f-8eb2-c5ccbf129efb"></p>
+
 - Use Redis as cache.
 - In this, all servers store the state in a Redis cache.
-- Even if two users in same room are connected to different servers, they
+- Even if two users in same room are connected to different servers, the two servers can communicate with each other using the Redis cache.
 
 <br>
 
 **Q: How does Load Balancing happens in Stateful servers?**
 
-<img width="712" alt="Screenshot 2024-04-21 at 7 41 36 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/b9481156-6868-471f-9c65-16155c321b5a">
+<p align="center"><img width="600" alt="Screenshot 2024-04-21 at 7 41 36 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/b9481156-6868-471f-9c65-16155c321b5a"></p>
 
 - In a large scale application, we have routers that are responsible for routing the requests to the servers.
 - The routers are responsible for maintaining the stickiness.
@@ -64,13 +65,14 @@
 
 ## How to Store State in JS process
 
-![image](https://github.com/its-id/100x-Cohort-Programs/assets/60315832/1ab530eb-0a11-43f2-80fd-c98eac161c59)
+<p align="center"><img width="600" alt="store state in js" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/1ab530eb-0a11-43f2-80fd-c98eac161c59"></p>
 
 - In a stateful server, above representation is a basic way to store the data in the backend.
 - But in a real world scenario, we can use a database or a cache to store the data.
 - If we are storing in-memory, we should seperate the state from the server processes like below.
-  ![image](https://github.com/its-id/100x-Cohort-Programs/assets/60315832/dfda278f-d0d8-44bd-9726-e7141b0220e1)
+  <img width="550" alt="store state in js" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/dfda278f-d0d8-44bd-9726-e7141b0220e1">
 
+<br>
 
 ### Method 1: Storing States In-Memory
 
@@ -106,8 +108,6 @@
 
 4. Run the server using `npm start` in terminal with the above directory as root.
 
-<br>
-
 **Problem with above approach**:
 
 - Less structured
@@ -118,6 +118,8 @@ Wouldn't it be better if we could create a class for doing all the logic and jus
 ```ts
 GameStore.addGame('room1', 'e5');
 ```
+
+<br>
 
 ### Method 2: Storing States in a Class
 
@@ -204,7 +206,6 @@ store.logState();
 - Try creating a local instance inside one of the files. It won't let you.
   <img width="837" alt="Screenshot 2024-04-21 at 10 03 46 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/f656fb30-fcd4-4c80-9e01-ee618040dc1b">
 
-
 ---
 
 ## Singleton Pattern with PubSub
@@ -221,8 +222,6 @@ store.logState();
 
 Here, we try to create a PubSubManager Class that is a singleton class.
 
-<br>
-
 **Consider Scenario:**
 
 - A system where users can subscribe to the feed of stocks (prices).
@@ -234,8 +233,7 @@ Here, we try to create a PubSubManager Class that is a singleton class.
 - Should tell the pub sub whenever a new stock is added or a stock is removed from the list of interested stocks on that server.
 - Should Relay the events to the right sockets whenever an event is received.
 
-<img width="883" alt="Screenshot 2024-04-21 at 8 38 08 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/381c6dfd-b05d-4f64-8c97-a8ccbf379840">
-
+<p align="center"><img width="600" alt="Screenshot 2024-04-21 at 8 38 08 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/381c6dfd-b05d-4f64-8c97-a8ccbf379840"></p>
 
 **Implementation**
 
@@ -272,6 +270,8 @@ Here, we try to create a PubSubManager Class that is a singleton class.
 
 2. Go to `/stateful-server/pubsub-with-singleton/src` directory and run `npm install` to install the dependencies.
 
+<br>
+
 3. Checkout the `/store.ts` file to see the implementation of the singleton pattern with PubSub. The class works in following way:
 
    - The `class` starts with creating a `private static instance` of the class, `private redis client` to connect to the redis server and `private subscriptions` map to store subscriptions to any stock by collection of users.
@@ -304,6 +304,6 @@ Here, we try to create a PubSubManager Class that is a singleton class.
 
 5. Run the server using `npm start` in terminal with the above directory as root. (Make sure your redis server is running)
 
-<img width="441" alt="Screenshot 2024-04-21 at 11 16 32 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/0e9772fa-327a-46d6-a6ef-9928e734d5ce">
-
-
+<p align="center"><b>Congratulations! 🎉 You have successfully implemented PubSub with Singleton Architecture in a Stateful Backend</b></p>
+<p align="center">
+<img width="441" alt="Screenshot 2024-04-21 at 11 16 32 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/0e9772fa-327a-46d6-a6ef-9928e734d5ce"></p>
