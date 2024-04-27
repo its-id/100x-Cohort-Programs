@@ -18,6 +18,11 @@
 - Multi-threaded can use multiple cores of the CPU
 - Can parallelize tasks into multiple threads to be run on multiple cores
 - But, paralelization doesn't happen automatically by the language. It has to be implemented by the developer.
+  
+  <br>
+  
+  <img width="741" alt="Screenshot 2024-04-27 at 7 19 14 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/ac5618a8-5691-415a-9c9d-8c4ba5dfcce7">
+
 - For eg: If we want to calculate the sum upto 10000, we divide the job into 10 parts to be run on 10 threads. Each thread calculates the sum till 1000 numbers and then the main thread adds the sum of all the threads.
 - Eg: Java, GoLang, Rust etc.
 
@@ -31,12 +36,17 @@
     console.log('Hello');
   }
   ```
+  <img width="426" alt="Screenshot 2024-04-27 at 8 08 02 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/1dc67ba9-9532-4c69-abb0-29a910ec6941">
+
+  
 - Check the CPU usage in the Task Manager or by running following command in terminal:
 
   ```bash
   top
   ```
-
+  
+  <img width="517" alt="Screenshot 2024-04-27 at 7 25 22 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/c340820b-f38d-4123-acec-377f7b1e203a">
+  
   You will notice one of the cores of the CPU is being used 100% by the Node.js process.
 
 <br>
@@ -93,6 +103,8 @@
 ---
 
 ## Vertical Scaling
+
+<img width="600" alt="Screenshot 2024-04-27 at 7 11 18 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/c6afa1e3-a661-47a3-b95b-1e32e87103ce">
 
 - Increasing the memory and CPU of the server
 - It has a limit and can be expensive
@@ -161,6 +173,9 @@ Run multiple node.js processes on terminal.
 
    - Assuming we have monitoring enabled.
    - We can set ASGs with conditions like:
+     
+     <img width="400" alt="Screenshot 2024-04-27 at 8 31 11 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/607b029f-6aa2-4d70-98c6-7e04dab64145">
+     
      - If CPU usage is more than 70%, then add 10 more servers.
      - If CPU usage is less than 30%, then remove 10 servers.
    - We can also have a buffer of 20% extra servers to handle spikes.
@@ -179,16 +194,30 @@ Run multiple node.js processes on terminal.
 
 4. For CPU Intensive tasks like:
 
+     <img width="500" alt="Screenshot 2024-04-27 at 8 37 04 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/cf55ae2f-d9b4-4180-95be-6e8dc6541a9b">
+     
    - Youtube: Here the transcoding is CPU intensive.
    - Replit: Here the code execution is CPU intensive.
-   - Live Streaming of matches
+
+     <br>
+     
+     <img width="400" alt="Screenshot 2024-04-27 at 8 46 10 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/20ea2dfb-62c3-4617-94b1-d3e0404aae8d">
+     
+   - Live Streaming of matches. Here sending different video quality versions to million of users is the tough part. Eg: Hotstar.
 
    - Here, we have some options to scale up:
      - Using ASGs to add more servers when the queue of tasks starts increasing a certain limit.
+       
        **Downsides**:
        - even Hotstar uses it.
        - not a good option for replit
+      
+       <br>
+      
+       <img width="600" alt="Screenshot 2024-04-27 at 8 41 22 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/dff84768-e05c-4293-ab22-30d0fb3e205d">
+       
      - Keeping a certain size of **warm pool** ready for connection.
+       
        **Downsides**:
        - we are restricting the cpu usage to a certain limit.
        - good option for replit.
