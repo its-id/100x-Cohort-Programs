@@ -1,14 +1,7 @@
 ## Today's Topics
 
-**Server**:
-
 - Cluster Module and Horizontal Scaling
-- Capacity Estimation, ASGs and Vertical Scaling
-- Load Balancers
-
-**Database**:
-
-- Indexing
+- Capacity Estimation and Vertical Scaling
 
 ---
 
@@ -29,10 +22,6 @@
 - Eg: Java, GoLang, Rust etc.
 
 ---
-
-
-another reason of getting its because of round-robin scheduling and the lack of inherent session management in Node.js
-
 
 ## Practical Example of Single Threaded vs Multi-Threaded
 
@@ -163,36 +152,43 @@ Run multiple node.js processes on terminal.
 
 1. If we have 1M users, 1 user sends 10 req/sec, then we need to handle 10M req/sec.
 
-- Estimate the Reqs/sec to be handled by one server:
-  - If one server can handle 100 req/sec, then we need 100 servers.
+   - Estimate the Reqs/sec to be handled by one server:
+     - If one server can handle 100 req/sec, then we need 100 servers.
+
+  <br>
 
 2. To handle spikes:
 
-- Assuming we have monitoring enabled.
-- We can set ASGs with conditions like:
-  - If CPU usage is more than 70%, then add 10 more servers.
-  - If CPU usage is less than 30%, then remove 10 servers.
-- We can also have a buffer of 20% extra servers to handle spikes.
+   - Assuming we have monitoring enabled.
+   - We can set ASGs with conditions like:
+     - If CPU usage is more than 70%, then add 10 more servers.
+     - If CPU usage is less than 30%, then remove 10 servers.
+   - We can also have a buffer of 20% extra servers to handle spikes.
+
+  <br>
 
 3. For Realtime applications:
 
-- Now, we don't have requests per seconds, but we have persistent connections which is expensive.
-- Here the metric is not the no. of requests, its the number of connections.
-- Some complexities to handle:
-  - If server needs to scale up, it needs to handle the existing connections: probably through some client-side logic to end and reconnect the connection.
-  - If server needs to scale down, needs to handle existing connections: probably through some logic to transfer the connections to another server.
+   - Now, we don't have requests per seconds, but we have persistent connections which is expensive.
+   - Here the metric is not the no. of requests, its the number of connections.
+   - Some complexities to handle:
+     - If server needs to scale up, it needs to handle the existing connections: probably through some client-side logic to end and reconnect the connection.
+     - If server needs to scale down, needs to handle existing connections: probably through some logic to transfer the connections to another server.
+
+  <br>
 
 4. For CPU Intensive tasks like:
 
-- Youtube: Here the transcoding is CPU intensive.
-- Replit: Here the code execution is CPU intensive.
-- Live Streaming of matches
+   - Youtube: Here the transcoding is CPU intensive.
+   - Replit: Here the code execution is CPU intensive.
+   - Live Streaming of matches
 
-- Here, we have some options to scale up:
-  - Using ASGs to add more servers when the queue of tasks starts increasing a certain limit.
-    **Downsides**:
-    - Not a good option for replit, even Hotstar uses it.
-  - Keeping a certain size of **warm pool** ready for connection.
-    **Downsides**:
-    - we are restricting the cpu usage to a certain limit.
-    - good option for replit.
+   - Here, we have some options to scale up:
+     - Using ASGs to add more servers when the queue of tasks starts increasing a certain limit.
+       **Downsides**:
+       - even Hotstar uses it.
+       - not a good option for replit
+     - Keeping a certain size of **warm pool** ready for connection.
+       **Downsides**:
+       - we are restricting the cpu usage to a certain limit.
+       - good option for replit.
