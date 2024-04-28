@@ -10,9 +10,11 @@
 ## Types of Auto Scaling Implementation Design
 
 1. **Adhoc Scaling**: In these systems, we own the logic for autoscaling.
+
    <img width="300" alt="Screenshot 2024-04-28 at 7 13 57 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/f6954648-ac66-4272-a213-368ef9cf6595">
 
 2. **Queue Based Scaling**: In these systems, we scale based on size of the queue.
+
    <img width="500" alt="Screenshot 2024-04-28 at 7 17 35 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/ced3b874-b008-49cb-a515-7765aa554a30">
 
 ### Some Things to Consider
@@ -39,6 +41,7 @@
   - They are the entry point for the traffic.
   - The hold the logic to route the traffic to the various machines.
   - We can also do the proxy service method if we want, but we usually would want to defer this to AWS Load Balancers from scaling perspective.
+
     <img width="600" alt="Screenshot 2024-04-28 at 7 26 32 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/fa170f4e-713e-42ba-8835-80d4b91bbaee">
 
 <br>
@@ -55,6 +58,7 @@
 
   - It is a template to launch new instances.
   - **Diff b/w image and template**: It has the configuration of the instance while Image only stores the code snapshot of the machine.
+
     <img width="600" alt="Screenshot 2024-04-28 at 7 29 04 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/c7240905-26cf-451f-a58b-437fcac78ab3">
 
     <br>
@@ -227,6 +231,7 @@
     <br>
 
 - Do the same for Load Balancer. Go to Load Balancer created -> select the `Listener` with wrong port mapping -> `Edit rule` -> Update the target group.
+
   <img width="700" alt="Screenshot 2024-04-28 at 8 44 00 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/bbc6856f-3845-45f6-9973-0013e8502a3e">
   <img width="700" alt="Screenshot 2024-04-28 at 8 44 11 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/731d9239-7c0d-4804-96e7-0861f2595c5e">
   <img width="700" alt="Screenshot 2024-04-28 at 8 44 30 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/637cf94e-562b-4414-91c8-2e0cd7fa00cf">
@@ -267,12 +272,14 @@
 1. To apply autoscaling based on the traffic, we can use:
 
    - Play the desired capacity and the minimum and maximum capacity in the ASG settings.
+   
      <img width="700" alt="Screenshot 2024-04-28 at 8 30 57 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/5460d05d-6a92-4428-852f-e5f2b614eb19">
      <img width="700" alt="image" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/6cbe032a-5089-4a20-8137-af538c9a6e7f">
 
     <br>
 
    - Dynamic Scaling Policies.
+
      <img width="700" alt="image" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/2601ac3d-a5f3-431e-a1ac-341db7a9b7f2">
 
     <br>
