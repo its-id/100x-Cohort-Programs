@@ -207,9 +207,8 @@ Run multiple node.js processes on terminal.
 
    - Here, we have some options to scale up:
      - Using ASGs to add more servers when the queue of tasks starts increasing a certain limit.
-       
-       **Downsides**:
        - even Hotstar uses it.
+         **Downsides**:
        - not a good option for replit
       
        <br>
