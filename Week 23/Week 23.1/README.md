@@ -1,0 +1,237 @@
+## WebRTC - Web Real-Time Communication
+
+## Why WebRTC?
+
+- core protocol for real-time communication
+- usual delay is 0.5s - 1s
+- used for video conferencing etc.
+
+- different from other protocols like HLS (HTTP Live Streaming), where there is a delay. Eg: Youtube live stream has a delay of 10s
+
+---
+
+## Architecture
+
+- WebRTC is a peer-to-peer protocol.
+- means you can directly connect to the other person without any server in between.
+- In P2P, each participant is connected to every other participant.
+- For a session of N people, total connections = N \* (N-1) / 2
+
+### Signaling
+
+- Before the connection is established, the two peers need to exchange some information.
+- Just like in the telephony world, signaling is the part where you place a phone call to a friend and their phone starts to ring. They **must accept your call for the actual conversation to initiate**.
+- This part is the “signaling” — you are inviting (‘signaling’) folks to join a call, and this phase is **distinctly different/separate** from the actual data transfer during the call.
+- includes the IP address of the other peer. A signalling server is used for this purpose.
+- It is done mostly using websockets. Eg: socket.io, [session initiation protocol (SIP)](https://www.techtarget.com/searchunifiedcommunications/definition/Session-Initiation-Protocol) etc.
+
+    <br>
+
+  **Q. How does peer1 get to know the address of peer2?**
+  Ans. Using the `STUN` server.
+
+### STUN (Session Traversal Utilities for NAT)
+
+- used to get the public IP address of the peer.
+- [NAT](https://www.techtarget.com/searchnetworking/definition/Network-Address-Translation-NAT) (Network Address Translation) is used to convert the private IP address to a public IP address.
+- STUN server is used to get the ice candidates (a list of IP:PORT combinations that can be used to connect to the peer) of the peer.
+- In simple words, its like a phone book providing the unique location for each peer in the network.
+- These ice candidates are exchanged between the peers using the signalling server. If one of the ice candidates is not working, the next one is used.
+
+### Ice Candidates (Interactive Connectivity Establishment)
+
+- Potential Networking endpoints that WebRTC uses to establish a connection b/w two peers.
+- Each 'candidate' is a potential way/path to establish a connection.
+
+    <br>
+
+  **Quick Hack**: Go to `chrome://webrtc-internals` to see the WebRTC logs.
+
+    <br>
+
+- If two people are trying to connect on the same wifi, they can connect via private router ice candidates.
+- If they are on different networks, they can connect via public ice candidates.
+
+### TURN (Traversal Using Relays around NAT)
+
+- A lot of times, network (NAT) doesn't allow media to come in from peer 2.
+- TURN is like a fallback, if the direct connection is not permitted by the network of the user.
+- **TURN server** is a relay server that relays the data between the two peers.
+- In simple words, it is a middleman which relays the data between the two peers.
+
+**A good situation to visualize the concept:**
+
+- If you are in a corporate network, you can't connect to the other peer directly. Here, we get ice candidates from STUN server, but the media comes from peer2 directly.
+- This is where router (NAT) becomes confused and blocks any external data other than the STUN server.
+- In this case, TURN server is used. Here, the ice candidates are also provided by the TURN server and the media is also relayed by the TURN server.
+
+### Offer & Answer
+
+- Once the ice candidates are exchanged, the offer and answer are exchanged.
+- **Offer** is sent by the person who initiates the call.
+- **Answer** is sent by the person who receives the call.
+- These contain the SDP (Session Description Protocol) _which contains all the information about the media that is being sent._
+
+### SDP (Session Description Protocol)
+
+- It is a format for describing multimedia communication sessions.
+
+- A single file that contains all your:
+
+  - ice candidates.
+  - what media you want to send, what protocols you've used to encode the media.
+
+- This is the file that is sent in the `offer` and recieved in `answer`.
+
+### RTCPeerConnection API
+
+- a class that browser provides to get access to the `SDP`.
+- also lets us create `answer` and `offer`.
+- hides all the complexity of the WebRTC protocol.
+
+<details><summary><b>Summary</b></summary>
+
+- You need a signalling server and a stun server to initiate a WebRTC call. You can kill these once connection is made.
+- Should also include a TURN server for fallback (restrictive networks).
+
+</details>
+
+---
+
+## WebRTC Connection Steps
+
+1. Browser 1 creates an `RTCPeerConnection` object to represent the connection between the two peers.
+
+   ```js
+   const peerConnection = new RTCPeerConnection();
+   ```
+
+2. Browser 1 creates an offer using `createOffer()` method. This offer contains the SDP from browser 1.
+
+   ```js
+   const offer = await peerConnection.createOffer();
+   ```
+
+3. Browser 1 sets the local description of the peer connection to the offer. This is done to set the SDP.
+
+   ```js
+   await peerConnection.setLocalDescription(offer);
+   ```
+
+<br>
+
+4. Browser 1 sends the offer to Browser 2 using the signalling server. This happens via a websocket connection.
+
+<br>
+
+5. Browser 2 receives the offer and sets the remote description of the peer connection to the offer. This is done to set the SDP of browser 1 by browser 2.
+
+   ```js
+   await peerConnection.setRemoteDescription(offer);
+   ```
+
+6. Browser 2 creates an answer using `createAnswer()` method. This answer contains the SDP from browser 2.
+
+   ```js
+   const answer = await peerConnection.createAnswer();
+   ```
+
+7. Browser 1 sets the remote description of the peer connection to the answer. This is done to set the SDP of browser 2 by browser 1.
+
+   ```js
+   await peerConnection.setRemoteDescription(answer);
+   ```
+
+<br>
+
+The above is just the establishment of the connection. Now, the media has to be sent.
+
+<br>
+
+9. Browser 1 adds the local stream to the peer connection. This is done to send the media.
+
+   ```js
+   peerConnection.addStream(localStream);
+   ```
+
+10. Browser 2 listens for the `ontrack` event on the peer connection. This event is fired when the media is received.
+
+    ```js
+    peerConnection.ontrack = (event) => {
+      remoteVideo.srcObject = event.streams[0];
+    };
+    ```
+
+11. Browser 2 sends the answer to Browser 1 using the signalling server and the loop continues.
+
+<br>
+
+> Note: Look at the simple demo [here](https://jsfiddle.net/rainzhao/3L9sfsvf/).
+
+---
+
+## Advanced Architectures
+
+### Problems with P2P
+
+- Although, P2P has the **lowest latency, highest security (encrypted streams), and nearly costs zero operational costs** because there are no servers required but it has some drawbacks.
+- P2P is not scalable.
+- If you have 1000 people in a call, each person has to connect to 999 other people. This is not possible.
+- Also, because of NAT (Network Address Translation), it is not always possible to connect to the other peer directly (although TURN server can be used as a fallback).
+
+### MCU (Multipoint Control Unit)
+
+- In this architecture, each person sends their video & audio to the server.
+- The server then decode it, and mix the audio and video from the participants together into a single stream and send it to each participant.
+- Another Optimization: Selects top 3 loudest audios to avoid echoes.
+- Eg: Google Meet might use an MCU architecture.
+
+**Best Use Case**:
+
+- can be used for recording purposes. For eg: if you want to record a video call, you can use an MCU to mix all the videos and record it simultaneously.
+- for introducing media processing like OpenCV, background blurs etc.
+
+**Problems**:
+
+- For different layouts, the server has to mix the videos differently. Eg: 2x2 (320p), 3x3 (480p) etc.
+- If there are 1000 people in a call, the server has to mix 1000 videos.
+
+### SFU (Selective Forwarding Unit)
+
+- In a selective forwarding topology, each participant in a session connects to a server known as a selective forwarding unit (SFU).
+- This server then forwards the video to all the other people in the call.
+- At its core, SFU is just a “forwarder” — meaning little to no processing happens here.
+- This is scalable.
+- Zoom uses a **Selective Forwarding Unit** (SFU) architecture.
+
+**Advantages**:
+
+- incoming connection is made to the media server, not directly to each participant
+- hold different video qualities for different participants or layouts.
+
+**Best Use Cases**:
+
+- live streaming
+- group calls
+
+**Drawbacks**:
+
+- less secure (media not end-to-end encrypted)
+- more latency
+
+**Difference between SFU and MCU** 👇
+
+| SFU                                                                              | MCU                                                                                                                                                                                             |
+| -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Server forwards the video to everyone.                                           | Server mixes the video and sends it back to everyone.                                                                                                                                           |
+| forwards packets as it is.                                                       | decodes the packets, mixes them and encodes them again.                                                                                                                                         |
+| clients only upload one stream while actively receiving N-1 streams from the SFU | each participant uploads their stream just once to the server and the server then sends one stream back to each participant, containing the mixed audio and video from all of the participants. |
+| transcoding happens at the edges and not at the server.                          | transcoding happens at the server.                                                                                                                                                              |
+| Less CPU intensive                                                               | More CPU intensive                                                                                                                                                                              |
+| More bandwidth                                                                   | More latency                                                                                                                                                                                    |
+
+> A Good Article to read on all these architectures: [here](https://medium.com/secure-meeting/webrtc-architecture-basics-p2p-sfu-mcu-and-hybrid-approaches-e2aea14c80f9).
+
+---
+
+Slides [here](https://projects.100xdevs.com/tracks/webrtc-1/WebRTC-Basic-implementation--advance-discussion-1).
