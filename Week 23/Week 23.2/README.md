@@ -1,6 +1,8 @@
-## Implementing WebRTC
+# Implementing WebRTC
 
-### Quick Summary of Steps
+---
+
+## Quick Summary of Steps
 
    <p align="center"><img width="800" alt="Screenshot 2024-05-05 at 7 14 38 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/df7974ae-8967-4acb-817c-37756495d264"></p>
 
@@ -28,6 +30,8 @@
    - sends the answer to the sender.
    - sends its ice candidates to the sender.
    - checks for any tracks (media streams) that are added to the connection and displays them.
+
+---
 
 ## Implementing Signalling Server (Backend)
 
@@ -65,6 +69,8 @@
 
    </details>
 
+---
+
 ## Implementing Sender & Receiver (Frontend)
 
 1.  Initialize a react-app using `npx create-vite@latest` or go to `/webrtc/frontend` folder.
@@ -82,7 +88,7 @@
 
     <br>
 
-4.  Understanding __`Sender.tsx`__:
+4.  Understanding **`Sender.tsx`**:
 
       <br>
     - As soon as the component mounts, it sends the message to server that it is a 'sender' in useEffect.
@@ -115,7 +121,7 @@
 
     <br>
 
-5.  Understanding __`Receiver.tsx`__:
+5.  Understanding **`Receiver.tsx`**:
 
       <br>
       
@@ -128,6 +134,7 @@
       <br>
 
     - Inside the function:
+
       - We start with creating the RTCPeerConnection object.
       - We keep listening to the incoming messages from the sender using `socket.onmessage`.
       - If `message.type` is `createOffer`, we fulfill the basic formalities of setting the remote description and adding the ice candidates. In the end, we create an answer and send it to the sender.
@@ -135,8 +142,10 @@
       - If `message.type` is `iceCandidate`, we keep adding the ice candidates to the sender.
       - In the end, we keep checking for any tracks (media streams) that are added to the connection. If they are added, we create a video element and set the stream to it. Go through the code to understand it better.
 
+      <br>
+
+      ### <p align="center">Congratulations! You have successfully implemented WebRTC. 🎉</p>
 
 <p align="center"><img width="1276" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/26265ab8-004e-4f76-a056-7d96130b3ccf"></p>
 
 <p align="center"><img width="1276" alt="Screenshot 2024-05-06 at 12 51 06 AM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/7f37375a-308c-465a-97f7-9f75b2ebd394"></p>
-
