@@ -6,6 +6,9 @@
 - usual delay is 0.5s - 1s
 - used for video conferencing etc.
 
+<br>
+<img width="502" alt="Screenshot 2024-05-04 at 7 13 01 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/78357195-6180-410d-b765-c868b2b767e7">
+
 - different from other protocols like HLS (HTTP Live Streaming), where there is a delay. Eg: Youtube live stream has a delay of 10s
 
 ---
@@ -100,6 +103,9 @@
 
 ## WebRTC Connection Steps
 
+<p align="center"><img width="968" alt="Screenshot 2024-05-04 at 8 07 36 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/929fc179-6857-4e35-98d6-d6877cbaaf76"></p>
+
+
 1. Browser 1 creates an `RTCPeerConnection` object to represent the connection between the two peers.
 
    ```js
@@ -146,6 +152,8 @@
 
 The above is just the establishment of the connection. Now, the media has to be sent.
 
+<img width="732" alt="Screenshot 2024-05-04 at 8 17 56 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/e4231d38-4682-44be-8f67-a31e9a81ed8d">
+
 <br>
 
 9. Browser 1 adds the local stream to the peer connection. This is done to send the media.
@@ -183,7 +191,13 @@ The above is just the establishment of the connection. Now, the media has to be 
 
 - In this architecture, each person sends their video & audio to the server.
 - The server then decode it, and mix the audio and video from the participants together into a single stream and send it to each participant.
+
+  <br>
+  <img width="500" alt="Screenshot 2024-05-04 at 8 39 18 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/476ad6ee-c38b-4d55-bbcf-9c73dc2bd7c7">
 - Another Optimization: Selects top 3 loudest audios to avoid echoes.
+
+  <br>
+  <img width="600" alt="Screenshot 2024-05-04 at 8 45 11 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/c48affef-1ed7-4b28-ae36-6ddddba946b2">
 - Eg: Google Meet might use an MCU architecture.
 
 **Best Use Case**:
@@ -197,6 +211,8 @@ The above is just the establishment of the connection. Now, the media has to be 
 - If there are 1000 people in a call, the server has to mix 1000 videos.
 
 ### SFU (Selective Forwarding Unit)
+
+<p align="center"><img width="666" alt="Screenshot 2024-05-04 at 8 29 54 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/3ab708d9-ef52-416b-8494-653487c5ee65"></p>
 
 - In a selective forwarding topology, each participant in a session connects to a server known as a selective forwarding unit (SFU).
 - This server then forwards the video to all the other people in the call.
@@ -229,6 +245,15 @@ The above is just the establishment of the connection. Now, the media has to be 
 | transcoding happens at the edges and not at the server.                          | transcoding happens at the server.                                                                                                                                                              |
 | Less CPU intensive                                                               | More CPU intensive                                                                                                                                                                              |
 | More bandwidth                                                                   | More latency                                                                                                                                                                                    |
+
+### More Advanced Architectures (SFU Cascading & Hybrid)
+
+<img width="913" alt="Screenshot 2024-05-04 at 8 47 20 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/d0a0b7d6-f6b4-4603-ab8a-8d6a720f755d">
+
+<img width="623" alt="Screenshot 2024-05-04 at 8 50 42 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/3629cadb-12fa-4043-ae9f-2040761b27c4">
+
+- Info here
+- More to read [here](https://getstream.io/glossary/sfu-cascading/).
 
 > A Good Article to read on all these architectures: [here](https://medium.com/secure-meeting/webrtc-architecture-basics-p2p-sfu-mcu-and-hybrid-approaches-e2aea14c80f9).
 
