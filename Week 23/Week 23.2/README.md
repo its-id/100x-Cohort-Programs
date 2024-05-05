@@ -91,6 +91,7 @@
 4.  Understanding **`Sender.tsx`**:
 
       <br>
+      
     - As soon as the component mounts, it sends the message to server that it is a 'sender' in useEffect.
 
       <br>
