@@ -2,6 +2,8 @@
 
 ### Quick Summary of Steps
 
+   <p align="center"><img width="800" alt="Screenshot 2024-05-05 at 7 14 38 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/df7974ae-8967-4acb-817c-37756495d264"></p>
+
 1. Creating **Signalling Server** for handling connection.
 
    - Total of three messages are to be exchanged.
@@ -132,3 +134,9 @@
       - Additionally, we keep sending the ice candidates to the sender as they are generated.
       - If `message.type` is `iceCandidate`, we keep adding the ice candidates to the sender.
       - In the end, we keep checking for any tracks (media streams) that are added to the connection. If they are added, we create a video element and set the stream to it. Go through the code to understand it better.
+
+
+<p align="center"><img width="1276" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/26265ab8-004e-4f76-a056-7d96130b3ccf"></p>
+
+<p align="center"><img width="1276" alt="Screenshot 2024-05-06 at 12 51 06 AM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/7f37375a-308c-465a-97f7-9f75b2ebd394"></p>
+
