@@ -216,7 +216,15 @@ Before, we start the Integration Testing, we need to write the code for:
    npm run test:integration
    ```
 
-### <p align ="center">Congratulations! You have successfully written your first Integration Test! 🎉🎉🎉 </p>
+<br>
+
+### <p align ="center">Congratulations 🎉🎉 ! You have successfully written your first Integration Test! </p>
+
+<p align="center">
+<img width="800" alt="Screenshot 2024-05-19 at 8 23 05 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/0b1ddbe1-04a9-44d5-81fa-37167de0fc32">
+</p>
+
+<br>
 
 ### Resetting Database before running Tests
 
@@ -269,6 +277,9 @@ Before, we start the Integration Testing, we need to write the code for:
    ```
 
 3. Now, everytime there's a push or PR to the main branch, the tests will run automatically and show the results like shown below 👇
+
+   <img width="600" alt="Screenshot 2024-05-19 at 9 10 47 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/35ab9416-7480-47c1-99d1-f6eee521fbcf">
+
 
 ---
 
@@ -339,3 +350,9 @@ Before, we start the Integration Testing, we need to write the code for:
    - `--headed`: Runs the tests in a headed mode (i.e. opens the browser and runs the tests). Other option can be `--headless` which runs the tests in a headless mode (i.e. doesn't open the browser and runs the tests in the background).
 
    </details>
+
+   <br>
+
+   ### <p align="center">Congratulations 🎉🎉! You have successfully setup your first E2E test!</p>
+   <p align="center"><img width="800" alt="Screenshot 2024-05-19 at 9 53 03 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/5c8588a7-c22a-476f-a6fa-576b669cc344"></p>
+
