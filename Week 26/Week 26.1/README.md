@@ -32,19 +32,26 @@
 
 ---
 
-## Setting up Newrelic
+## Setting up Newrelic for Host Monitoring
 
 1. Go to [Newrelic](https://newrelic.com/) and create an account.
 
 2. We are going to monitor a test linux machine on AWS. For that, we need a test instance. Follow the past steps to create a simple amazon linux machine on AWS and connect to it.
+   <img width="1214" alt="Screenshot 2024-05-25 at 7 31 25 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/cdc9cef6-311a-43cd-a82e-89ce14b8cade">
 
 3. Go the Newrelic machine installation page and select the linux option.
+   <img width="1226" alt="Screenshot 2024-05-25 at 7 23 13 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/06f30509-12ab-4872-9af4-e0fb14ba8b74">
 
 4. Create a new key.
+   <img width="1225" alt="Screenshot 2024-05-25 at 7 23 36 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/6885d0b0-5a23-43eb-9368-b0810c2e00eb">
 
 5. Next, copy the command to install the **newrelic-infra** agent and paste it in the terminal of the test machine. Press `Y` for each prompt asked during the installation.
 
-Now, the Newrelic agent is installed on the test machine and can be monitored from the Newrelic dashboard.
+<br>
+
+### <p align="center">Congratulations 🎉🎉 ! Newrelic agent is installed on the test machine and can be monitored from the Newrelic dashboard.</p>
+<p align="center"><img width="1214" alt="Screenshot 2024-05-25 at 7 31 21 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/3ad567c5-f2a4-4256-857c-401f9dbd96b1"></p>
+<p align="center"><img width="1214" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/52859874-c5cf-4a40-8bc0-6f07f962b301"></p>
 
 ---
 
@@ -63,24 +70,32 @@ Now, the Newrelic agent is installed on the test machine and can be monitored fr
 3. Run the file using the command `node index.js`.
 
 4. Notice in the dashboard of newrelic that **CPU Usage %** spikes up. Keep adding random number to an array also, to see the **Memory Usage %** spike up as well.
+  
+    <img width="1214" alt="Screenshot 2024-05-25 at 7 31 23 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/98a02d61-ed64-4174-ab5e-e8d8918570bd">
+
+<br>
+
 
 ### Interacting with the Dashboard
 
 1. Click on the three dots on the top right corner of any chart to see the options available for that chart.
 
 2. Click on `View Query` to see the query that is being run to generate the chart. You can customize the query as per your needs (like changing the time range) and save it.
+    <img width="751" alt="Screenshot 2024-05-25 at 7 41 10 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/9262d4a7-0415-49e3-8bd9-a8895b5e71eb">
 
 ---
 
 ## Setting up Custom Dashboard
 
 1. Go to the **Dashboard** tab and click on **Create your first Dashboard**.
+   <img width="1445" alt="Screenshot 2024-05-25 at 7 42 25 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/f1320ab0-541d-4c51-8138-7e64f8743b91">
 
 2. Write your dashboard's name and click on **Create**.
 
 3. Click on **Add a new Chart** -> **Add a chart** and write the query for your use case.
 
 4. Alternatively, you can click on _three dots_ on top right of existing charts in the dashboard and click on **Add to Dashboard** to add them to your custom dashboard.
+    <img width="751" alt="Screenshot 2024-05-25 at 7 41 10 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/e40013f2-b988-4df4-a275-3b18556c3d81">
 
 ---
 
@@ -99,6 +114,9 @@ Now, the Newrelic agent is installed on the test machine and can be monitored fr
 6. Go to the **Alerts** tab -> **Alerts Tab Condtions** to see all the alerts that have been created till now by the system and you.
 
 7. To change the workflow (like who should be notified first, second, etc.), go to **Alerts** -> **Workflows**. Click on the **Policy** you want to change or create a new one.
+
+    <img width="1446" alt="Screenshot 2024-05-25 at 11 58 10 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/5e37f301-1eec-438a-8469-fca39d61a9f6">
+    <img width="1436" alt="Screenshot 2024-05-25 at 11 59 17 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/8f67758d-575a-45c0-b100-2f118855b6ca">
 
 ---
 
@@ -151,8 +169,12 @@ Now, the Newrelic agent is installed on the test machine and can be monitored fr
 ### Setting up Logging
 
 1. Click on `Add Data` Tab -> Search for `Node.js`.
-
+   
 2. Under `Application Monitoring` -> Click on **Node.js**.
+
+   <img width="1210" alt="Screenshot 2024-05-25 at 8 13 13 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/59dbafbd-ec2d-47e4-940a-42dda5dc0742">
+
+   <br>
 
 3. There are multiple ways to monitor our application. In our case, we will directly manually install it on the host. Click on `On a host` option -> `Create a New key`.
 
@@ -209,11 +231,15 @@ Now, the Newrelic agent is installed on the test machine and can be monitored fr
     loadtest -c 10 --rps 200 http://localhost:3000/
    ```
 
+     <img width="1023" alt="Screenshot 2024-05-25 at 8 32 31 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/854d90df-91a7-47ec-8511-12ad5ef08c11">
+     <img width="1023" alt="asfasasgasg" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/249197f3-fa56-4de0-94a9-936a547a05be">
+
+
 8. In the newrelic page, your **See your data** tab will show the data of your application.
 
-9. You will still see the logs section still empty. Next, we will be setting up logger.
+   <img width="1222" alt="Screenshot 2024-05-25 at 8 31 03 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/021b4b63-646f-4bb1-b640-a5689bb46351">
 
-10. You can
+9. You will still see the logs section still empty. Next, we will be setting up logger.
 
 ## Setting up Logger
 
@@ -274,9 +300,13 @@ Now, the Newrelic agent is installed on the test machine and can be monitored fr
 
 5. Run the app in 1st terminal (`npm start`), send requests using `loadtest` in 2nd terminal (`loadtest -c 10 --rps 200 http://localhost:3000/`) and check the logs in the newrelic dashboard.
 
+   <img width="1023" alt="Screenshot 2024-05-25 at 8 32 33 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/c7be8728-3520-4770-ad9d-b2ffea53b202">
+
+
 <br>
 
 > Note: Customize your Dashboard by clicking on the 'Add to Dashboard' button. Now, your customized dashboard will look more organized and according to your needs.
+> <img width="1023" alt="Screenshot 2024-05-25 at 8 32 34 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/1aa22233-ace8-4fc3-914c-f7fa80c94a5f">
 
 ---
 
@@ -300,4 +330,7 @@ Now, the Newrelic agent is installed on the test machine and can be monitored fr
 
 - To check the P99 and P95 metrics, go to the **APM & Services** -> Click on the service you want to check -> Click on the **% icon** to see both P99 and P95 graphs.
 
-bhaiya, referral dedo. whom do i contact? 30k usd bhi chalega ab toh. btw, u still need visa agent contact?
+  <br>
+    
+  <img width="1023" alt="Screenshot 2024-05-25 at 8 32 35 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/3ac5af3e-a19b-4c46-86f9-e0b2f27d8a15">
+
