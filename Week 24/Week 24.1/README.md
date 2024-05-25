@@ -135,6 +135,6 @@
 
 so the most general use case of grpc is to be a mediator between different services (language-agnostic) in a company. if so, how does it connect functions from different services together?
 
-for http requests, openapi spec has more preference than grpc. as there are multiple libraries available to convert these specs to generate ts codes (specically for querying functions like kubb-gen, openapi-generated for react-query). can we do this for grpc and is this recommended?  
+for http requests, openapi spec has more preference than grpc. as there are multiple libraries available to convert these specs to generate ts codes (specically for querying functions like kubb-gen, openapi-generated for react-query). can we do this for grpc and is this recommended?
 
 Slides [here](https://projects.100xdevs.com/tracks/grpc/grpc-4).
