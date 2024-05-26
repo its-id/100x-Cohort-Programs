@@ -21,6 +21,8 @@
 
 ### Understanding Architecture
 
+<img src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/2ef9a249-6bb1-4f64-8219-a6e834dff4fe">
+
 - It starts with the linux machine used for monitoring.
 
 - First, the prometheus server is installed on the linux machine. After that, we need to create an endpoint in the application which will export metrics for monitoring.
@@ -37,6 +39,8 @@
 
 - In the end, you can visualize these ugly stats/metrics in the Prometheus UI.
 
+<br>
+
 ### Drawbacks
 
 - It gives you total/cummulative stats (not realtime). Thus, it becomes hard to get the exact stats per second.
@@ -47,14 +51,20 @@
 
 To learn more about its architecture, visit [here](https://prometheus.io/docs/introduction/overview/).
 
+<br>
+
 ### Understanding Metric Format
 
 - **`http_requests_total{method="post",route="/user", code="200"}`** : Total HTTP requests with method `post`, to route `/user` returning status code `200`.
+
+<br>
 
 ### PromQL
 
 - Its a query language for Prometheus.
 - **flexible query language**.
+
+<br>
 
 ### Setting up our Express App
 
@@ -91,6 +101,8 @@ To learn more about its architecture, visit [here](https://prometheus.io/docs/in
 
 4. Run the app using `npm start`, request to the one of the endpoints and check the logs.
 
+   <img width="799" alt="Screenshot 2024-05-26 at 7 36 06 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/af6ef065-6d1d-4da5-b980-a56f52e6c19d">
+
 <br>
 
 ### Types of Metrics in Prometheus
@@ -100,6 +112,8 @@ To learn more about its architecture, visit [here](https://prometheus.io/docs/in
   - its the cummulative metric (e.g. counting number of requests)
 
   - **Example Metric** :
+ 
+      <img width="491" alt="Screenshot 2024-05-26 at 7 41 06 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/d0d8a36c-a9c3-48c7-9bfd-566392d275b0">
 
       <details>
       <summary>Explaining Metric</summary>
@@ -117,6 +131,9 @@ To learn more about its architecture, visit [here](https://prometheus.io/docs/in
   - value can go up and down. can be used to measure values that fluctuate (e.g. number of users online, memory usage)
 
   - **Example Metric** :
+ 
+      <img width="188" alt="Screenshot 2024-05-26 at 7 45 03 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/041e3b71-e99d-4f03-929d-b89c7a44fbdc">
+
       <details>
       <summary>Explaining Metric</summary>
       
@@ -135,6 +152,8 @@ To learn more about its architecture, visit [here](https://prometheus.io/docs/in
   - used to measure the distribution of values (e.g. response time of requests)
 
   - **Example Metric**:
+ 
+       <img width="534" alt="Screenshot 2024-05-26 at 7 45 10 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/22b619ec-6a8c-4200-ac6e-0846b5ad98c8">
 
       <details>
       <summary>Explaining Metric</summary>
@@ -148,6 +167,8 @@ To learn more about its architecture, visit [here](https://prometheus.io/docs/in
     - File size is limited.
 
       </details>
+
+<br>
 
 ### Adding Prometheus
 
@@ -216,6 +237,9 @@ To learn more about its architecture, visit [here](https://prometheus.io/docs/in
 4. Run the app and go to `localhost:3000/metrics` to see the metrics.
 
 5. To see the metrics coming, try sending requests to the `/user` endpoint and check the `/metrics` route again.
+
+   <img width="903" alt="Screenshot 2024-05-26 at 7 57 46 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/0b9ad926-42df-40d1-a921-47a0f30d1af9">
+
 
 <br>
 
@@ -442,6 +466,9 @@ To learn more about its architecture, visit [here](https://prometheus.io/docs/in
 
 ### <p align="center"> Congratulations 🎉 ! You have successfully implemented Prometheus in your Express App. </p>
 
+   
+<p align="center"><img width="1580" alt="Screenshot 2024-05-26 at 9 09 27 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/9226c921-d447-4b17-a2ad-f83e5b3b8a38"></p>
+
 <br>
 
 - Click on **Graph** tab, try executing the following query & click on the **Graph** subtab to see the metrics:
@@ -449,3 +476,5 @@ To learn more about its architecture, visit [here](https://prometheus.io/docs/in
   ```promql
   http_requests_total
   ```
+  
+   <img width="1580" alt="Screenshot 2024-05-26 at 9 09 28 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/cd3d3ded-03f1-4371-b927-c4570459f464">
