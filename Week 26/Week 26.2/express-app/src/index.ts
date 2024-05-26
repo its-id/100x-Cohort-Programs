@@ -4,6 +4,7 @@ import client from 'prom-client';
 import { monitor } from './middleware/monitor';
 import { requestCount } from './middleware/requestCounter';
 import { userCount } from './middleware/activeUserCounter';
+import { responseTimeDistribution } from './middleware/responseTimeHistogram';
 
 const app = express();
 
@@ -11,6 +12,7 @@ app.use(express.json());
 app.use(monitor);
 app.use(requestCount);
 app.use(userCount);
+app.use(responseTimeDistribution);
 
 app.get('/user', (req, res) => {
   res.send({
