@@ -59,28 +59,28 @@
   <details>
     <summary> <b>Master Node Internals</b> </summary>
 
-    <img width="800" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/5d57f53b-d892-4d96-8f25-bf8736152f78">
+    <img width="500" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/5d57f53b-d892-4d96-8f25-bf8736152f78">
 
-      - **API Server**: its the main entry point for all requests. developer sends the request (eg: 'pls initiate and run that docker image') to this server inside master nodes.
+    - **API Server**: its the main entry point for all requests. developer sends the request (eg: 'pls initiate and run that docker image') to this server inside master nodes.
 
-      - **etcd**: similar to redis. but unlike redis, its a distributed key-value store that stores the cluster state (eg: if there we want to run them on different pods, then storing 'pod1': backend1, 'pod2': backend2). means key-value pairs can be shared across multiple machines.
+    - **etcd**: similar to redis. but unlike redis, its a distributed key-value store that stores the cluster state (eg: if there we want to run them on different pods, then storing 'pod1': backend1, 'pod2': backend2). means key-value pairs can be shared across multiple machines.
 
-      - **Scheduler**: it looks at the cluster state and decides where to run the container. eg: if there are 2 worker nodes, then it will decide to run the container on worker node 1 or 2.
+    - **Scheduler**: it looks at the cluster state and decides where to run the container. eg: if there are 2 worker nodes, then it will decide to run the container on worker node 1 or 2.
 
-      - **Controller Manager**: runs an infinite loop to make sure that the cluster state is as per the requirement (checks it by running other controllers). eg: if the container is down, then it will restart it.
+    - **Controller Manager**: runs an infinite loop to make sure that the cluster state is as per the requirement (checks it by running other controllers). eg: if the container is down, then it will restart it.
 
     </details>
 
     <details>
     <summary> <b>Worker Node Internals</b> </summary>
 
-      <img width="800" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/4ef57927-0998-4106-a1b5-58ec4995b6ed">
+    <img width="500" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/4ef57927-0998-4106-a1b5-58ec4995b6ed">
 
-      - **container runtime**: its the place where the container actually runs. eg: docker.
+    - **container runtime**: its the place where the container actually runs. eg: docker.
 
-      - **kubelet**: it is the agent that runs on each worker node. it is responsible for making sure that the containers are running in a pod.
+    - **kubelet**: it is the agent that runs on each worker node. it is responsible for making sure that the containers are running in a pod.
 
-      - **kube-proxy**: it is responsible for making sure that the network is properly set up. eg: if we have 2 pods, then it will make sure that they can communicate with each other.
+    - **kube-proxy**: it is responsible for making sure that the network is properly set up. eg: if we have 2 pods, then it will make sure that they can communicate with each other.
 
     </details>
 
