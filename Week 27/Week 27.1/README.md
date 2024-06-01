@@ -19,10 +19,14 @@
 ## Different Architectures for deploying before K8s
 
 - Load Balancer -> Multiple Servers (For Backend) [Right way for large applications]
+  <img width="800" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/1694ffd7-1d95-4c65-a321-fe08625d620e">
 
 - EC2 Machine (For Frontend)
-
+  <img width="800" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/0461097b-9daf-4b76-937c-7e583c510770">
+  
 - CDN -> S3 Bucket (For Static Files)
+  <img width="800" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/8876ac42-0edc-4b9b-a7d9-4d7f7166623e">
+
 
 ## Deploying Architecture with K8s
 
@@ -54,10 +58,17 @@
 
 - **Kubernetes Cluster** is the collection of **Master Nodes** and **Worker Nodes**.
 
+- In summary, hierarchy is like this 👇
+
+  <img width="361" alt="Screenshot 2024-06-01 at 7 35 27 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/ee9aef4f-51ef-455c-b5ef-fc394da358c6">
+
     <br>
 
     <details>
     <summary> <b>Master Node Internals</b> </summary>
+
+    <img width="800" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/5d57f53b-d892-4d96-8f25-bf8736152f78">
+
 
   - **API Server**: its the main entry point for all requests. developer sends the request (eg: 'pls initiate and run that docker image') to this server inside master nodes.
 
@@ -71,6 +82,8 @@
 
     <details>
     <summary> <b>Worker Node Internals</b> </summary>
+ 
+      <img width="800" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/4ef57927-0998-4106-a1b5-58ec4995b6ed">
 
     - **container runtime**: its the place where the container actually runs. eg: docker.
 
@@ -138,8 +151,11 @@ We can create a Kubernetes cluster in two ways:
    ```
 
 7. Check the no. of nodes running (1 Master and 2 Worker Nodes).
+   <img width="1382" alt="Screenshot 2024-06-01 at 8 10 56 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/8a87c9e8-e74f-4330-8a60-36b5bc6535e6">
 
    _You will hit the `master` node port since it is the only node that is exposed to the outside world._
+
+  <br>
 
 - To check the cluster info (although, will give forbidden error):
 
@@ -318,3 +334,4 @@ We can create a Kubernetes cluster in two ways:
 ### Checkpoint
 
 So, now our cluster is up and running. And its current state looks like this 👇
+<img width="600" alt="Screenshot_2024-06-01_at_6 13 20_AM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/02768715-7125-41ad-bb70-3d31f3f8dad2">
