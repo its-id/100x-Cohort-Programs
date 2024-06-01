@@ -19,22 +19,18 @@
 ## Different Architectures for deploying before K8s
 
 - Load Balancer -> Multiple Servers (For Backend) [Right way for large applications]
-  <img width="800" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/1694ffd7-1d95-4c65-a321-fe08625d620e">
+  <img width="600" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/1694ffd7-1d95-4c65-a321-fe08625d620e">
 
 - EC2 Machine (For Frontend)
-  <img width="800" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/0461097b-9daf-4b76-937c-7e583c510770">
-  
+  <img width="600" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/0461097b-9daf-4b76-937c-7e583c510770">
 - CDN -> S3 Bucket (For Static Files)
-  <img width="800" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/8876ac42-0edc-4b9b-a7d9-4d7f7166623e">
-
+  <img width="600" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/8876ac42-0edc-4b9b-a7d9-4d7f7166623e">
 
 ## Deploying Architecture with K8s
 
 - In Kubernetes, if we want to start a container we don't start a container directly. We start a **Pod**.
 
-  <br>
-
-  > Note: _A single **Pod** can contain one or more containers._
+  _**Note**: A single **Pod** can contain one or more containers._
 
   <br>
 
@@ -58,40 +54,43 @@
 
 - **Kubernetes Cluster** is the collection of **Master Nodes** and **Worker Nodes**.
 
-- In summary, hierarchy is like this 👇
+  <br>
 
-  <img width="361" alt="Screenshot 2024-06-01 at 7 35 27 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/ee9aef4f-51ef-455c-b5ef-fc394da358c6">
-
-    <br>
-
-    <details>
+  <details>
     <summary> <b>Master Node Internals</b> </summary>
 
     <img width="800" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/5d57f53b-d892-4d96-8f25-bf8736152f78">
 
+      - **API Server**: its the main entry point for all requests. developer sends the request (eg: 'pls initiate and run that docker image') to this server inside master nodes.
 
-  - **API Server**: its the main entry point for all requests. developer sends the request (eg: 'pls initiate and run that docker image') to this server inside master nodes.
+      - **etcd**: similar to redis. but unlike redis, its a distributed key-value store that stores the cluster state (eg: if there we want to run them on different pods, then storing 'pod1': backend1, 'pod2': backend2). means key-value pairs can be shared across multiple machines.
 
-  - **etcd**: similar to redis. but unlike redis, its a distributed key-value store that stores the cluster state (eg: if there we want to run them on different pods, then storing 'pod1': backend1, 'pod2': backend2). means key-value pairs can be shared across multiple machines.
+      - **Scheduler**: it looks at the cluster state and decides where to run the container. eg: if there are 2 worker nodes, then it will decide to run the container on worker node 1 or 2.
 
-  - **Scheduler**: it looks at the cluster state and decides where to run the container. eg: if there are 2 worker nodes, then it will decide to run the container on worker node 1 or 2.
-
-  - **Controller Manager**: runs an infinite loop to make sure that the cluster state is as per the requirement (checks it by running other controllers). eg: if the container is down, then it will restart it.
+      - **Controller Manager**: runs an infinite loop to make sure that the cluster state is as per the requirement (checks it by running other controllers). eg: if the container is down, then it will restart it.
 
     </details>
 
     <details>
     <summary> <b>Worker Node Internals</b> </summary>
- 
+
       <img width="800" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/4ef57927-0998-4106-a1b5-58ec4995b6ed">
 
-    - **container runtime**: its the place where the container actually runs. eg: docker.
+      - **container runtime**: its the place where the container actually runs. eg: docker.
 
-    - **kubelet**: it is the agent that runs on each worker node. it is responsible for making sure that the containers are running in a pod.
+      - **kubelet**: it is the agent that runs on each worker node. it is responsible for making sure that the containers are running in a pod.
 
-    - **kube-proxy**: it is responsible for making sure that the network is properly set up. eg: if we have 2 pods, then it will make sure that they can communicate with each other.
+      - **kube-proxy**: it is responsible for making sure that the network is properly set up. eg: if we have 2 pods, then it will make sure that they can communicate with each other.
 
     </details>
+
+    <br>
+
+- In summary, hierarchy is like this 👇
+
+  <img width="361" alt="Screenshot 2024-06-01 at 7 35 27 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/ee9aef4f-51ef-455c-b5ef-fc394da358c6">
+
+    <br>
 
 ## Creating a Kubernetes Cluster
 
