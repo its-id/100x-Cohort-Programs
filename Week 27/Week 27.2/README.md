@@ -11,6 +11,9 @@
 
 ## Deployment using Docker v/s K8s
 
+<img width="600" alt="Screenshot 2024-06-02 at 7 09 33 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/e8e32e4b-25b0-4049-890d-2f92baab1bf7">
+
+
 | Docker                                       | Kubernetes                                  |
 | -------------------------------------------- | ------------------------------------------- |
 | can run an image in a single container       | can run multiple containers in a single pod |
@@ -240,6 +243,8 @@
    kubectl delete replicaset nginx-replicaset
    ```
 
+<br>
+
 ### Why do we even need a Deployment?
 
 - As we saw above, a deployment was only creating the ReplicaSet.
@@ -260,6 +265,8 @@
 
 **Understanding with a situation**
 
+<img width="583" alt="Screenshot 2024-06-02 at 7 52 26 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/3713af67-bccd-44f1-ba0d-81e0e32ceaf0">
+
 - Assume we have a deployment that runs a replicaset created that starts 3 pods.
 
 - Now, we by mistake push a new image to the deployment that has a bug.
@@ -271,40 +278,28 @@
   - If yes, it will **delete the old replicaset**.
 
   - If no, it will **rollback to the previous version**.
+ 
+<br>
 
 ## Services
 
 - Till now, we were able to create pods and manage them using deployments and replicaset.
 
-    <br>
-
 - But, we still can't access the pods.
-
-    <br>
 
 - In Docker, it was easy to access the container using the container's IP address.
 
-    <br>
-
 - But, in Kubernetes, the pods are ephemeral. They can be created and deleted anytime.
-
-    <br>
 
 - So, we need a way to access the pods even if they are deleted and recreated.
 
-    <br>
-
 - This is where `Services` come into play.
 
-    <br>
+  <img width="417" alt="Screenshot 2024-06-02 at 8 10 52 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/56acbe08-e2a2-45a9-a985-81507793f4f5">
 
 - A `Service` is an abstraction that defines a logical set of pods and a policy by which to access them.
 
-    <br>
-
 - It is a stable endpoint that exposes the pods to the outside world.
-
-    <br>
 
 - There are 4 types of services:
 
@@ -385,6 +380,8 @@
 
 3. Note the `NodePort` of the service. Although, we will not be able to access the service using the `NodePort` as we are using `Kind`.
 
+    <img width="660" alt="Screenshot 2024-06-02 at 8 25 12 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/e8e9e631-9acf-427d-8c3d-86ee6eca31be">
+
 <br>
 
 4. To access the service, we need to port-map the `NodePort` to the `ClusterIP` of the service. So, in short, we restart the clusters with the port mapping configured. Before that, delete the old cluster using the following command:
@@ -442,6 +439,7 @@
 ### Creating a LoadBalancer Service
 
 **Advantages of LoadBalancer Service**
+<img width="879" alt="Screenshot 2024-06-02 at 8 34 23 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/7138ba87-4229-46a3-b9cc-4e8d7f792c13">
 
 - The `LoadBalancer` service exposes the service externally using a cloud provider's load balancer.
 
@@ -456,12 +454,13 @@
 1. Create a new account on Vultr.
    <br>
 2. Click on `Kubernetes` Tab and then click on `Create Cluster`.
+   <img width="1037" alt="Screenshot 2024-06-02 at 8 41 04 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/710b531a-01b1-49a9-9a16-edce45d97130">
    <br>
-3. After its created, download its configuration.
+4. After its created, download its configuration.
    <br>
-4. Replace your `~/.kube/config` file with the downloaded configuration file.
+5. Replace your `~/.kube/config` file with the downloaded configuration file.
    <br>
-5. Change the `type` of the service to `LoadBalancer` in the `k8s/service.yml` file:
+6. Change the `type` of the service to `LoadBalancer` in the `k8s/service.yml` file:
 
    ```yaml
    ---
@@ -470,7 +469,7 @@
 
    <br>
 
-6. Create the deployment and the service again:
+7. Create the deployment and the service again:
 
    ```bash
    kubectl apply -f deployment-class.yml
@@ -479,7 +478,7 @@
 
    <br>
 
-7. Check the services:
+8. Check the services:
 
    ```bash
    kubectl get services
@@ -487,4 +486,4 @@
 
    <br>
 
-8. Access the service using the `LoadBalancer` IP.
+9. Access the service using the `LoadBalancer` IP.
