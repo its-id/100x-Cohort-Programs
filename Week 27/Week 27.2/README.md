@@ -315,6 +315,8 @@
 
 - Let's create a service that exposes the pods created by the deployment 👇
 
+<br>
+
 ### Creating a NodePort Service
 
 1. Check the `k8s/service.yml` file:
