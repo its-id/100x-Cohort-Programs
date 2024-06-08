@@ -83,6 +83,8 @@ So, the steps to start a complete Kubernetes service are:
   <br>
 
 3. Go to `http://localhost:30007` to see the service running.
+   <img width="500" alt="image" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/cfad1539-6c34-4999-ad7d-235d8a822fc5">
+
 
 - To export the service using an external LoadBalancer ip, Follow the Cloud Provider step to create the cluster, replace the type of service to LoadBalancer in the service.yml file and restart it.
 
@@ -156,6 +158,11 @@ So, the steps to start a complete Kubernetes service are:
 - We can't use ingress without an ingress controller. Some of the popular ones can be found [here](https://kubernetes.io/docs/concepts/services-networking/ingress/).
 
   <br>
+
+- The overall architecture and process looks something like this:
+  <img width="500" alt="image" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/2bca27d9-5eee-4ca1-8662-914f839ae6db">
+  <img width="500" alt="Screenshot 2024-06-08 at 7 59 22 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/7c67694b-4f2f-436b-8db6-e4067f204692">
+
 
   **Note**: We only create the `ingress`, not the `ingress controller` (just like we can create a `deployment`, but not a `deployment controller`).
 
@@ -287,6 +294,8 @@ So, the steps to start a complete Kubernetes service are:
     <br>
 
 - Till now, we have managed to create the `ingress` managed load balancer along with the first pod which will be the gateway to all the services.
+  <img width="643" alt="image" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/d4520808-3135-48c0-a88f-58babe0531d0">
+
 
   <br>
 
@@ -295,6 +304,8 @@ So, the steps to start a complete Kubernetes service are:
 ---
 
 ## Creating Ingress Object
+
+   <p align="center"><img width="500" alt="image" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/137349a5-0d8a-4024-a8f8-0ee94c50feae"></p>
 
 1. Now, we will be performing the action to route the traffic to individual services (for eg: `nginx` and `apache` in this case).
 
@@ -413,6 +424,10 @@ So, the steps to start a complete Kubernetes service are:
     <br>
 
   - After it's done, try going to `http://[DOMAIN_NAME_YOU_WANT_TO_SPOOF]/nginx` and `http://[DOMAIN_NAME_YOU_WANT_TO_SPOOF]/apache` to see the services running.
+ 
+    <img width="296" alt="image" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/24855af7-669b-49f6-815b-704506232bfe"> &ensp; <img width="325" alt="image" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/16407a0b-b076-449c-8162-2087709deb22">
+
+
 
 ---
 
@@ -490,8 +505,14 @@ So, the steps to start a complete Kubernetes service are:
     docker push [DOCKERHUB_USERNAME]/week28-2
 
     # Run the image while passing the environment variables
-    docker run -e username=admin -e password=1f2d1e2e67df [DOCKERHUB_USERNAME]/express-app
+    docker run -e  -p 3003:3000 -e DATABASE_URL=asd [DOCKERHUB_USERNAME]/express-app
     ```
+
+  <br>
+  
+  - Check it's working by going to `localhost:3003` of your machine and see the environment variables passed to the container getting displayed:
+
+    <img width="686" alt="image" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/3739af1e-85b6-4002-987e-2a1ca39a6c0c">
 
   <br>
 
