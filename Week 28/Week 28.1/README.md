@@ -160,7 +160,8 @@ So, the steps to start a complete Kubernetes service are:
   <br>
 
 - The overall architecture and process looks something like this:
-  <img width="500" alt="image" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/2bca27d9-5eee-4ca1-8662-914f839ae6db">
+  <img width="500" alt="image" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/2d742963-6b98-479e-bc67-0ad2167f60ee">
+
   <img width="500" alt="Screenshot 2024-06-08 at 7 59 22 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/7c67694b-4f2f-436b-8db6-e4067f204692">
 
 
