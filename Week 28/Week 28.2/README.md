@@ -20,6 +20,8 @@
 
 - It can be used to store configuration data, command-line arguments, environment variables, port numbers, etc.
 
+  <br>
+
 ### Creating a ConfigMap
 
 1. Go to `/configmap/configmp.yml` file to check the `yaml` file for creating a ConfigMap.
@@ -74,6 +76,8 @@
      ```bash
      kubectl describe configmap ecom-backend-config
      ```
+
+    <br>
 
 ### Using the ConfigMap
 
@@ -207,6 +211,8 @@
   - For eg: The string `hello` in base64 encoding is `aGVsbG8=`.
   - **Why use?** to store binary data (or special characters) in a text format.
   </details>
+
+  <br>
 
 ### Creating a Secret
 
