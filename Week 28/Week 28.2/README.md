@@ -175,6 +175,9 @@
 
 4. Go to `localhost:30007` in the browser to see the app running.
 
+   <img width="1582" alt="Screenshot 2024-06-09 at 7 47 19 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/291312b8-af39-4c2d-b4ff-74d72269898d">
+
+
   <br>
 
 - To delete the deployment and service, use the following commands:
@@ -357,6 +360,8 @@
   <br>
 
 - We can store the secrets in a file and mount that file as a volume (or in simple words: a folder) in the container. For eg: We can store the database password in the .env file and mount that file as a volume in the container.
+  
+  <img width="466" alt="Screenshot 2024-06-09 at 8 12 49 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/d4bba1ea-ca0c-412d-a8ce-1acc309b8101">
 
 ## Storing Secrets using Volume
 
