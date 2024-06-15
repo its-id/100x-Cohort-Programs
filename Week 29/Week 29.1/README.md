@@ -7,6 +7,7 @@
   - [Creating a Ephemeral Volume in Kubernetes](#creating-a-ephemeral-volume-in-kubernetes)
   - [Creating a Persistent Volume in Kubernetes](#creating-a-persistent-volume-in-kubernetes)
   - [Automatic PV Creation](#automatic-pv-creation)
+  - [Horizontal Pod Autoscaling](#horizontal-pod-autoscaling)
 
 ## Volumes in Docker
 
