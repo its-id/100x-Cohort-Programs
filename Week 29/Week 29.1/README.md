@@ -87,6 +87,8 @@
        <details>
        <summary><i><b>How it works?</b></i></summary>
 
+      <img width="572" alt="Screenshot 2024-06-15 at 7 34 23 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/3905d56a-6a87-41e0-9abf-5ce161db3704">
+      
      - When a pod is created, it requests storage from a Persistent Volume Claim.
 
      - The Persistent Volume Claim requests storage from a Persistent Volume.
@@ -417,6 +419,8 @@
    <br>
 
 - You will notice that the data is persisted even if the pod is deleted.
+  <img width="500" alt="Screenshot 2024-06-15 at 8 25 36 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/b5c7dcfc-4f41-45ce-b01b-ce9001da3ba3">
+
 
     <br>
 
@@ -429,6 +433,8 @@
 - **What if we just create the Persistent Volume Claim and let Kubernetes create the Persistent Volume automatically?**
 
     <br>
+
+    <img width="500" alt="Screenshot 2024-06-15 at 8 11 59 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/1d37c764-5e16-4215-b405-413f1d41233b">
 
 - If we use a cloud provider like AWS, GCP, or Azure, Kubernetes can automatically create the Persistent Volume for us.
 
