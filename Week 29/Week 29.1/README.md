@@ -616,3 +616,5 @@
     <br>
 
 - In summary, the overall flow looks like this:
+  <img width="600" alt="Screenshot 2024-06-15 at 8 11 59 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/9a1743df-f890-4605-858d-1c2995ec5105">
+
