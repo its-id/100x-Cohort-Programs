@@ -46,14 +46,17 @@ In today's session, we will be looking at the following topics:
 ### Installing a Metrics Server
 
 1. Create a Kubernetes Cluster on Vultrr (recommended) or any other cloud provider.
+   <img width="660" alt="Screenshot 2024-06-16 at 7 27 40 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/72f4421f-c15e-4c21-9b65-8d40ef3eb840">
+
 
 <br>
 
 2. Download the config file and replace your `~/.kube/config` file with the downloaded config file.
+   <img width="660" alt="Screenshot 2024-06-16 at 7 30 08 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/40fccdc1-10a7-4add-b3f7-6c685f95c36a">
 
    <br>
 
-3. Install the Metrics Server from the repository:
+4. Install the Metrics Server from the repository:
 
    ```bash
    kubectl apply -f https://github.com/100xdevs-cohort-2/week-28-manifests/blob/main/components.yml
@@ -61,7 +64,7 @@ In today's session, we will be looking at the following topics:
 
    <br>
 
-4. Check if the Metrics Server is running:
+5. Check if the Metrics Server is running:
 
    ```bash
    kubectl top pod -n kube-system
@@ -71,8 +74,8 @@ In today's session, we will be looking at the following topics:
     <br>
 
 - The Metrics Server should now be installed and running.
+  <img width="453" alt="Screenshot 2024-06-16 at 7 32 53 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/67e86997-c0f6-4617-99f7-75251fb054e1">
 
-  ### [INSERT IMAGE]
 
 ---
 
@@ -248,8 +251,11 @@ In today's session, we will be looking at the following topics:
    - **Note**: If we would have installed the metrics from official repo, it should not able to get the CPU percentage. This is because an issue related to Metrics Server not being able to get the metrics from the pods.
 
    - To fix this, we have installed the metrics server from our customized repo fixing the issue [here](https://github.com/100xdevs-cohort-2/week-28-manifests/blob/main/components.yml). Reapply the hpa and check the status.
+     
+     <img width="407" alt="Screenshot 2024-06-16 at 7 56 29 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/e8932a0a-0262-4d49-b717-3681a8307865">
+     
+     <img width="407" alt="Screenshot 2024-06-16 at 7 57 51 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/486e37df-4a99-4b37-bd51-d886ba1e52e1">
 
-   ### [INSERT IMAGE]
 
    - The above fix adds resource requests and limits to the pods which is necessary for the metrics server to get the metrics.
 
@@ -260,25 +266,25 @@ In today's session, we will be looking at the following topics:
    ```bash
    kubectl get pods
    ```
-
-   ### [INSERT IMAGE]
-
+   
    <br>
 
 4. Try hitting the service endpoint you created earlier using the browser and check the cpu utilization of the pods:
 
    ```bash
    kubectl get hpa
-   kubectl get pod
+   kubectl get pods
    ```
-
-   ### [INSERT IMAGES]
+   <img width="443" alt="Screenshot 2024-06-16 at 7 55 29 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/7661a4cf-1eac-4905-8047-309ff9532ec5">
+   <img width="443" alt="Screenshot 2024-06-16 at 7 58 15 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/5f2d5cff-34be-47d3-9234-61bca38eeb87">
 
    **Note**: Since, we had a cluster with only 4 nodes, the autoscaler will not be able to scale the pods beyond 4.
 
 ---
 
 ### Formula for scaling up
+
+<img width="500" alt="Screenshot 2024-06-16 at 7 58 16 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/e63ca786-597f-4a83-9394-a965896af76d">
 
 - The formula for scaling up is:
 
@@ -291,6 +297,7 @@ In today's session, we will be looking at the following topics:
   - `currentMetricValue`: The current metric value.
 
   - `desiredMetricValue`: The desired metric value.
+
 
 ---
 
@@ -457,6 +464,4 @@ In today's session, we will be looking at the following topics:
 
 - The Cluster Autoscaler will automatically add nodes to the cluster to schedule the pods.
 
-  ### [INSERT IMAGE]
-
-    <br>
+  <img width="500" alt="Screenshot 2024-06-16 at 7 58 17 PM" src="https://github.com/its-id/100x-Cohort-Programs/assets/60315832/05892bc4-1f27-4be9-81cd-828e03985fe7">
